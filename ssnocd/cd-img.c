@@ -41,7 +41,6 @@ void cd_sort_toc() {
 
 
 int cd_get_toc_count() {
-  assert(toc_count > 0);
   return toc_count;
 }
 

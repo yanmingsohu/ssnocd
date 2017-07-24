@@ -22,13 +22,14 @@ static const CDTrackModeType s_MDSTrackModeTypes[] = {
 
 
 int add_toc(MDSTrackBlock *track, MDSTrackExtraBlock *extraInfo) {
+  int num = cd_get_toc_count();
   Toc toc;
   toc.ctrladr = ((track->AdrCtk & 0xF0) >> 4) + ((track->AdrCtk & 0x0F) << 4);
   toc.tno     = 0;
   toc.point   = track->TrackNumber;
-  toc.min     = 0;
-  toc.sec     = 0;
-  toc.frame   = 0;
+  toc.min     = num + 150;
+  toc.sec     = num + 150;
+  toc.frame   = num + 150;
   toc.zero    = 0;
   toc.pmin    = track->MSF.M;
   toc.psec    = track->MSF.S;
@@ -233,6 +234,9 @@ int mds_open(char* filename) {
     MDSSession(&hdr, &session, filename, tracks, &track_len);
     DEBUG(" %d tracks parsed in session %d\n", track_len, i);
   // }
+
+  // 文件打开失败
+  assert(pMdfFile[0] != 0);
 
   cd_sort_toc();
   // close MDS then open MDF

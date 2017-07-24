@@ -2,8 +2,8 @@
 const readline = require('readline');
 
 
-const infile = __dirname + '/audio-cd.txt';
-const outfile = __dirname + '/out.csv';
+const infile = __dirname + '/game-cd-0.txt';
+const outfile = __dirname + '/game-cd-0.csv';
 console.log('Read', infile, '\n Write', outfile);
 
 const output = fs.openSync(outfile, 'w');
