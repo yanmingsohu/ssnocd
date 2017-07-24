@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1389948987 source:d:\dropbox\gb cart\pc_comm\main.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<conio.h>
+
+1394322838 source:e:\dropbox\gb cart\pc_comm\main.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<conio.h>
+	<math.h>
+	"comm_rate.h"
+
+1390610306 e:\dropbox\gb cart\pc_comm\comm_rate.h
+
+1498893293 source:d:\saturn-cd-emu\pc_comm\main.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<conio.h>
+	<math.h>
+	"comm_rate.h"
+
+1498823661 d:\saturn-cd-emu\pc_comm\comm_rate.h
+
