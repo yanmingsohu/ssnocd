@@ -1,0 +1,206 @@
+C51 COMPILER V9.01   FLASH_CHIP_TEST                                                       06/30/2017 15:43:36 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE FLASH_CHIP_TEST
+OBJECT MODULE PLACED IN .\out\flash_chip_test.obj
+COMPILER INVOKED BY: C:\Programs86\Keil\C51\BIN\C51.EXE flash_chip_test.c LARGE OPTIMIZE(9,SPEED) BROWSE DEBUG OBJECTEXT
+                    -END CODE PRINT(.\lst\flash_chip_test.lst) OBJECT(.\out\flash_chip_test.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "type.h"
+   3          #include "flash_chip.h"
+   4          
+   5          
+   6          #define BUFF_LEN 0x10
+   7          
+   8          sbit TEST  = P0 ^ 1;
+   9          sbit TEST2 = P0 ^ 0;
+  10          static BYTE buff[BUFF_LEN];
+  11          
+  12          
+  13          static BYTE _read(pAddress a) {
+  14   1              return buff[a->a8.m0 & (BUFF_LEN-1)];
+  15   1      }
+  16          
+  17          
+  18          static void _write(pAddress a, BYTE dat) {
+  19   1              buff[a->a8.m0 & (BUFF_LEN-1)] = dat;
+  20   1      }
+  21          
+  22          
+  23          static void _s_init() {
+  24   1              int i;
+  25   1              for (i=0; i<BUFF_LEN; ++i) {
+  26   2                      TEST = i & 1;
+  27   2                      buff[i] = i;
+  28   2              }
+  29   1      }
+  30          
+  31          
+  32          void flash_chip_test(pFlashChip f) {
+  33   1              f->read = _read;
+  34   1              f->write = _write;
+  35   1              f->init = _s_init;
+  36   1              f->mem_size = 0x10;
+  37   1      }
+C51 COMPILER V9.01   FLASH_CHIP_TEST                                                       06/30/2017 15:43:36 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION Com0009 (BEGIN)
+0000         L?0010:
+0000         L?0011:
+0000 900000      R     MOV     DPTR,#f
+0003 E0                MOVX    A,@DPTR
+0004 FB                MOV     R3,A
+0005 A3                INC     DPTR
+0006 E0                MOVX    A,@DPTR
+0007 FA                MOV     R2,A
+0008 A3                INC     DPTR
+0009 E0                MOVX    A,@DPTR
+000A F9                MOV     R1,A
+000B 22                RET     
+000C         L?0012:
+000C 900003            MOV     DPTR,#03H
+000F 120000      E     LCALL   ?C?CLDOPTR
+0012 540F              ANL     A,#0FH
+0014 2400        R     ADD     A,#LOW buff
+0016 F582              MOV     DPL,A
+0018 E4                CLR     A
+0019 3400        R     ADDC    A,#HIGH buff
+001B F583              MOV     DPH,A
+001D 22                RET     
+             ; FUNCTION Com0009 (END)
+
+             ; FUNCTION __read (BEGIN)
+                                           ; SOURCE LINE # 13
+;---- Variable 'a' assigned to Register 'R1/R2/R3' ----
+                                           ; SOURCE LINE # 14
+0000 120000      R     LCALL   L?0012
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+                                           ; SOURCE LINE # 15
+0005         ?C0001:
+0005 22                RET     
+             ; FUNCTION __read (END)
+
+             ; FUNCTION __write (BEGIN)
+                                           ; SOURCE LINE # 18
+;---- Variable 'dat' assigned to Register 'R5' ----
+;---- Variable 'a' assigned to Register 'R1/R2/R3' ----
+                                           ; SOURCE LINE # 19
+0000 120000      R     LCALL   L?0012
+0003 ED                MOV     A,R5
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 20
+0005 22                RET     
+             ; FUNCTION __write (END)
+
+             ; FUNCTION _s_init (BEGIN)
+                                           ; SOURCE LINE # 23
+                                           ; SOURCE LINE # 25
+;---- Variable 'i' assigned to Register 'R6/R7' ----
+0000 E4                CLR     A
+0001 FF                MOV     R7,A
+0002 FE                MOV     R6,A
+0003         ?C0003:
+                                           ; SOURCE LINE # 26
+0003 EF                MOV     A,R7
+C51 COMPILER V9.01   FLASH_CHIP_TEST                                                       06/30/2017 15:43:36 PAGE 3   
+
+0004 13                RRC     A
+0005 9281              MOV     TEST,C
+                                           ; SOURCE LINE # 27
+0007 7400        R     MOV     A,#LOW buff
+0009 2F                ADD     A,R7
+000A F582              MOV     DPL,A
+000C 7400        R     MOV     A,#HIGH buff
+000E 3E                ADDC    A,R6
+000F F583              MOV     DPH,A
+0011 EF                MOV     A,R7
+0012 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 28
+0013 0F                INC     R7
+0014 BF0001            CJNE    R7,#00H,?C0008
+0017 0E                INC     R6
+0018         ?C0008:
+0018 EF                MOV     A,R7
+0019 6410              XRL     A,#010H
+001B 4E                ORL     A,R6
+001C 70E5              JNZ     ?C0003
+                                           ; SOURCE LINE # 29
+001E         ?C0006:
+001E 22                RET     
+             ; FUNCTION _s_init (END)
+
+             ; FUNCTION _flash_chip_test (BEGIN)
+                                           ; SOURCE LINE # 32
+0000 900000      R     MOV     DPTR,#f
+0003 EB                MOV     A,R3
+0004 F0                MOVX    @DPTR,A
+0005 A3                INC     DPTR
+0006 EA                MOV     A,R2
+0007 F0                MOVX    @DPTR,A
+0008 A3                INC     DPTR
+0009 E9                MOV     A,R1
+000A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 33
+000B 7BFF              MOV     R3,#0FFH
+000D 7A00        R     MOV     R2,#HIGH __read
+000F 7900        R     MOV     R1,#LOW __read
+0011 C003              PUSH    AR3
+0013 C002              PUSH    AR2
+0015 C001              PUSH    AR1
+0017 120000      R     LCALL   L?0010
+001A 120000      E     LCALL   ?C?PSTPTR
+                                           ; SOURCE LINE # 34
+001D 7BFF              MOV     R3,#0FFH
+001F 7A00        R     MOV     R2,#HIGH __write
+0021 7900        R     MOV     R1,#LOW __write
+0023 C003              PUSH    AR3
+0025 C002              PUSH    AR2
+0027 C001              PUSH    AR1
+0029 120000      R     LCALL   L?0010
+002C 900003            MOV     DPTR,#03H
+002F 120000      E     LCALL   ?C?PSTOPTR
+                                           ; SOURCE LINE # 35
+0032 7BFF              MOV     R3,#0FFH
+0034 7A00        R     MOV     R2,#HIGH _s_init
+0036 7900        R     MOV     R1,#LOW _s_init
+0038 C003              PUSH    AR3
+003A C002              PUSH    AR2
+003C C001              PUSH    AR1
+C51 COMPILER V9.01   FLASH_CHIP_TEST                                                       06/30/2017 15:43:36 PAGE 4   
+
+003E 120000      R     LCALL   L?0011
+0041 900006            MOV     DPTR,#06H
+0044 120000      E     LCALL   ?C?PSTOPTR
+                                           ; SOURCE LINE # 36
+0047 120000      R     LCALL   L?0011
+004A 90000D            MOV     DPTR,#0DH
+004D 120000      E     LCALL   ?C?LSTKOPTR
+0050 00                DB      00H
+0051 00                DB      00H
+0052 00                DB      00H
+0053 10                DB      010H
+                                           ; SOURCE LINE # 37
+0054 22                RET     
+             ; FUNCTION _flash_chip_test (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    158    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     16       3
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

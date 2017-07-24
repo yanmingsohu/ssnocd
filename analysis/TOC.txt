@@ -1,0 +1,126 @@
+The next test I did was on a data CD. I ran the "readcd -fulltoc" command after inserting the CD:
+
+C:\local\cdrtools>readcd dev=0,0,0 -fulltoc
+Read  speed:  2822 kB/s (CD  16x, DVD  2x).
+Write speed:  2823 kB/s (CD  16x, DVD  2x).
+TOC len: 48. First Session: 1 Last Session: 1.
+
+01 14 00 A0 00 00 00 00 01 00 00
+01 14 00 A1 00 00 00 00 01 00 00
+01 14 00 A2 00 00 00 00 07 16 22
+01 14 00 01 00 00 00 00 00 02 00
+
+Lead out 1: 33034
+
+The output tells us that:
+
+There is only one session on the CD.
+There is one track in the session - Count the lines after the first 3 lines.
+The size of the session is 33,034 sectors.
+
+====================================================================================
+
+The next test I did was on a CD-DA (Audio CD). I ran the "readcd -fulltoc" command after inserting the CD:
+
+C:\>\local\cdrtoolsreadcd -fulltoc dev=0,0,0
+Read  speed:  4234 kB/s (CD  24x, DVD  3x).
+Write speed:  4234 kB/s (CD  24x, DVD  3x).
+TOC len: 224. First Session: 1 Last Session: 1.
+
+01 10 00 A0 00 00 00 00 01 00 00
+01 10 00 A1 00 00 00 00 11 00 00
+01 10 00 A2 00 00 00 00 4C 09 35
+01 10 00 01 00 00 00 00 00 02 00
+01 10 00 02 00 00 00 00 04 32 3F
+01 10 00 03 00 00 00 00 09 07 18
+01 10 00 04 00 00 00 00 0D 17 24
+01 10 00 05 00 00 00 00 11 29 1A
+01 10 00 06 00 00 00 00 15 27 45
+01 10 00 07 00 00 00 00 1A 10 2A
+01 10 00 08 00 00 00 00 1F 03 2D
+01 10 00 09 00 00 00 00 23 24 0B
+01 10 00 0A 00 00 00 00 27 2D 3B
+01 10 00 0B 00 00 00 00 2D 04 19
+01 10 00 0C 00 00 00 00 31 32 45
+01 10 00 0D 00 00 00 00 35 33 42
+01 10 00 0E 00 00 00 00 3A 0B 37
+01 10 00 0F 00 00 00 00 3E 26 16
+01 10 00 10 00 00 00 00 42 29 19
+01 10 00 11 00 00 00 00 47 1B 10
+
+Lead out 1: 342578
+
+The output tells us that:
+
+There is only one session on the CD.
+There are 17 tracks in the session - Count the lines after the first 3 lines.
+The size of the session is 342,578 sectors.
+
+====================================================================================
+
+The next test I did was on a data CD with multiple sessions I ran the "readcd -fulltoc" command after inserting the CD:
+
+C:\>\local\cdrtools\readcd dev=0,0,0 -fulltoc
+Read  speed:  4234 kB/s (CD  24x, DVD  3x).
+Write speed:  4234 kB/s (CD  24x, DVD  3x).
+TOC len: 125. First Session: 1 Last Session: 2.
+readcd: Input/Output error. read toc: scsi sendcmd: no error
+CDB:  43 00 02 00 00 00 00 00 7D 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 04 00 00 00 00 10 00 00 4A 80 08 03 00 00 00 00
+Sense Key: 0x4 Hardware Error, Segment 0
+Sense Code: 0x08 Qual 0x03 (logical unit communication crc error 
+   (ultra-dma/32))
+ Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 7.000s timeout 40s
+
+01 14 00 A0 00 00 00 00 01 20 00
+01 14 00 A1 00 00 00 00 01 00 00
+01 14 00 A2 00 00 00 00 1A 18 41
+01 14 00 01 00 00 00 00 00 02 00
+01 54 00 B0 1C 36 41 02 4A 2B 00
+01 54 00 C0 80 00 00 00 61 22 15
+02 14 00 A0 00 00 00 00 02 20 00
+02 14 00 A1 00 00 00 00 02 00 00
+02 14 00 A2 00 00 00 00 1E 04 3C
+02 14 00 02 00 00 00 00 1C 38 41
+02 54 00 B0 1F 22 3C 01 4A 2B 00
+
+^  ^^ ^  ^  ^  ^  ^  ^  ^  ^  ^
+|  || |  |  |  |  |  |  |  |  |
+|  || |  |  |  |  |  |  |  |  frame
+|  || |  |  |  |  |  |  |  sec
+|  || |  |  |  |  |  |  min
+|  || |  |  |  |  |  Zero
+|  || |  |  |  |  frame
+|  || |  |  |  sec
+|  || |  |  min
+|  || |  Point
+|  || Reserved1(tno)
+|  |Adr
+| Control (ctrladr = Adr + Control << 4)
+SessionNumber
+
+Lead out 1: 118715
+Lead out 2: 135210
+
+The output tells us that:
+
+There are 2 sessions on the CD.
+There is 1 track in each session.
+The size of the first session is 118,715 sectors. The size of the second session is 16,495 sectors.
+
+====================================================================================
+
+typedef struct _CDROM_TOC_FULL_TOC_DATA_BLOCK {
+  UCHAR  SessionNumber;
+  UCHAR  Control : 4;
+  UCHAR  Adr : 4;
+  UCHAR  Reserved1;
+  UCHAR  Point;
+  UCHAR  MsfExtra[3];
+  UCHAR  Zero;
+  UCHAR  Msf[3];
+} CDROM_TOC_FULL_TOC_DATA_BLOCK, *PCDROM_TOC_FULL_TOC_DATA_BLOCK;
+

@@ -1,0 +1,9 @@
+**/.svn/*
+**/node_modules/**
+**/db_buffer/**
+**/build/**
+**/file_pool/**
+
+*.csv
+*.logicdata
+*.logicsettings

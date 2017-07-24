@@ -1,0 +1,19 @@
+{
+  "name": "analysis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "parse-csv.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node lib/parse-csv"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^1.1.1"
+  }
+}

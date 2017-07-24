@@ -1,0 +1,599 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\Dropbox\GB cart\stc_comm\fire.uvproj
+Project File Date:  01/27/2014
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDSTRING?UART
+Program Size: data=17.1 xdata=176 code=3426
+creating hex file from "fire"...
+"fire" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(1280) 
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?_FUNC_A?DMAIN,?PR?_FUNC_B?DMAIN))
+*** FATAL ERROR L228: RAMSIZE PARAMETER OUT OF RANGE
+    POS: 121
+    S29AL016D.obj, at24c64.obj, flash_chip_test.obj TO fire RAMSIZE (1280)#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(1280) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D))
+*** FATAL ERROR L228: RAMSIZE PARAMETER OUT OF RANGE
+    POS: 121
+    S29AL016D.obj, at24c64.obj, flash_chip_test.obj TO fire RAMSIZE (1280)#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(1280) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D))
+*** FATAL ERROR L228: RAMSIZE PARAMETER OUT OF RANGE
+    POS: 121
+    S29AL016D.obj, at24c64.obj, flash_chip_test.obj TO fire RAMSIZE (1280)#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(1000) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D))
+*** FATAL ERROR L228: RAMSIZE PARAMETER OUT OF RANGE
+    POS: 121
+    S29AL016D.obj, at24c64.obj, flash_chip_test.obj TO fire RAMSIZE (1000)#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(1000) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D))
+*** FATAL ERROR L228: RAMSIZE PARAMETER OUT OF RANGE
+    POS: 121
+    S29AL016D.obj, at24c64.obj, flash_chip_test.obj TO fire RAMSIZE (1000)#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(500) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D))
+*** FATAL ERROR L228: RAMSIZE PARAMETER OUT OF RANGE
+    POS: 120
+     S29AL016D.obj, at24c64.obj, flash_chip_test.obj TO fire RAMSIZE (500)#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D))
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 219
+    SH_CHIP !  (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDSTRING?UART
+Program Size: data=17.1 xdata=176 code=3426
+creating hex file from "fire"...
+"fire" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D))
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 219
+    SH_CHIP !  (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(257) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D))
+*** FATAL ERROR L228: RAMSIZE PARAMETER OUT OF RANGE
+    POS: 120
+     S29AL016D.obj, at24c64.obj, flash_chip_test.obj TO fire RAMSIZE (257)#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(1280) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D))
+*** FATAL ERROR L228: RAMSIZE PARAMETER OUT OF RANGE
+    POS: 121
+    S29AL016D.obj, at24c64.obj, flash_chip_test.obj TO fire RAMSIZE (1280)#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(1280) ;
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D))
+*** FATAL ERROR L228: RAMSIZE PARAMETER OUT OF RANGE
+    POS: 121
+    S29AL016D.obj, at24c64.obj, flash_chip_test.obj TO fire RAMSIZE (1280)#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) ;
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D))
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 220
+    SH_CHIP !  (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) ;
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64));
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D));
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D));
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 221
+    SH_CHIP !  (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire" 
+RAMSIZE(256) 
+OVERLAY( 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D)) )
+*** FATAL ERROR L201: INVALID COMMAND LINE SYNTAX
+    POS: 141
+    4c64.obj, flash_chip_test.obj TO fire RAMSIZE (256) OVERLAY (OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire" 
+RAMSIZE(256) 
+OVERLAY( 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D)) )
+*** FATAL ERROR L201: INVALID COMMAND LINE SYNTAX
+    POS: 141
+    4c64.obj, flash_chip_test.obj TO fire RAMSIZE (256) OVERLAY (OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! 
+        (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D)) 
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 219
+    SH_CHIP !  (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! 
+        (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! 
+        (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D)) 
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 217
+    SH_CHIP !  (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D)) 
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 217
+    SH_CHIP !  (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDSTRING?UART
+Program Size: data=17.1 xdata=176 code=3426
+creating hex file from "fire"...
+"fire" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 217
+    SH_CHIP !  (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 218
+    SH_CHIP !  (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDSTRING?UART
+Program Size: data=17.1 xdata=176 code=3426
+creating hex file from "fire"...
+"fire" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)
+?PR?FLASH_T3?FLASH_CHIP ! (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+*** FATAL ERROR L201: INVALID COMMAND LINE SYNTAX
+    POS: 233
+    _S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64) ?PR?FLASH_T3?FLASH_CHIP ! #
+Target not created
+Build target 'Target 1'
+compiling fire.c...
+compiling uart.c...
+compiling flash_chip.c...
+FLASH_CHIP.C(19): warning C182: pointer to different objects
+compiling S29AL016D.c...
+compiling at24c64.c...
+compiling flash_chip_test.c...
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D)) 
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 217
+    SH_CHIP !  (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(1280) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY(?PR?FLASH_T3?FLASH_CHIP ! (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY(?PR?FLASH_T4?FLASH_CHIP ! (?PR?__READ?FLASH_CHIP_TEST,  ?PR?_F_READ?S29AL016D)) 
+*** FATAL ERROR L228: RAMSIZE PARAMETER OUT OF RANGE
+    POS: 121
+    S29AL016D.obj, at24c64.obj, flash_chip_test.obj TO fire RAMSIZE (1280)#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64))
+OVERLAY()
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 217
+    SH_CHIP !  (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: D1NMC-FYW1MC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"fire.obj",
+"uart.obj",
+"flash_chip.obj",
+"S29AL016D.obj",
+"at24c64.obj",
+"flash_chip_test.obj" 
+TO "fire"
+RAMSIZE(256) 
+OVERLAY(?PR?FLASH_T2?FLASH_CHIP ! (?PR?_S_INIT?FLASH_CHIP_TEST, ?PR?_INIT?AT24C64), ?PR?FLASH_T3?FLASH_CHIP ! (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D))
+OVERLAY()
+*** FATAL ERROR L224: DUPLICATE KEYWORD OR CONFLICTING CONTROL
+    POS: 298
+    IP !  (?PR?__WRITE?FLASH_CHIP_TEST, ?PR?_F_WRITE?S29AL016D)) OVERLAY (#
+Target not created
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDSTRING?UART
+Program Size: data=17.1 xdata=176 code=3673
+creating hex file from "fire"...
+"fire" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDSTRING?UART
+Program Size: data=17.1 xdata=176 code=3673
+creating hex file from "fire"...
+"fire" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDSTRING?UART
+Program Size: data=17.1 xdata=176 code=3673
+creating hex file from "fire"...
+"fire" - 0 Error(s), 1 Warning(s).
+Clean started: Project: 'fire'
+   deleting intermediate output files for target 'Target 1'
+Build target 'Target 1'
+compiling fire.c...
+compiling uart.c...
+compiling flash_chip.c...
+FLASH_CHIP.C(19): warning C182: pointer to different objects
+compiling S29AL016D.c...
+compiling at24c64.c...
+compiling flash_chip_test.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDSTRING?UART
+Program Size: data=17.1 xdata=176 code=3673
+creating hex file from ".\out\fire"...
+".\out\fire" - 0 Error(s), 2 Warning(s).
