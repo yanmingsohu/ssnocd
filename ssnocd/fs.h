@@ -6,6 +6,10 @@
 
 #include "lib.h"
 
+#define FS_FAILED  1
+#define FS_SUCCESS 0
+
+
 typedef enum FileState_ {
   Closed,
   Opened,

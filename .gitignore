@@ -3,13 +3,14 @@
 **/db_buffer/**
 **/build/**
 **/file_pool/**
-docs/**
-.vs/**
+**/.vs/**
+资料/**
 
 *.csv
 *.logicdata
 *.logicsettings
 
+*.opendb
 *.obj
 *.tlog
 *.log

@@ -1,16 +1,12 @@
 #include "mds.h"
 #include "fs.h"
 #include "lib.h"
+#include "cd-img.h"
 
 #define MDF_NAME_LEN    128
-#define MAX_TOC_NUM     30
 
-static pByte pMdfFile[MDF_NAME_LEN] = {0};
-static Toc pToc[MAX_TOC_NUM] = {0};
-
-static FileState state = Closed;
-static char toc_index = 0;
-static char track_count = 0;
+static pByte   pMdfFile[MDF_NAME_LEN] = {0};
+static FileState  state               = Closed;
 
 
 static const CDTrackModeType s_MDSTrackModeTypes[] = {
@@ -25,8 +21,27 @@ static const CDTrackModeType s_MDSTrackModeTypes[] = {
 };
 
 
+int add_toc(MDSTrackBlock *track, MDSTrackExtraBlock *extraInfo) {
+  Toc toc;
+  toc.ctrladr = ((track->AdrCtk & 0xF0) >> 4) + ((track->AdrCtk & 0x0F) << 4);
+  toc.tno     = 0;
+  toc.point   = track->TrackNumber;
+  toc.min     = 0;
+  toc.sec     = 0;
+  toc.frame   = 0;
+  toc.zero    = 0;
+  toc.pmin    = track->MSF.M;
+  toc.psec    = track->MSF.S;
+  toc.pframe  = track->MSF.F;
+  cd_add_toc(&toc);
+}
+
+
 int DetectDataOffsetInSector(
-      unsigned SectorSize,unsigned DefaultOffset,ULONGLONG FirstSectorOffset) {
+    unsigned SectorSize,
+    unsigned DefaultOffset,
+    ULONGLONG FirstSectorOffset) 
+{
   if (SectorSize == 2048)
     return DefaultOffset;
   if (pMdfFile[0] == 0)
@@ -80,32 +95,37 @@ void get_mdf_filename(char* in_mds_name, char* inout_mdf_name) {
 
 
 void MDSSession(MDSHeader *pHeader, 
-           MDSSessionBlock *pSessionHeader, 
-           char *FullFilePath, 
-           int *pSuccessful,
-           ParsedTrackRecord *parsedTrack) {
-  *pSuccessful = 0;
+     MDSSessionBlock *pSessionHeader, 
+     char *FullFilePath,
+     ParsedTrackRecord *tracks,
+     int *track_len)
+{
+  ParsedTrackRecord *parsedTrack = 0;
+
   for (unsigned i = 0; i < pSessionHeader->TotalBlockCount; i++) {
     MDSTrackBlock track;
     MDSTrackExtraBlock extraInfo;
+
     fs_seek(pSessionHeader->TrackBlocksOffset + i * sizeof(MDSTrackBlock));
     if (fs_read(&track, sizeof(track)) != sizeof(track))
       return;
 
-    DEBUG("\n  TrackNumber %d (0x%x) Begin\n", track.TrackNumber, track.TrackNumber);
-    DEBUG("    Mode %d\n", track.Mode);
-    DEBUG("    SubchannelMode %d\n", track.SubchannelMode);
-    DEBUG("    AdrCtk %d\n", track.AdrCtk);
-    DEBUG("    MSF %d:%d:%d\n", track.MSF.M, track.MSF.S, track.MSF.F);
-    DEBUG("    SectorSize %d\n", track.SectorSize);
-    DEBUG("    StartOffset %d\n", track.StartOffset);
-    DEBUG("    Session %d\n", track.Session);
-    DEBUG("    FooterOffset %d\n", track.FooterOffset);
-    DEBUG("    SubchannelMode %d\n", track.SubchannelMode);
-    DEBUG("    ExtraOffset %d\n", track.ExtraOffset);
+    DEBUG("\n"SP1"TrackNumber %d (0x%x) Begin\n", track.TrackNumber, track.TrackNumber);
+    DEBUG(SP2"Mode %x\n", track.Mode);
+    DEBUG(SP2"SubchannelMode %d\n", track.SubchannelMode);
+    DEBUG(SP2"AdrCtk %x\n", track.AdrCtk);
+    DEBUG(SP2"MSF %d:%d:%d\n", track.MSF.M, track.MSF.S, track.MSF.F);
+    DEBUG(SP2"SectorSize %d\n", track.SectorSize);
+    DEBUG(SP2"StartOffset %d\n", track.StartOffset);
+    DEBUG(SP2"Session %d\n", track.Session);
+    DEBUG(SP2"FooterOffset %d\n", track.FooterOffset);
+    DEBUG(SP2"SubchannelMode %d\n", track.SubchannelMode);
+    DEBUG(SP2"ExtraOffset %d\n", track.ExtraOffset);
 
-    if (!track.ExtraOffset)
+    if (!track.ExtraOffset) {
+      add_toc(&track, 0);
       continue;
+    }
 
     if ((pHeader->MediumType & 0x10))	//If this is a DVD, use different handling
     {
@@ -121,6 +141,8 @@ void MDSSession(MDSHeader *pHeader,
       if (!extraInfo.Length)
         continue;
     }
+
+    parsedTrack = tracks + (*track_len);
 
     if (track.FooterOffset)
     {
@@ -161,32 +183,46 @@ void MDSSession(MDSHeader *pHeader,
       parsedTrack->Mode.SubSectorSize = 96;
     }
 
-    DEBUG("      Ext OffsetInFile %d\n", parsedTrack->OffsetInFile);
-    DEBUG("      Ext SectorSize %d\n", parsedTrack->SectorSize);
-    DEBUG("      Ext SectorCount %d\n", parsedTrack->SectorCount);
-    DEBUG("      Ext Type %d\n", parsedTrack->Mode.Type);
-    DEBUG("      Ext MainSectorSize %d\n", parsedTrack->Mode.MainSectorSize);
-    DEBUG("      Ext SubSectorSize %d\n", parsedTrack->Mode.SubSectorSize);
-    DEBUG("      Ext DataOffsetInSector %d\n", parsedTrack->Mode.DataOffsetInSector);
-  }
+    parsedTrack->Mode.DataOffsetInSector = 
+        DetectDataOffsetInSector(
+          parsedTrack->SectorSize, 0, parsedTrack->OffsetInFile);
 
-  *pSuccessful = 1;				
+    if (fs_state() == Closed)
+        fs_open(FullFilePath);
+
+    DEBUG(SP3"Ext OffsetInFile %d\n", parsedTrack->OffsetInFile);
+    DEBUG(SP3"Ext SectorSize %d\n", parsedTrack->SectorSize);
+    DEBUG(SP3"Ext SectorCount %d\n", parsedTrack->SectorCount);
+    DEBUG(SP3"Ext Type %d\n", parsedTrack->Mode.Type);
+    DEBUG(SP3"Ext MainSectorSize %d\n", parsedTrack->Mode.MainSectorSize);
+    DEBUG(SP3"Ext SubSectorSize %d\n", parsedTrack->Mode.SubSectorSize);
+    DEBUG(SP3"Ext DataOffsetInSector %d\n", parsedTrack->Mode.DataOffsetInSector);
+    *track_len += 1;
+    add_toc(&track, &extraInfo);
+  }
 }
 
 
-int openMds(char* filename) {
+int mds_open(char* filename) {
   assert(state != Opened);
 
-  static MDSHeader hdr;
+  ParsedTrackRecord tracks[MAX_TOC_NUM] = {0,};
+  int track_len  = 0;
+  MDSHeader hdr;
+
   fs_open(filename);
   fs_seek(0);
   fs_read(&hdr, sizeof(hdr));
+
   DEBUG("Has %d Sessions\n", hdr.SessionCount);
 
+  if (hdr.SessionCount >= MAX_TOC_NUM) {
+    DEBUG(" A Lot of Session count %d\n", hdr.SessionCount);
+  }
+
   // only one session
-  //for (unsigned i = 0; i < hdr.SessionCount; i++)
-  const int i = 0;
-  {
+  int i = 0;
+  // for (unsigned i = 0; i < hdr.SessionCount; i++) {
     MDSSessionBlock session;
     fs_seek(hdr.SessionsBlocksOffset + i * sizeof(MDSSessionBlock));
     if (fs_read(&session, sizeof(MDSSessionBlock)) != sizeof(MDSSessionBlock))
@@ -194,35 +230,32 @@ int openMds(char* filename) {
 
     DEBUG(" And %d Track\n", session.TotalBlockCount);
 
-    int bSessionOk = 0;
-    ParsedTrackRecord track = {0,};
-    MDSSession(&hdr, &session, filename, &bSessionOk, &track);
+    MDSSession(&hdr, &session, filename, tracks, &track_len);
+    DEBUG(" %d tracks parsed in session %d\n", track_len, i);
+  // }
 
-    if (bSessionOk) {
-      track.Mode.DataOffsetInSector = 
-          DetectDataOffsetInSector(track.SectorSize, 0, track.OffsetInFile);
+  cd_sort_toc();
+  // close MDS then open MDF
+  fs_close();
+  fs_open(pMdfFile);
 
-      if (fs_state() == Closed)
-        fs_open(filename);
-    }
+  for (i=0; i<track_len; ++i) {
+    ULONGLONG end = tracks[i].OffsetInFile 
+                  + (ULONGLONG)tracks[i].SectorSize 
+                  * tracks[i].SectorCount;
+    cd_add_data_track(&tracks[i].Mode, tracks[i].OffsetInFile, end);
   }
-  track_count = hdr.SessionCount;
+
   state = Opened;
   return SUCCESS;
-}
-
-
-int get_track_count() {
-  assert(state == Opened);
-  return track_count;
 }
 
 
 void mds_close() {
   assert(state == Opened);
   fs_close();
+  cd_reset();
   state = Closed;
-  track_count = 0;
-  toc_index = 0;
+  pMdfFile[0] = 0;
   return;
 }

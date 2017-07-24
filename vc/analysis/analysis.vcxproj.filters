@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="lib">
+      <UniqueIdentifier>{ef8bd286-e48c-40f7-b735-adce664068ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{23d95d39-02fd-4567-9ba6-2fa0796ffb1d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\analysis\package.json" />
+    <None Include="..\..\analysis\mds.js">
+      <Filter>lib</Filter>
+    </None>
+    <None Include="..\..\analysis\lib\crc.js">
+      <Filter>lib</Filter>
+    </None>
+    <None Include="..\..\analysis\lib\parse-csv.js">
+      <Filter>lib</Filter>
+    </None>
+    <None Include="..\..\analysis\lib\parse-mds.js">
+      <Filter>lib</Filter>
+    </None>
+    <None Include="..\..\analysis\lib\cd-image.js">
+      <Filter>lib</Filter>
+    </None>
+    <None Include="..\..\analysis\data\1-7.logicdata">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\..\analysis\data\1-7.logicsettings">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\..\analysis\data\audio-cd.csv">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\..\analysis\data\fix-audio-data.js">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\..\analysis\data\game-cd-data.logicdata">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\..\analysis\data\ss-cd-all-pin.logicsettings">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\..\analysis\data\untitled.csv">
+      <Filter>data</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\analysis\TOC.txt" />
+    <Text Include="..\..\analysis\分析.txt" />
+    <Text Include="..\..\analysis\data\audio-cd.txt">
+      <Filter>data</Filter>
+    </Text>
+    <Text Include="..\..\analysis\data\game-cd-0.txt">
+      <Filter>data</Filter>
+    </Text>
+    <Text Include="..\..\analysis\data\game-cd-1.txt">
+      <Filter>data</Filter>
+    </Text>
+    <Text Include="..\..\analysis\data\game-cd-fix.txt">
+      <Filter>data</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

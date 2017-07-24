@@ -16,7 +16,7 @@ const kMODE2       = 0x103;	//Raw sector = [12 bytes sync] [4 bytes hdr] [8 byte
 const kMODE2_FORM1 = 0x104;
 const kMODE2_FORM2 = 0x105;
 const kMODE2_MIXED = 0x106;
-const kMODE2_MASK	 = 0x100;
+const kMODE2_MAS   = 0x100;
 
 const s_MDSTrackModeTypes = [
 	kMODE2,			//Code 0

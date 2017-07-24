@@ -18,9 +18,10 @@ void fs_open(char *filename) {
 #endif
 
 #ifdef _WIN32_WINNT
-  FILE * f = fopen(filename, "r");
+  FILE * f = fopen(filename, "rb");
   if (!f) {
     fstate = OpenFailed;
+    fd = 0;
   } else {
     fstate = Opened;
     fd = f;
@@ -73,11 +74,12 @@ int fs_read_string(pByte buf, int max) {
   assert(fstate == Opened);
   char c;
   int rlen = 0;
+  --max;
 
 #ifdef _ARDUINO
 #endif
 
- #ifdef _WIN32_WINNT`
+#ifdef _WIN32_WINNT`
   while (rlen < max) {
     c = fgetc(fd);
     if (c > 0) {
@@ -87,8 +89,10 @@ int fs_read_string(pByte buf, int max) {
       break;
     }
   }
+#endif
+
+  buf[rlen] = 0;
   return rlen;
- #endif
 }
 
 
@@ -100,7 +104,7 @@ int fs_size() {
 
 #ifdef _WIN32_WINNT
   fseek(fd, 0, SEEK_END);
-  int pos = 0;
+  ULONGLONG pos = 0;
   fgetpos(fd, &pos);
   return pos;
 #endif

@@ -1,7 +1,8 @@
 ﻿const mds = require("./lib/parse-mds.js");
 const util = require('util');
 
-const infilen = __dirname + '/../大航海时代2[简][V1.01]/大航海时代2.mds';
+//const infilen = __dirname + '/../大航海时代2[简][V1.01]/大航海时代2.mds';
+const infilen = 'E:\\BaiduNetdiskDownload\\已传\\ss大航海时代2[简][V1.01]\\大航海时代2.mds';
 
 console.log('Open MDS', infilen);
 

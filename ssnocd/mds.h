@@ -1,38 +1,7 @@
 #ifndef __MDS_LIB_H__
 #define __MDS_LIB_H__
 #include "lib.h"
-
-#pragma pack(1)
-
-
-typedef struct TOC_ {
-  UCHAR ctrladr;
-  UCHAR tno;
-  UCHAR point;
-  UCHAR min;
-  UCHAR sec;
-  UCHAR frame;
-  UCHAR zero;
-  UCHAR pmin;
-  UCHAR psec;
-  UCHAR pframe;
-} Toc;
-
-
-//Raw sector size is always 2352 bytes. Data area size in a sector is 2048 bytes.
-typedef enum CDTrackModeType_
-{
-  kUnknown     = 0x00,
-  kAUDIO       = 0x01,
-  kMODE1       = 0x02,	//Raw sector = [12 bytes sync] [4 bytes hdr] [2048 bytes data] [ecc + etc]
-
-  kMODE2       = 0x103,	//Raw sector = [12 bytes sync] [4 bytes hdr] [8 bytes subhdr] [2048 bytes data] [ecc + etc]
-  kMODE2_FORM1 = 0x104,
-  kMODE2_FORM2 = 0x105,
-  kMODE2_MIXED = 0x106,
-
-  kMODE2_MASK	= 0x100,
-} CDTrackModeType;
+#include "cd-img.h"
 
 
 typedef struct MDSHeader_
@@ -106,15 +75,6 @@ typedef struct MDSTrackExtraBlock_
 } MDSTrackExtraBlock; /* length: 8 bytes */
 
 
-typedef struct CDTrackMode_
-{
-  CDTrackModeType Type;
-  unsigned MainSectorSize;
-  unsigned SubSectorSize;
-  unsigned DataOffsetInSector;
-} CDTrackMode;
-
-
 typedef struct ParsedTrackRecord_
 {
   ULONGLONG OffsetInFile;
@@ -139,20 +99,12 @@ typedef struct MDSFooter_
 //
 // 首先打开该方法解析 mds
 //
-int openMds(char* filename);
+int mds_open(char* filename);
+
 //
 // 关闭 mds 镜像
 //
 void mds_close();
-//
-// 获取轨道数量
-//
-int get_track_count();
-//
-// 读取 toc, 由该方法管理内存, 无需创建/释放
-// 返回 toc 的数量
-//
-int get_toc(Toc **toc);
 
 
 #endif

@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{50C9D400-846E-400D-96BA-21CB855C8356}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>yabause</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\yabause\yabause\src\bios.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\cd-freebsd.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\cd-linux.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\cd-macosx.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\cd-netbsd.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\cd-windows.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\cdbase.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\cd_drive.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\cheat.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\coffelf.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\cs0.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\cs1.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\cs2.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\debug.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\error.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\gameinfo.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\japmodem.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\m68kc68k.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\m68kcore.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\m68kd.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\m68kmusashi.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\m68kq68.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\macjoy.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\memory.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\movie.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\mpeg_card.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\netlink.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\osdcore.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\perdx.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\peripheral.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\perlinuxjoy.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\permacjoy.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\persdljoy.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\profile.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\scr-x.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\scsp.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\scsp2.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\scspdsp.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\scsp_dsp_jit.cpp" />
+    <ClCompile Include="..\..\yabause\yabause\src\scu.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\scu_dsp_jit.cpp" />
+    <ClCompile Include="..\..\yabause\yabause\src\sh2cache.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sh2core.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sh2d.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sh2iasm.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sh2idle.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sh2int.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sh2trace.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sh2_jit.cpp" />
+    <ClCompile Include="..\..\yabause\yabause\src\sh7034.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\smpc.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sndal.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\snddummy.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\snddx.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sndmac.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sndsdl.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sndwav.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sock-dummy.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sock-linux.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\sock-windows.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\thr-dummy.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\thr-linux.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\thr-macosx.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\thr-windows.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\vdp1.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\vdp2.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\vdp2debug.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\vidogl.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\vidshared.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\vidsoft.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\yabause.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\yglcache.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\yglcache.cpp" />
+    <ClCompile Include="..\..\yabause\yabause\src\ygles.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\yglshaderes.c" />
+    <ClCompile Include="..\..\yabause\yabause\src\ygr.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\yabause\yabause\src\bios.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\cdbase.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\cd_drive.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\cheat.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\coffelf.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\core.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\cs0.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\cs1.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\cs2.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\debug.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\dx.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\error.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\fakeddk.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\font.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\gameinfo.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\glext.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\japmodem.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\m68kc68k.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\m68kcore.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\m68kd.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\m68kmusashi.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\macjoy.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\memory.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\movie.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\mpeg_card.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\netlink.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\osdcore.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\perdx.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\peripheral.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\perlinuxjoy.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\permacjoy.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\persdljoy.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\profile.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\screen.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\scsp.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\scsp2.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\scspdsp.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\scsp_dsp_jit.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\scu.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\scu_dsp_jit.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sh-opc.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sh2cache.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sh2core.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sh2d.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sh2iasm.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sh2idle.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sh2int.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sh2trace.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sh2_jit.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sh7034.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\smpc.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sndal.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\snddx.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sndmac.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sndsdl.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\sock.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\threads.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\vdp1.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\vdp2.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\vdp2debug.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\vidogl.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\vidshared.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\vidsoft.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\yabause.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\ygl.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\ygr.h" />
+    <ClInclude Include="..\..\yabause\yabause\src\yui.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\yabause\yabause\src\CMakeLists.txt" />
+    <Text Include="..\..\yabause\yabause\src\sh1-pseudo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\yabause\yabause\src\config.h.in" />
+    <None Include="..\..\yabause\yabause\src\logo.svg" />
+    <None Include="..\..\yabause\yabause\src\Makefile.dc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\yabause\yabause\src\logo.bmp" />
+    <Image Include="..\..\yabause\yabause\src\logo.ico" />
+    <Image Include="..\..\yabause\yabause\src\logo.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
