@@ -157,6 +157,7 @@
     <ClCompile Include="..\..\WinCDEmu\ImageFormats\UDFAnalyzer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\BazisLib\bzscore\buffer.h" />
     <ClInclude Include="..\..\WinCDEmu\ImageFormats\CCDParser.h" />
     <ClInclude Include="..\..\WinCDEmu\ImageFormats\CUEParser.h" />
     <ClInclude Include="..\..\WinCDEmu\ImageFormats\ImageFormats.h" />

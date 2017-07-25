@@ -49,7 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\analysis\TOC.txt" />
-    <Text Include="..\..\analysis\分析.txt" />
     <Text Include="..\..\analysis\data\audio-cd.txt">
       <Filter>data</Filter>
     </Text>
@@ -62,5 +61,6 @@
     <Text Include="..\..\analysis\data\game-cd-fix.txt">
       <Filter>data</Filter>
     </Text>
+    <Text Include="..\..\analysis\README.md" />
   </ItemGroup>
 </Project>

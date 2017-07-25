@@ -5,6 +5,7 @@
 **/file_pool/**
 **/.vs/**
 资料/**
+**/Debug/**
 
 *.csv
 *.logicdata
@@ -17,3 +18,4 @@
 *.idb
 *.pdb
 *.db
+*.exe

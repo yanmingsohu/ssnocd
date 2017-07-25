@@ -24,7 +24,7 @@ FileState fs_state();
 //
 // 打开文件
 //
-void fs_open(char *filename);
+void fs_open(pByte filename);
 //
 // 关闭文件
 //
@@ -32,7 +32,7 @@ void fs_close();
 //
 // 设置读取指针
 //
-int fs_seek(int offset);
+int fs_seek(ULONGLONG offset);
 //
 // 读取数据到缓冲区, 返回实际读取字节
 //

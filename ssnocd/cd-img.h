@@ -6,8 +6,11 @@
 #define MAX_TRACK_NUM   MAX_TOC_NUM
 #define MAX_SECTOR_SIZE 2352
 
+#pragma pack(push)
+#pragma pack(1)
 
-enum {CD_SECTOR_SIZE = 2048};
+
+enum {CD_SECTOR_DATA_SIZE = 2048};
 
 
 //Raw sector size is always 2352 bytes. Data area size in a sector is 2048 bytes.
@@ -43,7 +46,9 @@ typedef struct CDTrackMode_ {
   CDTrackModeType Type;
   unsigned MainSectorSize;
   unsigned SubSectorSize;
-  unsigned DataOffsetInSector;
+  /* 原定义: 数据在文件中的偏移, 不包含帧头;
+     新定义: 包含整个帧的偏移; */
+  unsigned DataOffsetInSector; 
 } CDTrackMode;
 
 
@@ -90,4 +95,5 @@ UINT cd_get_track_end_sector(unsigned TrackNumber);
 UINT cd_read_sector(unsigned sector, Byte *pBuffer, int buflen);
 
 
+#pragma pack(pop)
 #endif // ___CD_IMG_H__

@@ -54,4 +54,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\BaiduNetdiskDownload\已传\ss大航海时代2[简][V1.01]\大航海时代2.mdf">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\..\..\BaiduNetdiskDownload\已传\ss大航海时代2[简][V1.01]\大航海时代2.mds">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
 </Project>

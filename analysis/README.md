@@ -123,6 +123,31 @@ TOC: 01(AT) 00(TNO) a2(PT)  00 00 00 00(0) 09 02 15 @1
 ! @1 与抓取的数据不同, 不知道有没有影响
 
 
+# CD 数据格式
+
+在 cd 上物理坑道将每个字节 8 位转换为 14 位进行保存 
+[数据编码](https://en.wikipedia.org/wiki/Compact_Disc_Digital_Audio#Technical_specifications), 
+读取时由 cd 控制器还原为 8 位,
+
+cd 光盘最小单位(T10-1363-D. p56) = 小帧 Small Frame = 588 bits 
+	= 12 同步位 + 1 子通道数据 + 12 数据 + 4 CIRC + 12 数据 + 4 CIRC
+
+一节 Sector = 98 小帧
+
+一节的用户数据 = 98 * 24 (小帧中的数据, 其他部分被处理掉) = 2352 bytes
+
+通过 cd 控制器接口读取的数据已经解析并格式化为 8 位, 并按照规范重新排列.
+
+
+每节的固定同步位 12 字节:  (T10-1363-D. p64)
+0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00
+
+
+# MDF 文件
+
+MDF 镜像中仅保存用户数据, 一帧 2352 字节.
+
+
 ## 每个序列13字节, 字节序
 
 01        命令
@@ -137,3 +162,13 @@ TOC: 01(AT) 00(TNO) a2(PT)  00 00 00 00(0) 09 02 15 @1
 首先传到的 bit 放在 byte 的最低位.
 p3 由 cdrom 向 cpu 传送当前状态.
 p4 由 cpu 向 cdrom 传送指令.
+
+
+# 资料
+
+
+[游戏](https://shop33762426.taobao.com/category-1032036304.htm?spm=a1z10.5-c.w4002-2168085120.103.dS8J73&_ksTS=1497180742372_218&callback=jsonp219&mid=w-2168085120-0&wid=2168085120&path=%2Fcategory-1032036304.htm&search=y&parentCatId=1032033745&parentCatName=%CA%C0%BC%CESEGA&catName=%C8%D5%B0%E6%CD%C1%D0%C7SS%D3%CE%CF%B7&catId=1032036304&pageNo=5#anchor)
+
+[手柄文档](http://www.gamesx.com/controldata/saturn.htm)
+
+[主机开发文档集](https://segaretro.org/Sega_DTS_Saturn_official_documentation)

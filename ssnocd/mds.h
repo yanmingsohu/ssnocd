@@ -3,6 +3,8 @@
 #include "lib.h"
 #include "cd-img.h"
 
+#pragma pack(push)
+#pragma pack(1)
 
 typedef struct MDSHeader_
 {
@@ -107,4 +109,5 @@ int mds_open(char* filename);
 void mds_close();
 
 
+#pragma pack(pop)
 #endif

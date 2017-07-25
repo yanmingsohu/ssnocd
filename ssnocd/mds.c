@@ -35,9 +35,14 @@ int add_toc(MDSTrackBlock *track, MDSTrackExtraBlock *extraInfo) {
   toc.psec    = track->MSF.S;
   toc.pframe  = track->MSF.F;
   cd_add_toc(&toc);
+  return SUCCESS;
 }
 
 
+//
+// 该方法会跳过 16/24 字节帧头, 导致所有帧数据产生偏移
+// 不应当调用, saturn 总是需要整帧的内容.
+//
 int DetectDataOffsetInSector(
     unsigned SectorSize,
     unsigned DefaultOffset,
@@ -117,7 +122,7 @@ void MDSSession(MDSHeader *pHeader,
     DEBUG(SP2"AdrCtk %x\n", track.AdrCtk);
     DEBUG(SP2"MSF %d:%d:%d\n", track.MSF.M, track.MSF.S, track.MSF.F);
     DEBUG(SP2"SectorSize %d\n", track.SectorSize);
-    DEBUG(SP2"StartOffset %d\n", track.StartOffset);
+    DEBUG(SP2"StartOffset %lld\n", track.StartOffset);
     DEBUG(SP2"Session %d\n", track.Session);
     DEBUG(SP2"FooterOffset %d\n", track.FooterOffset);
     DEBUG(SP2"SubchannelMode %d\n", track.SubchannelMode);
@@ -184,14 +189,14 @@ void MDSSession(MDSHeader *pHeader,
       parsedTrack->Mode.SubSectorSize = 96;
     }
 
-    parsedTrack->Mode.DataOffsetInSector = 
-        DetectDataOffsetInSector(
-          parsedTrack->SectorSize, 0, parsedTrack->OffsetInFile);
+    parsedTrack->Mode.DataOffsetInSector = 0;
+        //DetectDataOffsetInSector(
+        //  parsedTrack->SectorSize, 0, parsedTrack->OffsetInFile);
 
     if (fs_state() == Closed)
         fs_open(FullFilePath);
 
-    DEBUG(SP3"Ext OffsetInFile %d\n", parsedTrack->OffsetInFile);
+    DEBUG(SP3"Ext OffsetInFile %lld\n", parsedTrack->OffsetInFile);
     DEBUG(SP3"Ext SectorSize %d\n", parsedTrack->SectorSize);
     DEBUG(SP3"Ext SectorCount %d\n", parsedTrack->SectorCount);
     DEBUG(SP3"Ext Type %d\n", parsedTrack->Mode.Type);

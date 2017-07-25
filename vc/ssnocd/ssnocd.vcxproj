@@ -159,6 +159,10 @@
     <ClInclude Include="..\..\ssnocd\lib.h" />
     <ClInclude Include="..\..\ssnocd\mds.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\BaiduNetdiskDownload\已传\ss大航海时代2[简][V1.01]\大航海时代2.mdf" />
+    <None Include="..\..\..\BaiduNetdiskDownload\已传\ss大航海时代2[简][V1.01]\大航海时代2.mds" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

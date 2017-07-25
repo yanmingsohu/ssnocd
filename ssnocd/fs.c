@@ -11,7 +11,7 @@ FileState fs_state() {
 }
 
 
-void fs_open(char *filename) {
+void fs_open(pByte filename) {
   assert(fstate != Opened);
 
 #ifdef _ARDUINO
@@ -46,7 +46,7 @@ void fs_close() {
 }
 
 
-int fs_seek(int offset) {
+int fs_seek(ULONGLONG offset) {
   assert(fstate == Opened);
 
 #ifdef _ARDUINO

@@ -60,10 +60,24 @@ int main() {
   DEBUG("Data Track Count %d\n", cd_get_track_count());
 
   UCHAR buf[MAX_SECTOR_SIZE];
-  int sector = 0;
-  int rlen = cd_read_sector(sector, buf, MAX_SECTOR_SIZE);
-  DEBUG("\nSector %d len: %d bytes\n", sector, rlen);
-  print_buf(buf, rlen, 0);
+  for (int i=10; i<3; ++i) { // !
+    int sector = i;
+    int rlen = cd_read_sector(sector, buf, MAX_SECTOR_SIZE);
+    DEBUG("\nSector %d len: %d bytes\n", sector, rlen);
+    print_buf(buf, rlen, 0);
+  }
+  
+
+  int begin_sec = 150;
+  for (int i=begin_sec; i<begin_sec + 5; ++i) {
+    DEBUG("\nSector %d Heads: \n", i);
+    int rlen = cd_read_sector(i, buf, MAX_SECTOR_SIZE);
+    if (rlen == 0) {
+      DEBUG("BAD cannot read sector %d %d\n", i, rlen);
+      break;
+    }
+    print_buf(buf, 24, 0);
+  }
 
   return 0;
 }

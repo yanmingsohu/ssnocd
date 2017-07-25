@@ -89,5 +89,8 @@
     <ClInclude Include="..\..\WinCDEmu\ImageFormats\NRG\NRGStructures.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\BazisLib\bzscore\buffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
