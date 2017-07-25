@@ -18,6 +18,40 @@ typedef Byte           u8;
 typedef signed char    s8;
 
 
+enum CdStatusOperations
+{
+  ReadToc = 0x04, // 0x06 ?
+  Idle = 0x46,
+  Stopped = 0x12,
+  Seeking = 0x22,
+  LidOpen = 0x80,
+  NoDisc = 0x83,
+  ReadingDataSectors = 0x36,
+  ReadingAudioData = 0x34,
+  Unknown = 0x30,
+  SeekSecurityRing1 = 0xB2,
+  SeekSecurityRing2 = 0xB6
+};
+
+
+enum CommunicationState
+{
+  NoTransfer,
+  Reset,
+  Started,
+  SendingFirstByte,
+  ByteFinished,
+  FirstByteFinished,
+  SendingByte,
+  SendingByteFinished,
+  Running,
+  NewTransfer,
+  WaitToOe,
+  WaitToOeFirstByte,
+  WaitToRxio
+};
+
+
 struct CdState
 {
   u8 current_operation;//0

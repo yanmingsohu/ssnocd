@@ -98,14 +98,10 @@ typedef struct MDSFooter_
 } MDSFooter; /* length: 16 bytes */
 
 
-//
-// 首先打开该方法解析 mds
-//
+/* 首先打开该方法解析 mds */
 int mds_open(char* filename);
 
-//
-// 关闭 mds 镜像
-//
+/* 关闭 mds 镜像 */
 void mds_close();
 
 

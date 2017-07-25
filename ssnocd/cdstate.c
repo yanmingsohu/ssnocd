@@ -43,6 +43,7 @@
 #define CDLOG DEBUG
 
 static struct CdDriveContext cdd_cxt;
+static enum CommunicationState comm_state = NoTransfer;
 
 static INLINE u8 num2bcd(u8 num);
 static INLINE void fad2msf_bcd(s32 fad, u8 *msf);
@@ -55,41 +56,6 @@ static INLINE u32 msf_bcd2fad(u8 min, u8 sec, u8 frame);
 s32 get_track_fad(int track_num, s32 fad, int * index);
 s32 get_track_start_fad(int track_num);
 void update_seek_status();
-void ScspReceiveCDDA(const u8 *sector);
-
-
-enum CdStatusOperations
-{
-  ReadToc = 0x04, // 0x06 ?
-  Idle = 0x46,
-  Stopped = 0x12,
-  Seeking = 0x22,
-  LidOpen = 0x80,
-  NoDisc = 0x83,
-  ReadingDataSectors = 0x36,
-  ReadingAudioData = 0x34,
-  Unknown = 0x30,
-  SeekSecurityRing1 = 0xB2,
-  SeekSecurityRing2 = 0xB6
-};
-
-
-enum CommunicationState
-{
-  NoTransfer,
-  Reset,
-  Started,
-  SendingFirstByte,
-  ByteFinished,
-  FirstByteFinished,
-  SendingByte,
-  SendingByteFinished,
-  Running,
-  NewTransfer,
-  WaitToOe,
-  WaitToOeFirstByte,
-  WaitToRxio
-}comm_state = NoTransfer;
 
 
 static INLINE void fad2msf(s32 fad, u8 *msf) {
@@ -807,7 +773,6 @@ void set_checksum(u8 * data)
   for (i = 0; i < 11; i++)
     parity += data[i];
   data[11] = ~parity;
-
   data[12] = 0;
 }
 
