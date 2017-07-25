@@ -568,6 +568,7 @@ int do_command()
 #endif
   }
 
+  DEBUG("Unknow command '%x'\n", command);
   assert(0);
 
   return TIME_PERIODIC;

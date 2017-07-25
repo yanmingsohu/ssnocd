@@ -162,8 +162,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\analysis\data\audio-cd.txt" />
-    <Text Include="..\..\analysis\data\game-cd-0.txt" />
-    <Text Include="..\..\analysis\data\game-cd-1.txt" />
+    <Text Include="..\..\analysis\data\game-cd-0fix.txt" />
+    <Text Include="..\..\analysis\data\game-cd-1fix.txt" />
     <Text Include="..\..\analysis\data\game-cd-fix.txt" />
     <Text Include="..\..\analysis\TOC.txt" />
     <Text Include="..\..\analysis\README.md" />

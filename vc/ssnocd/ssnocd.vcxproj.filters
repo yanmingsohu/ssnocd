@@ -27,9 +27,6 @@
     <ClCompile Include="..\..\ssnocd\lib.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\ssnocd\main.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\ssnocd\mds.c">
       <Filter>源文件</Filter>
     </ClCompile>
