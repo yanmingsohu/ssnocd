@@ -1,4 +1,5 @@
 ﻿**/.svn/*
+**/.git/*
 **/node_modules/**
 **/db_buffer/**
 **/build/**
