@@ -139,12 +139,12 @@ int main() {
   int n;
 
   for (int i=0; i<10; ++i) {
-    printf("> ");
+    printf("\n> ");
     ch = getch();
 
     switch(ch) {
       case 'q':
-        printf("quit");
+        printf("\nquit\n");
         return 0;
 
       case ' ':
@@ -173,6 +173,7 @@ int main() {
       case '\n':
         count = 0;
         low = 0;
+        printf("\n- cd command exec.");
         cd_command_exec();
     }
   }
