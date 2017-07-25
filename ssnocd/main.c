@@ -17,24 +17,64 @@ void print_toc(Toc *toc) {
 }
 
 
-
 void print_buf(UCHAR *buf, int len, int beingpos) {
-#define B(a,b) b(buf[i+a]), b(buf[i+a+1]), b(buf[i+a+2]), b(buf[i+a+3])
 #define C(a)   (a>0x1F && a<0x80?a:'.')
-#define X(a)   (a)
 
+  int loop = len < 16 ? len % 16 : 16;
   for (int i=0; i<len; i+=16) {
-    printf("%08x  %02x %02x %02x %02x %02x %02x %02x %02x   "
-           "%02x %02x %02x %02x %02x %02x %02x %02x   ", 
-           beingpos + i, B(0,X),B(4,X),B(8,X),B(12,X) );
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 
-           B(0,C),B(4,C),B(8,C),B(12,C));          
+    printf("%08x"SP1, i + beingpos);
+    for (int j=0; j<loop; ++j) {
+      if (j == 8) printf(SP1);
+      printf(" %02X", (buf[i+j]));
+    }
+    printf(SP1);
+    for (int j=0; j<loop; ++j) {
+      printf("%c", C(buf[i+j]) );
+    }
+    printf("\n");
   }
 
-#undef B
 #undef C
-#undef X
 }
+
+
+void print_cd_state(pByte command, int n) {
+  Byte state[13] = {0};
+  Byte bit;
+  for (int i=0; i<13; ++i) {
+    pByte p = &state[i];
+
+    for (int b=7; b>=0; --b) {
+      bit = cd_drive_get_serial_bit();
+      *p |= (bit << b);
+      bit = command[i] & (1 << b);
+      cd_drive_set_serial_bit(bit > 0);
+    }
+  }
+  printf("\nCD Drive \nState: ");
+  print_buf(state, 13, n);
+  printf("Cmd  : ");
+  print_buf(command, 13, n);
+}
+
+
+#ifdef _WIN32_WINNT
+static Byte cmd[13] = {0};
+
+void cdi_sector_data_ready(pByte buf, int buflen, char is_audio) {
+  if (is_audio) {
+    printf("Audio sector %d bytes:\n", buflen);
+  } else {
+    printf("Date sector %d bytes:\n", buflen);
+  }
+  print_buf(buf, 16, 0);
+}
+
+void cdi_update_drive_bit() {
+  set_checksum(cmd);
+  print_cd_state(cmd, 0);
+}
+#endif
 
 
 int main() {
@@ -60,14 +100,15 @@ int main() {
   DEBUG("Data Track Count %d\n", cd_get_track_count());
 
   UCHAR buf[MAX_SECTOR_SIZE];
-  for (int i=10; i<3; ++i) { // !
+
+  /*
+  for (int i=0; i<3; ++i) { // !
     int sector = i;
     int rlen = cd_read_sector(sector, buf, MAX_SECTOR_SIZE);
     DEBUG("\nSector %d len: %d bytes\n", sector, rlen);
     print_buf(buf, rlen, 0);
-  }
+  } */
   
-
   int begin_sec = 150;
   for (int i=begin_sec; i<begin_sec + 5; ++i) {
     DEBUG("\nSector %d Heads: \n", i);
@@ -77,6 +118,11 @@ int main() {
       break;
     }
     print_buf(buf, 24, 0);
+  }
+
+  cdd_reset();
+  for (int i=0; i<10; ++i) {
+    cd_command_exec();
   }
 
   return 0;

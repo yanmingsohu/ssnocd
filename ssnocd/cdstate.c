@@ -40,9 +40,9 @@
 //2299 time for transferring 13 bytes, start signal etc
 #define TIME_AUDIO_SECTOR (13333 - 2299)
 
+#define CDLOG DEBUG
 
-struct CdDriveContext cdd_cxt;
-
+static struct CdDriveContext cdd_cxt;
 
 static INLINE u8 num2bcd(u8 num);
 static INLINE void fad2msf_bcd(s32 fad, u8 *msf);
@@ -145,12 +145,12 @@ void cd_drive_set_serial_bit(u8 bit)
 
   if (cdd_cxt.bit_counter == 8)
   {
-    tsunami_log_value("CMD", cdd_cxt.received_data[cdd_cxt.byte_counter], 8);
+    // tsunami_log_value("CMD", cdd_cxt.received_data[cdd_cxt.byte_counter], 8);
 
     cdd_cxt.byte_counter++;
     cdd_cxt.bit_counter = 0;
 
-    sh1_set_output_enable_rising_edge();
+    // sh1_set_output_enable_rising_edge();
 
     if (comm_state == SendingFirstByte)
       comm_state = WaitToOeFirstByte;
@@ -251,83 +251,47 @@ static void make_ring_data(u8 *buf)
 
 void do_dataread()
 {
-  struct Dmac *dmac=&sh1_cxt.onchip.dmac;
-#if 1
+  u8 buf[2448];		
+  u32 dest;
+  int i;
 
-  if ((dmac->channel[0].chcr & 1) && 
-    !(dmac->channel[0].chcr & 2)) 
+  CDLOG("running DMA to %X(FAD: %d)\n", 0, cdd_cxt.disc_fad);
+
+  if (cdd_cxt.disc_fad < 150)
   {
-    u8 buf[2448];		
-    u32 dest;
-    int i;
-
-    CDLOG("running DMA to %X(FAD: %d)\n", dmac->channel[0].dar, cdd_cxt.disc_fad);
-
-    if (cdd_cxt.disc_fad < 150)
-    {
-      memset(buf, 0, sizeof(buf));
-      fad2msf_bcd(cdd_cxt.disc_fad, buf+12);
-      buf[15] = 1;
-    }
-    else if (cdd_cxt.disc_fad >= get_track_start_fad(-1))
-    {
-      u8 *subbuf=buf+12;
-      // fills all 2352 bytes
-      make_ring_data(subbuf);
-
-      fad2msf_bcd(cdd_cxt.disc_fad, subbuf);
-      subbuf[3] = 2;	// Mode 2, Form 2
-                      // 8 byte subheader (unknown purpose)
-      subbuf[4] = 0; subbuf[5] = 0; subbuf[6] = 28; subbuf[7] = 0;
-      subbuf[8] = 0; subbuf[9] = 0; subbuf[10] = 28; subbuf[11] = 0;
-
-      // 4 byte error code at end
-      subbuf[2352-4] = 0;
-      subbuf[2352-3] = 0;
-      subbuf[2352-2] = 0;
-      subbuf[2352-1] = 0;
-    }
-    else
-      Cs2Area->cdi->ReadSectorFAD(cdd_cxt.disc_fad, buf);
-
-    printf("sector head:");
-    for (i=12; i<16; i++)
-      printf(" %02X", buf[i]);
-    printf("\n");
-
-    if (dmac->channel[0].dar >> 24 != 9) 
-    {
-      CDLOG("DMA0 error: dest is not DRAM\n");
-    }
-
-    if (dmac->channel[0].tcr*2 > 2340) 
-    {
-      CDLOG("DMA0 error: count too big\n");
-    }
-    dest = dmac->channel[0].dar & 0x7FFFF;
-
-    for (i = 0; i < dmac->channel[0].tcr*2; i+=2)
-      T2WriteWord(SH1Dram, dest+i, (buf[12+i] << 8) | buf[13+i]);
-
-    dmac->channel[0].chcr |= 2;		
-    if (dmac->channel[0].chcr & 4)
-      SH2SendInterrupt(SH1, 72, (sh1_cxt.onchip.intc.iprc >> 12) & 0xf);
+    memset(buf, 0, sizeof(buf));
+    fad2msf_bcd(cdd_cxt.disc_fad, buf+12);
+    buf[15] = 1;
   }
-  cdd_cxt.disc_fad++;
-
-  if (cdd_cxt.disc_fad >= 150 && cdd_cxt.disc_fad < get_track_start_fad(-1))
-    Cs2Area->cdi->ReadAheadFAD(cdd_cxt.disc_fad);
-
-#else
-  if (!(dmac->channel[0].chcr & 2))
+  else if (cdd_cxt.disc_fad >= get_track_start_fad(-1))
   {
-    // do_dma(0);
-    if (dmac->channel[0].chcr & 4)
-      SH2SendInterrupt(SH1, 72, (sh1_cxt.onchip.intc.iprc >> 12) & 0xf);
-  }
-#endif
+    u8 *subbuf=buf+12;
+    // fills all 2352 bytes
+    make_ring_data(subbuf);
 
-  ygr_cd_irq(0x10);
+    fad2msf_bcd(cdd_cxt.disc_fad, subbuf);
+    subbuf[3] = 2;	// Mode 2, Form 2
+                    // 8 byte subheader (unknown purpose)
+    subbuf[4] = 0; subbuf[5] = 0; subbuf[6] = 28; subbuf[7] = 0;
+    subbuf[8] = 0; subbuf[9] = 0; subbuf[10] = 28; subbuf[11] = 0;
+
+    // 4 byte error code at end
+    subbuf[2352-4] = 0;
+    subbuf[2352-3] = 0;
+    subbuf[2352-2] = 0;
+    subbuf[2352-1] = 0;
+  }
+  else {
+    // Cs2Area->cdi->ReadSectorFAD(cdd_cxt.disc_fad, buf);
+    cd_read_sector(cdd_cxt.disc_fad, buf, sizeof(buf));
+  }
+
+  cdi_sector_data_ready(buf, sizeof(buf), 0);
+    
+  printf("sector head:");
+  for (i=12; i<16; i++)
+    printf(" %02X", buf[i]);
+  printf("\n");
 }
 
 void make_ring_status()
@@ -391,7 +355,8 @@ int continue_command()
       u8 buf[2448];		
       //Cs2Area->cdi->ReadSectorFAD(cdd_cxt.disc_fad, buf);
       cd_read_sector(cdd_cxt.disc_fad, buf, sizeof(buf));
-      ScspReceiveCDDA(buf);
+      //ScspReceiveCDDA(buf);
+      cdi_sector_data_ready(buf, sizeof(buf), 1);
       cdd_cxt.disc_fad++;
       //Cs2Area->cdi->ReadAheadFAD(cdd_cxt.disc_fad);
     }
@@ -528,7 +493,7 @@ int do_command()
   case 0x3:
   {
     int i, track_num, max_track = 0;
-    CDInterfaceToc10 toc[MAX_TOC_NUM];
+    CDInterfaceToc10 *toc;
     CDLOG("read toc\n");
     cdd_cxt.toc_entry = 0;
 
@@ -539,20 +504,22 @@ int do_command()
     // Read and sort the track entries, so you get one entry for each track + leadout, in starting FAD order.
     for (i = 0; i < cdd_cxt.num_toc_entries; i++)
     {
+      cd_get_toc(&toc, i);
       CDInterfaceToc10 *entry = &cdd_cxt.toc[i*3];
-      entry->ctrladr = toc[i].ctrladr;
-      entry->tno = toc[i].tno;
-      if(toc[i].point > 0x99)
-        entry->point = toc[i].point;
+      entry->ctrladr = toc->ctrladr;
+      entry->tno = toc->tno;
+      if(toc->point > 0x99)
+        entry->point = toc->point;
       else
-        entry->point = toc[i].point = num2bcd(toc[i].point);
-      entry->min = num2bcd(toc[i].min);
-      entry->sec = num2bcd(toc[i].sec);
+        entry->point = toc->point = num2bcd(toc->point);
+      entry->min = num2bcd(toc->min);
+      entry->sec = num2bcd(toc->sec);
       entry->frame = num2bcd(i*3);
       entry->zero = 0;
-      entry->pmin = num2bcd(toc[i].pmin);
-      entry->psec = num2bcd(toc[i].psec);
-      entry->pframe = num2bcd(toc[i].pframe);
+      entry->pmin = num2bcd(toc->pmin);
+      entry->psec = num2bcd(toc->psec);
+      entry->pframe = num2bcd(toc->pframe);
+
       memcpy(&cdd_cxt.toc[i*3+1], entry, sizeof(*entry));
       cdd_cxt.toc[i*3+1].frame = num2bcd(i*3+1);
       memcpy(&cdd_cxt.toc[i*3+2], entry, sizeof(*entry));
@@ -750,8 +717,9 @@ int cd_command_exec()
 
     memset(&cdd_cxt.received_data, 0, sizeof(u8) * 13);
 
-    sh1_set_start(1);
-    sh1_set_output_enable_falling_edge();
+    // sh1_set_start(1);
+    // sh1_set_output_enable_falling_edge();
+    cdi_update_drive_bit();
 
     return TIME_START;
   }
@@ -760,14 +728,14 @@ int cd_command_exec()
   //and breaks the transfer
   else if (comm_state == WaitToOeFirstByte)
   {
-    sh1_set_output_enable_falling_edge();
-    sh1_set_start(0);
+    // sh1_set_output_enable_falling_edge();
+    // sh1_set_start(0);
     comm_state = SendingByte;
     return TIME_OE;
   }
   else if (comm_state == WaitToOe)
   {
-    sh1_set_output_enable_falling_edge();
+    // sh1_set_output_enable_falling_edge();
     comm_state = SendingByte;
 
     return TIME_OE;
@@ -819,15 +787,16 @@ int cd_command_exec()
 }
 
 
-void cd_drive_exec(struct CdDriveContext * drive, s32 cycles)
+s32 cd_drive_exec(s32 cycles)
 {
-  s32 cycles_temp = drive->cycles_remainder - cycles;
+  s32 cycles_temp = cdd_cxt.cycles_remainder - cycles;
   while (cycles_temp < 0)
   {
     int cycles_exec = cd_command_exec();
     cycles_temp += cycles_exec;
   }
-  drive->cycles_remainder = cycles_temp;
+  cdd_cxt.cycles_remainder = cycles_temp;
+  return cycles_temp;
 }
 
 
@@ -841,6 +810,7 @@ void set_checksum(u8 * data)
 
   data[12] = 0;
 }
+
 
 s32 toc_10_get_track(s32 fad)
 {
@@ -888,7 +858,7 @@ void make_status_data(struct CdState *state, u8* data)
   data[4] = state->minutes;
   data[5] = state->seconds;
   data[6] = state->frame;
-  data[7] = 0x04; //or zero?
+  data[7] = STATE_FIX_ZERO; //or zero?
   data[8] = state->absolute_minutes;
   data[9] = state->absolute_seconds;
   data[10] = state->absolute_frame;

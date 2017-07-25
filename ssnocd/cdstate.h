@@ -6,6 +6,9 @@
 #pragma pack(push)
 #pragma pack(1)
 
+/* 状态第7位数据, 数据定义是 0x0, 实机返回 0x7, 模拟器 0x4. */
+#define STATE_FIX_ZERO 0x07
+
 typedef Toc            CDInterfaceToc10;
 typedef unsigned long  u32;
 typedef signed long    s32;
@@ -59,21 +62,24 @@ struct CdDriveContext
   int speed;
 };
 
-extern struct CdDriveContext cdd_cxt;
 
-
-void cd_drive_exec(struct CdDriveContext * drive, s32 cycles);
+void cdd_reset();
+/* 按照时序运行命令, cycles 不到达上一条命令的延迟, 则什么也不做 */
+s32 cd_drive_exec(s32 cycles);
+/* 直接执行命令, 无视时序 */
+int cd_command_exec();
+void set_checksum(u8 * data);
 
 u8 cd_drive_get_serial_bit();
 void cd_drive_set_serial_bit(u8 bit);
 
-void cd_drive_start_transfer();
-void cdd_reset();
 
-//
-// 实现该接口, 当请求一节数据后, 该节数据通过该方法注入
-//
-void cdi_sector_data_ready(pByte buf, int buflen);
+/* 实现该接口, 当请求一节数据后, 该节数据通过该方法注入
+   缓冲区长度可能大于 2352 */
+void cdi_sector_data_ready(pByte buf, int buflen, char is_audio);
+
+/* 实现该接口, cd 有新的状态发送, 该方法被调用 */
+void cdi_update_drive_bit();
 
 
 #pragma pack(pop)

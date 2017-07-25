@@ -4,6 +4,7 @@
 #ifdef _WIN32_WINNT
 #include <stdio.h>
 #include <assert.h>
+#include <string.h>
 #define DEBUG printf
 #define INLINE _inline
 #else
@@ -25,10 +26,6 @@ int x_memcpy(void* desc, void* src, int size);
 #define SP2 SP1 SP1
 #define SP3 SP1 SP2
 #define SP4 SP1 SP3
-
-
-int strcpy(char* desc,char* src, int max);
-
 
 typedef unsigned char       Byte;
 typedef Byte*               pByte;
