@@ -166,7 +166,7 @@
     <Text Include="..\..\analysis\data\game-cd-1.txt" />
     <Text Include="..\..\analysis\data\game-cd-fix.txt" />
     <Text Include="..\..\analysis\TOC.txt" />
-    <Text Include="..\..\analysis\分析.txt" />
+    <Text Include="..\..\analysis\README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

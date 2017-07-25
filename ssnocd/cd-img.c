@@ -13,7 +13,7 @@ static UINT track_record_count        = 0;
 int cd_add_toc(Toc * src) {
   Toc * toc = pToc + toc_count;
   memcpy(toc, src, sizeof(Toc));
-  ++toc_count;
+  return ++toc_count;
 }
 
 
@@ -50,6 +50,7 @@ int cd_get_toc(Toc ** toc, int index) {
   if (index >= toc_count || index < 0)
     return FAILED;
   *toc = pToc + sorted_toc[index];
+  return SUCCESS;
 }
 
 
@@ -144,6 +145,7 @@ UINT cd_read_sector(unsigned sector, Byte *pBuffer, int buflen) {
 
   if (buflen < pTrack->ImageSectorSize) 
     return 0;
+
 
   int total = pTrack->ImageSectorSize;
   int rlen = 0;
