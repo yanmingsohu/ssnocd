@@ -77,6 +77,18 @@ void cdi_update_drive_bit() {
 #endif
 
 
+int asc_to_num(int ch) {
+  if (ch >= 48 && ch < 58) {
+    return ch - 48;
+  } else if (ch >= 65 && ch < 71) {
+    return ch - 65 + 0xA;
+  } else if (ch >= 97 && ch < 103) {
+    return ch - 97 + 0xA;
+  }
+  return -1;
+}
+
+
 int main() {
   assert(1 == sizeof(UCHAR));
   assert(2 == sizeof(USHORT));
@@ -121,8 +133,48 @@ int main() {
   }
 
   cdd_reset();
+  int ch;
+  int count = 0;
+  int low = 0;
+  int n;
+
   for (int i=0; i<10; ++i) {
-    cd_command_exec();
+    printf("> ");
+    ch = getch();
+
+    switch(ch) {
+      case 'q':
+        printf("quit");
+        return 0;
+
+      case ' ':
+      case '\t':
+        low = 0;
+        if (++count >= 13) count = 0;
+        break;
+
+      default:
+        n = asc_to_num(ch);
+        if (n < 0) {
+          printf("bad command key %c\n", ch);
+          count = 0;
+          low = 0;
+          break;
+        }
+        if (low) {
+          cmd[count] |= n;
+          low = 0;
+        } else {
+          cmd[count] = (n << 4);
+          low = 1;
+        }
+        break;
+
+      case '\n':
+        count = 0;
+        low = 0;
+        cd_command_exec();
+    }
   }
 
   return 0;
