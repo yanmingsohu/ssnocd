@@ -20,6 +20,8 @@ static Byte cmd[13] = {0};
 static int state_updated = 0;
 static int state_count = 1;
 
+void test(pByte cmd);
+
 
 void print_toc(Toc *toc) {
   DEBUG(SP1"TOC: %02x(AT) %02x(TNO) %02x(PT)  "
@@ -52,7 +54,7 @@ void print_buf(UCHAR *buf, int len, int beingpos) {
 
 
 void output_state(UCHAR *state) {
-  printf("[%04d] %02x - %02x %02x %02x  %02x %02x %02x  (%02x)  %02x %02x %02x  %02x %02x\n", 
+  printf("[%04d] %02x - %02x %02x %02x  %02x %02x %02x  (%02x)  %02x %02x %02x  %02x %02x", 
   state_count, state[0], state[1], state[2], state[3], state[4], state[5], state[6],
   state[7], state[8], state[9], state[10], state[11], state[12]);
   ++state_count;
@@ -89,8 +91,10 @@ void cdi_update_drive_bit() {
 
   printf("\n- CD Drive \n- Sta : ");
   output_state(state);
+  printf("  | %s\n", get_status_string(state[0]));
   printf("- Cmd : ");
   output_state(cmd);
+  printf("  | %s\n", get_command_string(cmd[0]));
   memset(cmd, 0, 13);
 }
 
@@ -116,6 +120,15 @@ void console() {
   int n;
   int new_line = 0;
 
+  printf("\n[HELP]\n\
+    press a key to command:\n\
+      q : Quit\n\
+      t : Test suit\n\
+      r : Reset Drive\n\
+      i : Close Lid CD\n\
+      o : Open Lid CD\n\
+    press ENTER to do next command\n");
+
   printf("\n> ");
 
   for (;;) {
@@ -124,13 +137,37 @@ void console() {
 
     switch(ch) {
     case 'q':
-      printf("\nquit\n");
+      printf("quit\n");
       return 0;
 
     case ' ':
     case '\t':
       low = 0;
       if (++count >= 13) count = 0;
+      break;
+
+    case 'o':
+      printf("Open lid\n");
+      cdd_open_lid();
+      new_line = 1;
+      break;
+
+    case 'i':
+      printf("Insert disk and close lid\n");
+      ccd_insert_disk();
+      ccd_close_lid();
+      new_line = 1;
+      break;
+
+    case 't':
+      test(cmd);
+      new_line = 1;
+      break;
+
+    case 'r':
+      printf("reset\n");
+      cdd_reset();
+      new_line = 1;
       break;
 
     case '\n':

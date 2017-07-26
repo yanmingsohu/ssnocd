@@ -44,6 +44,8 @@
 
 static struct CdDriveContext cdd_cxt;
 static enum CommunicationState comm_state = NoTransfer;
+static Byte lid_closed = 0;
+static Byte has_disk = 0;
 
 static INLINE u8 num2bcd(u8 num);
 static INLINE void fad2msf_bcd(s32 fad, u8 *msf);
@@ -258,6 +260,8 @@ void do_dataread()
   for (i=12; i<16; i++)
     printf(" %02X", buf[i]);
   printf("\n");
+
+  cdd_cxt.disc_fad++;
 }
 
 void make_ring_status()
@@ -279,6 +283,68 @@ void make_ring_status()
   cdd_cxt.state_data[10] = msf_buf[2];
 
   set_checksum(cdd_cxt.state_data);
+}
+
+
+u32 get_fad_from_command(u8 * buf)
+{
+  u32 fad = buf[1];
+  fad <<= 8;
+  fad |= buf[2];
+  fad <<= 8;
+  fad |= buf[3];
+
+  return fad;
+}
+
+
+s32 get_track_start_fad(int track_num)
+{
+  s32 fad;
+  if (track_num == -1) // leadout
+    track_num = cdd_cxt.num_tracks;
+  else                 // normal track (1-based)
+    track_num--;
+  fad = msf_bcd2fad(cdd_cxt.tracks[track_num].pmin, cdd_cxt.tracks[track_num].psec, cdd_cxt.tracks[track_num].pframe);
+  return fad;
+}
+
+s32 get_track_fad(int track_num, s32 fad, int * index)
+{
+  s32 track_start_fad = get_track_start_fad(track_num);
+  s32 track_fad = fad - track_start_fad;
+
+  if (track_fad < 0)
+    *index = 1;
+
+  return track_fad;
+}
+
+
+void update_seek_status()
+{
+  update_status_info();
+  cdd_cxt.state.current_operation = Seeking;
+
+  make_status_data(&cdd_cxt.state, cdd_cxt.state_data);
+  comm_state = NoTransfer;
+}
+
+
+void do_seek_common(u8 post_seek_state)
+{
+  s32 fad = get_fad_from_command(cdd_cxt.received_data);
+  cdd_cxt.disc_fad = fad - 4;
+  cdd_cxt.target_fad = cdd_cxt.disc_fad;
+  cdd_cxt.seek_time = 0;
+  cdd_cxt.post_seek_state = post_seek_state;
+}
+
+
+void do_seek()
+{
+  do_seek_common(Idle);
+  update_seek_status();
 }
 
 
@@ -370,63 +436,6 @@ int continue_command()
   }
 }
 
-u32 get_fad_from_command(u8 * buf)
-{
-  u32 fad = buf[1];
-  fad <<= 8;
-  fad |= buf[2];
-  fad <<= 8;
-  fad |= buf[3];
-
-  return fad;
-}
-
-
-s32 get_track_start_fad(int track_num)
-{
-  s32 fad;
-  if (track_num == -1) // leadout
-    track_num = cdd_cxt.num_tracks;
-  else                 // normal track (1-based)
-    track_num--;
-  fad = msf_bcd2fad(cdd_cxt.tracks[track_num].pmin, cdd_cxt.tracks[track_num].psec, cdd_cxt.tracks[track_num].pframe);
-  return fad;
-}
-
-s32 get_track_fad(int track_num, s32 fad, int * index)
-{
-  s32 track_start_fad = get_track_start_fad(track_num);
-  s32 track_fad = fad - track_start_fad;
-
-  if (track_fad < 0)
-    *index = 1;
-
-  return track_fad;
-}
-
-void update_seek_status()
-{
-  update_status_info();
-  cdd_cxt.state.current_operation = Seeking;
-
-  make_status_data(&cdd_cxt.state, cdd_cxt.state_data);
-  comm_state = NoTransfer;
-}
-
-void do_seek_common(u8 post_seek_state)
-{
-  s32 fad = get_fad_from_command(cdd_cxt.received_data);
-  cdd_cxt.disc_fad = fad - 4;
-  cdd_cxt.target_fad = cdd_cxt.disc_fad;
-  cdd_cxt.seek_time = 0;
-  cdd_cxt.post_seek_state = post_seek_state;
-}
-
-void do_seek()
-{
-  do_seek_common(Idle);
-  update_seek_status();
-}
 
 //
 // 执行 cpu 发来的命令
@@ -568,91 +577,10 @@ int do_command()
 #endif
   }
 
-  DEBUG("Unknow command '%x'\n", command);
+  DEBUG("Unknow command '0x%x'\n", command);
   assert(0);
 
   return TIME_PERIODIC;
-}
-
-
-char* get_status_string(int status)
-{
-  u32 track_fad = msf_bcd2fad(cdd_cxt.state_data[4], cdd_cxt.state_data[5], cdd_cxt.state_data[6]);
-  u32 abs_fad = msf_bcd2fad(cdd_cxt.state_data[8], cdd_cxt.state_data[9], cdd_cxt.state_data[10]);
-
-  static char str[256] = { 0 };
-
-  switch (status)
-  {
-  case 0x46:
-    sprintf(str, "%s %d %d", "Idle", track_fad, abs_fad);
-    return str;
-  case 0x12:
-    return "Stopped";
-  case 0x22:
-    sprintf(str, "%s %d %d", "Seeking", track_fad, abs_fad);
-    return str;
-  case 0x36:
-    sprintf(str, "%s %d %d", "Reading Data Sectors", track_fad, abs_fad);
-    return str;
-  case 0x34:
-    sprintf(str, "%s %d %d", "Reading Audio Data", track_fad, abs_fad);
-    return str;
-  default:
-    return "";
-  }
-  return "";
-}
-
-
-char * get_command_string(int command)
-{
-  u32 fad = get_fad_from_command(cdd_cxt.received_data);
-
-  static char str[256] = { 0 };
-
-  switch (command)
-  {
-  case 0x0:
-    return "";
-  case 0x2:
-    return "Seeking Ring";
-  case 0x3:
-    return "Read TOC";
-  case 0x4:
-    return "Stop Disc";
-  case 0x6:
-    sprintf(str, "%s %d", "Read", fad);
-    return str;
-  case 0x8:
-    return "Pause";
-  case 0x9:
-    sprintf(str, "%s %d", "Seek", fad);
-    return str;
-  default:
-    return "";
-    break;
-  }
-  return "";
-}
-
-
-void do_cd_logging()
-{
-  char str[1024] = { 0 };
-  int i;
-
-  for (i = 0; i < 12; i++)
-    sprintf(str + strlen(str), "%02X ", cdd_cxt.received_data[i]);
-
-  sprintf(str + strlen(str), " || ");
-
-  for (i = 0; i < 12; i++)
-    sprintf(str + strlen(str), "%02X ", cdd_cxt.state_data[i]);
-
-  sprintf(str + strlen(str), " %s ||  %s", get_command_string(cdd_cxt.received_data[0]), get_status_string(cdd_cxt.state_data[0]));
-
-  CDLOG("%s\n", str);
 }
 
 
@@ -664,7 +592,16 @@ int cd_command_exec()
 {
   if (comm_state == Reset)
   {
-    cdd_cxt.state.current_operation = Idle;
+    if (lid_closed) {
+      if (has_disk) {
+        cdd_cxt.state.current_operation = Stopped;
+      } else {
+        cdd_cxt.state.current_operation = NoDisc;
+      }
+    } else {
+      cdd_cxt.state.current_operation = LidOpen;
+    }
+    // cdd_cxt.state.current_operation = Idle;
     make_status_data(&cdd_cxt.state, cdd_cxt.state_data);
     comm_state = NoTransfer;
     return TIME_POWER_ON + TIME_WAITING;
@@ -748,9 +685,8 @@ int cd_command_exec()
 
   assert(0);
 
-  return 1;
-
   cdd_cxt.num_execs++;
+  return 1;
 }
 
 
@@ -841,8 +777,121 @@ void make_status_data(struct CdState *state, u8* data)
 }
 
 
+char* get_status_string(int status)
+{
+  u32 track_fad = msf_bcd2fad(cdd_cxt.state_data[4], cdd_cxt.state_data[5], cdd_cxt.state_data[6]);
+  u32 abs_fad = msf_bcd2fad(cdd_cxt.state_data[8], cdd_cxt.state_data[9], cdd_cxt.state_data[10]);
+
+  static char str[256] = { 0 };
+
+  switch (status)
+  {
+  case Idle:
+    sprintf(str, "%s %d %d", "Idle", track_fad, abs_fad);
+    return str;
+  case Stopped:
+    return "Stopped";
+  case Seeking:
+    sprintf(str, "%s %d %d", "Seeking", track_fad, abs_fad);
+    return str;
+  case ReadingDataSectors:
+    sprintf(str, "%s %d %d", "Reading Data Sectors", track_fad, abs_fad);
+    return str;
+  case ReadingAudioData:
+    sprintf(str, "%s %d %d", "Reading Audio Data", track_fad, abs_fad);
+    return str;
+  case LidOpen:
+    return "Lid Opend";
+  case NoDisc:
+    return "No Disc";
+  case ReadToc:
+    return "Read Toc";
+  default:
+    return "";
+  }
+  return "";
+}
+
+
+char * get_command_string(int command)
+{
+  u32 fad = get_fad_from_command(cdd_cxt.received_data);
+
+  static char str[256] = { 0 };
+
+  switch (command)
+  {
+  case 0x0:
+    return "";
+  case 0x2:
+    return "Seeking Ring";
+  case 0x3:
+    return "Read TOC";
+  case 0x4:
+    return "Stop Disc";
+  case 0x6:
+    sprintf(str, "%s %d", "Read", fad);
+    return str;
+  case 0x8:
+    return "Pause";
+  case 0x9:
+    sprintf(str, "%s %d", "Seek", fad);
+    return str;
+  default:
+    return "";
+  break;
+  }
+  return "";
+}
+
+
+void do_cd_logging()
+{
+  char str[1024] = { 0 };
+  int i;
+
+  for (i = 0; i < 12; i++)
+    sprintf(str + strlen(str), "%02X ", cdd_cxt.received_data[i]);
+
+  sprintf(str + strlen(str), " || ");
+
+  for (i = 0; i < 12; i++)
+    sprintf(str + strlen(str), "%02X ", cdd_cxt.state_data[i]);
+
+  sprintf(str + strlen(str), " %s ||  %s", get_command_string(cdd_cxt.received_data[0]), get_status_string(cdd_cxt.state_data[0]));
+
+  CDLOG("%s\n", str);
+}
+
+
 void cdd_reset()
 {
   memset(&cdd_cxt, 0, sizeof(struct CdDriveContext));
+  has_disk = 0;
+  lid_closed = 0;
   comm_state = Reset;
 }
+
+
+void cdd_open_lid() {
+  lid_closed = 0;
+  has_disk = 0;
+  cdd_cxt.state.current_operation = LidOpen;
+  make_status_data(&cdd_cxt.state, cdd_cxt.state_data);
+  comm_state = NoTransfer;
+}
+
+
+void ccd_close_lid() {
+  lid_closed = 1;
+  cdd_cxt.state.current_operation = Stopped;
+  make_status_data(&cdd_cxt.state, cdd_cxt.state_data);
+  comm_state = NoTransfer;
+}
+
+
+void ccd_insert_disk() {
+  if (!lid_closed) {
+    has_disk = 0;
+  }
+};
