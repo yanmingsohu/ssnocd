@@ -30,7 +30,8 @@ enum CdStatusOperations
   ReadingAudioData = 0x34,
   Unknown = 0x30,
   SeekSecurityRing1 = 0xB2,
-  SeekSecurityRing2 = 0xB6
+  SeekSecurityRing2 = 0xB6,
+  Waiting = 0x42, // 正在读取数据时的延迟周期
 };
 
 
@@ -107,6 +108,10 @@ void set_checksum(u8 * data);
 u8 cd_drive_get_serial_bit();
 void cd_drive_set_serial_bit(u8 bit);
 
+void cdd_open_lid();
+void ccd_close_lid();
+void ccd_insert_disk();
+
 
 /* 实现该接口, 当请求一节数据后, 该节数据通过该方法注入
    缓冲区长度可能大于 2352 */
@@ -115,6 +120,9 @@ void cdi_sector_data_ready(pByte buf, int buflen, char is_audio);
 /* 实现该接口, cd 有新的状态发送, 该方法被调用 */
 void cdi_update_drive_bit();
 
+
+char* get_status_string(int status);
+char * get_command_string(int command);
 
 #pragma pack(pop)
 #endif

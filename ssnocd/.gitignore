@@ -1,27 +1,15 @@
-﻿**/.svn/*
-**/.git/* 
+**/.svn/*
 **/node_modules/**
 **/db_buffer/**
 **/build/**
 **/file_pool/**
-**/.vs/**
-资料/**
-**/Debug/**
-**/Release/**
-土星资料/**
 
 *.csv
 *.logicdata
 *.logicsettings
-*.sdf
 
-*.opendb
 *.obj
 *.tlog
 *.log
 *.idb
 *.pdb
-*.db
-*.exe
-*.mdf
-*.mds

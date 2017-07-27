@@ -18,45 +18,34 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\ssnocd\cdstate.c">
+    <ClCompile Include="..\mds.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\ssnocd\fs.c">
+    <ClCompile Include="..\main.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\ssnocd\lib.c">
+    <ClCompile Include="..\fs.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\ssnocd\mds.c">
+    <ClCompile Include="..\cdstate.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\ssnocd\cd-img.c">
+    <ClCompile Include="..\lib.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\ssnocd\cdstate.h">
+    <ClInclude Include="..\mds.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\ssnocd\fs.h">
+    <ClInclude Include="..\lib.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\ssnocd\lib.h">
+    <ClInclude Include="..\cdstate.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\ssnocd\mds.h">
+    <ClInclude Include="..\fs.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\ssnocd\cd-img.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\BaiduNetdiskDownload\已传\ss大航海时代2[简][V1.01]\大航海时代2.mdf">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="..\..\..\BaiduNetdiskDownload\已传\ss大航海时代2[简][V1.01]\大航海时代2.mds">
-      <Filter>资源文件</Filter>
-    </None>
   </ItemGroup>
 </Project>
