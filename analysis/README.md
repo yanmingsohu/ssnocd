@@ -4,16 +4,6 @@ sage saturn(ss) 光驱与主板连接协议分析.
 ss 光驱与主板连接线分为 21 针与 20 针.
 
 
-# 开发模拟器硬件
-
-晒邦 DUE R3 首款ARM32位主控沉金工艺 送线(C6B3)
-https://item.taobao.com/item.htm?id=43733379697&ali_refid=a3_420434_1006:1103831585:N:arduino:391e7a6e920ff266d64f69c6d3a9c61e&ali_trackid=1_391e7a6e920ff266d64f69c6d3a9c61e&spm=a230r.1.1957635.48.ebb2eb26jTXUw
-
-Based on the ARM® Cortex®-M3 processor, the Microchip's SAM3X8E runs at 84MHz 
-and features 512KB of flash memory in 2 x 256KB banks and 100KB of SRAM in 
-64KB +32KB banks, with an additional 4KB as NFC (NAND Flash controller) SRAM.
-
-
 # CD 光驱主板上的 ic
 
 1. m56754sp     - 4 通道马达控制器.
@@ -56,7 +46,7 @@ C2 ERRORS
     or the failure of a CD burner to produce a quality burn (see conclusion).
 
 
-## 21 pin
+# 21 pin
 
 * 光驱仓开关在电源连接线上.
 * 信号线分为2组, 控制组与数据组; 
@@ -163,8 +153,19 @@ p3 由 cdrom 向 cpu 传送当前状态.
 p4 由 cpu 向 cdrom 传送指令.
 
 
-# 资料
+# 构建硬件 
 
+FPC插座, 规格1mm的21P.
+[STM32F407VE开发板](https://item.taobao.com/item.htm?spm=a210c.1.0.0.5fd9c1c6eq8jZz&id=547663814938)
+[STLINK 下载器](https://item.taobao.com/item.htm?spm=2013.1.0.0.959eebeq9yEsT&id=21968259936)
+[资料](http://pan.baidu.com/s/1hsl3Rpi#list/path=%2F)
+
+Based on the ARM® Cortex®-M3 processor, the Microchip's SAM3X8E runs at 84MHz 
+and features 512KB of flash memory in 2 x 256KB banks and 100KB of SRAM in 
+64KB +32KB banks, with an additional 4KB as NFC (NAND Flash controller) SRAM.
+
+
+# 资料
 
 [游戏](https://shop33762426.taobao.com/category-1032036304.htm?spm=a1z10.5-c.w4002-2168085120.103.dS8J73&_ksTS=1497180742372_218&callback=jsonp219&mid=w-2168085120-0&wid=2168085120&path=%2Fcategory-1032036304.htm&search=y&parentCatId=1032033745&parentCatName=%CA%C0%BC%CESEGA&catName=%C8%D5%B0%E6%CD%C1%D0%C7SS%D3%CE%CF%B7&catId=1032036304&pageNo=5#anchor)
 

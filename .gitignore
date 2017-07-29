@@ -9,11 +9,22 @@
 **/Debug/**
 **/Release/**
 土星资料/**
+**/Documentation/**
+pc_comm/**
+stc_comm/**
+
 
 *.csv
 *.logicdata
 *.logicsettings
 *.sdf
+*.tmp
+*.jpg
+*.png
+*.pdf
+*.rtf
+*.bmp
+*.zip
 
 *.opendb
 *.obj

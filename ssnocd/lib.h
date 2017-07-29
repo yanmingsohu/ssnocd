@@ -8,7 +8,7 @@
 #define DEBUG printf
 #define INLINE _inline
 #else
-#error Cannot support Arduino.
+// #error Cannot support Arduino.
 #define _ARDUINO
 #define DEBUG
 #define strcpy x_strcpy

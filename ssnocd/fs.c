@@ -3,7 +3,10 @@
 
 
 static FileState fstate = Closed;
+
+#ifdef _WIN32_WINNT
 static FILE * fd = 0;
+#endif
 
 
 FileState fs_state() {
