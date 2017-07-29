@@ -1,31 +1,47 @@
-﻿**/.svn/*
+﻿#
+# 模式目录
+#
+**/.svn/*
 **/.git/* 
 **/node_modules/**
 **/db_buffer/**
 **/build/**
 **/file_pool/**
 **/.vs/**
-资料/**
 **/Debug/**
 **/Release/**
-土星资料/**
 **/Documentation/**
-pc_comm/**
-stc_comm/**
 
+#
+# 目录
+#
+资料
+土星资料
+pc_comm
+stc_comm
+STM32F4xx_DSP_StdPeriph_Lib_V1.8.0
+cd-drive-emu/Objects
 
+#
+# 媒体文件
+#
 *.csv
 *.logicdata
 *.logicsettings
-*.sdf
-*.tmp
 *.jpg
 *.png
 *.pdf
 *.rtf
 *.bmp
 *.zip
+*.exe
+*.mdf
+*.mds
 
+#
+# 编译文件
+#
+*.sdf
 *.opendb
 *.obj
 *.tlog
@@ -33,6 +49,5 @@ stc_comm/**
 *.idb
 *.pdb
 *.db
-*.exe
-*.mdf
-*.mds
+*.tmp
+*.o
