@@ -10,12 +10,27 @@
 #define STATE_FIX_ZERO 0x07
 
 typedef Toc            CDInterfaceToc10;
+
+#ifdef _WIN32_WINNT
 typedef unsigned long  u32;
 typedef signed long    s32;
 typedef unsigned short u16;
 typedef signed short   s16;
 typedef Byte           u8;
 typedef signed char    s8;
+#endif
+
+#ifdef STM32F40_41xxx
+#include <stm32f4xx.h>
+/* All defined in 'stm32f4xx.h'
+typedef unsigned long  u32;
+typedef signed long    s32;
+typedef unsigned short u16;
+typedef signed short   s16;
+typedef Byte           u8;
+typedef signed char    s8;
+*/
+#endif
 
 
 enum CdStatusOperations

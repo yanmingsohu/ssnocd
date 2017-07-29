@@ -5,7 +5,7 @@
 
 #define MDF_NAME_LEN    128
 
-static pByte   pMdfFile[MDF_NAME_LEN] = {0};
+static Byte    pMdfFile[MDF_NAME_LEN] = {0};
 static FileState  state               = Closed;
 
 
@@ -68,7 +68,7 @@ int DetectDataOffsetInSector(
   static const unsigned char s_RawSync[12] = { 
     0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
 
-  if (memcmp(SectorHeader, s_RawSync, sizeof(s_RawSync))) {
+  if (memcmp(&SectorHeader, &s_RawSync, sizeof(s_RawSync))) {
     for (int i = 0; i < sizeof(SectorHeader); i++)
       if (SectorHeader[i])
         return DefaultOffset;
@@ -94,7 +94,7 @@ void get_mdf_filename(char* in_mds_name, char* inout_mdf_name) {
     int last = 0;
     while (inout_mdf_name[last++] != 0);
     while (inout_mdf_name[--last] != '.' && last > 0);
-    strcpy(inout_mdf_name + last, &ext, sizeof(ext));
+    strcpy(inout_mdf_name + last, ext, sizeof(ext));
   }
   printf("MDS: %s \nMDF: %s\n", in_mds_name, inout_mdf_name);
 }
@@ -102,7 +102,7 @@ void get_mdf_filename(char* in_mds_name, char* inout_mdf_name) {
 
 void MDSSession(MDSHeader *pHeader, 
      MDSSessionBlock *pSessionHeader, 
-     char *FullFilePath,
+     pByte FullFilePath,
      ParsedTrackRecord *tracks,
      int *track_len)
 {
@@ -154,7 +154,7 @@ void MDSSession(MDSHeader *pHeader,
     {
       MDSFooter footer;
       fs_seek(track.FooterOffset);
-      if (fs_read(&footer, sizeof(footer)) != sizeof(footer))
+      if (fs_read((pByte)&footer, sizeof(footer)) != sizeof(footer))
         return;
       if (!footer.FilenameOffset)
         continue;

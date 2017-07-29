@@ -26,7 +26,7 @@ void fs_close();
 /* 设置读取指针 */
 int fs_seek(ULONGLONG offset);
 /* 读取数据到缓冲区, 返回实际读取字节 */
-int fs_read(pByte buf, int len);
+int fs_read(void* buf, int len);
 /* 返回文件长度 */
 int fs_size();
 /* 读取字符串 */

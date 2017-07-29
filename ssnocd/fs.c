@@ -17,7 +17,7 @@ FileState fs_state() {
 void fs_open(pByte filename) {
   assert(fstate != Opened);
 
-#ifdef _ARDUINO
+#ifdef _MCU
 #endif
 
 #ifdef _WIN32_WINNT
@@ -35,7 +35,7 @@ void fs_open(pByte filename) {
 
 void fs_close() {
   assert(fstate == Opened);
-#ifdef _ARDUINO
+#ifdef _MCU
 #endif
 
 #ifdef _WIN32_WINNT
@@ -52,7 +52,7 @@ void fs_close() {
 int fs_seek(ULONGLONG offset) {
   assert(fstate == Opened);
 
-#ifdef _ARDUINO
+#ifdef _MCU
 #endif
 
 #ifdef _WIN32_WINNT
@@ -61,10 +61,10 @@ int fs_seek(ULONGLONG offset) {
 }
 
 
-int fs_read(pByte buf, int len) {
+int fs_read(void* buf, int len) {
   assert(fstate == Opened);
 
-#ifdef _ARDUINO
+#ifdef _MCU
 #endif
 
 #ifdef _WIN32_WINNT
@@ -79,10 +79,10 @@ int fs_read_string(pByte buf, int max) {
   int rlen = 0;
   --max;
 
-#ifdef _ARDUINO
+#ifdef _MCU
 #endif
 
-#ifdef _WIN32_WINNT`
+#ifdef _WIN32_WINNT
   while (rlen < max) {
     c = fgetc(fd);
     if (c > 0) {
@@ -102,7 +102,7 @@ int fs_read_string(pByte buf, int max) {
 int fs_size() {
   assert(fstate == Opened);
 
-#ifdef _ARDUINO
+#ifdef _MCU
 #endif
 
 #ifdef _WIN32_WINNT

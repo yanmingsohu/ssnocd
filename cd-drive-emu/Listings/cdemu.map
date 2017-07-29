@@ -15,6 +15,8 @@ Section Cross References
     startup_stm32f40xx.o(.text) refers to __main.o(!!!main) for __main
     startup_stm32f40xx.o(.text) refers to startup_stm32f40xx.o(HEAP) for Heap_Mem
     startup_stm32f40xx.o(.text) refers to startup_stm32f40xx.o(STACK) for Stack_Mem
+    ff-impl.o(i.disk_initialize) refers to misc.o(i.NVIC_PriorityGroupConfig) for NVIC_PriorityGroupConfig
+    ff-impl.o(i.disk_initialize) refers to misc.o(i.NVIC_Init) for NVIC_Init
     system_stm32f4xx_1.o(i.SystemCoreClockUpdate) refers to system_stm32f4xx_1.o(.data) for SystemCoreClock
     system_stm32f4xx_1.o(i.SystemInit) refers to system_stm32f4xx_1.o(i.SetSysClock) for SetSysClock
     misc.o(i.NVIC_Init) refers to main.o(i.assert_param) for assert_param
@@ -764,6 +766,454 @@ Section Cross References
     stm32f4xx_wwdg.o(i.WWDG_SetCounter) refers to main.o(i.assert_param) for assert_param
     stm32f4xx_wwdg.o(i.WWDG_SetPrescaler) refers to main.o(i.assert_param) for assert_param
     stm32f4xx_wwdg.o(i.WWDG_SetWindowValue) refers to main.o(i.assert_param) for assert_param
+    cd-img.o(i.cd_add_data_track) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    cd-img.o(i.cd_add_data_track) refers to lludivv7m.o(.text) for __aeabi_uldivmod
+    cd-img.o(i.cd_add_data_track) refers to fs.o(i.fs_size) for fs_size
+    cd-img.o(i.cd_add_data_track) refers to rt_memcpy_v6.o(.text) for __aeabi_memcpy
+    cd-img.o(i.cd_add_data_track) refers to cd-img.o(.data) for m_TotalSectorCount
+    cd-img.o(i.cd_add_data_track) refers to cd-img.o(.bss) for tracks
+    cd-img.o(i.cd_add_toc) refers to lib.o(i.x_memcpy) for x_memcpy
+    cd-img.o(i.cd_add_toc) refers to cd-img.o(.data) for toc_count
+    cd-img.o(i.cd_add_toc) refers to cd-img.o(.bss) for pToc
+    cd-img.o(i.cd_get_sector_count) refers to cd-img.o(.data) for m_TotalSectorCount
+    cd-img.o(i.cd_get_toc) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    cd-img.o(i.cd_get_toc) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    cd-img.o(i.cd_get_toc) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    cd-img.o(i.cd_get_toc) refers to _printf_dec.o(.text) for _printf_int_dec
+    cd-img.o(i.cd_get_toc) refers to _printf_str.o(.text) for _printf_str
+    cd-img.o(i.cd_get_toc) refers to __2printf.o(.text) for __2printf
+    cd-img.o(i.cd_get_toc) refers to cd-img.o(.data) for toc_count
+    cd-img.o(i.cd_get_toc) refers to cd-img.o(.bss) for sorted_toc
+    cd-img.o(i.cd_get_toc_count) refers to cd-img.o(.data) for toc_count
+    cd-img.o(i.cd_get_track_count) refers to cd-img.o(.data) for track_record_count
+    cd-img.o(i.cd_get_track_end_sector) refers to cd-img.o(.data) for track_record_count
+    cd-img.o(i.cd_get_track_end_sector) refers to cd-img.o(.bss) for tracks
+    cd-img.o(i.cd_read_sector) refers to fs.o(i.fs_seek) for fs_seek
+    cd-img.o(i.cd_read_sector) refers to fs.o(i.fs_read) for fs_read
+    cd-img.o(i.cd_read_sector) refers to cd-img.o(.data) for track_record_count
+    cd-img.o(i.cd_read_sector) refers to cd-img.o(.bss) for tracks
+    cd-img.o(i.cd_reset) refers to cd-img.o(.data) for toc_count
+    cd-img.o(i.cd_sort_toc) refers to cd-img.o(.bss) for sorted_toc
+    cd-img.o(i.cd_sort_toc) refers to cd-img.o(.data) for toc_count
+    cdstate.o(i.ccd_close_lid) refers to cdstate.o(i.make_status_data) for make_status_data
+    cdstate.o(i.ccd_close_lid) refers to cdstate.o(.data) for lid_closed
+    cdstate.o(i.ccd_close_lid) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.ccd_insert_disk) refers to cdstate.o(.data) for lid_closed
+    cdstate.o(i.cd_command_exec) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    cdstate.o(i.cd_command_exec) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    cdstate.o(i.cd_command_exec) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    cdstate.o(i.cd_command_exec) refers to _printf_dec.o(.text) for _printf_int_dec
+    cdstate.o(i.cd_command_exec) refers to _printf_str.o(.text) for _printf_str
+    cdstate.o(i.cd_command_exec) refers to cdstate.o(i.make_status_data) for make_status_data
+    cdstate.o(i.cd_command_exec) refers to rt_memclr.o(.text) for __aeabi_memclr
+    cdstate.o(i.cd_command_exec) refers to main.o(i.cdi_update_drive_bit) for cdi_update_drive_bit
+    cdstate.o(i.cd_command_exec) refers to cdstate.o(i.do_command) for do_command
+    cdstate.o(i.cd_command_exec) refers to __2printf.o(.text) for __2printf
+    cdstate.o(i.cd_command_exec) refers to cdstate.o(.data) for comm_state
+    cdstate.o(i.cd_command_exec) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.cd_drive_exec) refers to cdstate.o(i.cd_command_exec) for cd_command_exec
+    cdstate.o(i.cd_drive_exec) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.cd_drive_get_serial_bit) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.cd_drive_set_serial_bit) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.cd_drive_set_serial_bit) refers to cdstate.o(.data) for comm_state
+    cdstate.o(i.cdd_open_lid) refers to cdstate.o(i.make_status_data) for make_status_data
+    cdstate.o(i.cdd_open_lid) refers to cdstate.o(.data) for lid_closed
+    cdstate.o(i.cdd_open_lid) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.cdd_reset) refers to rt_memclr.o(.text) for __aeabi_memclr
+    cdstate.o(i.cdd_reset) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.cdd_reset) refers to cdstate.o(.data) for has_disk
+    cdstate.o(i.continue_command) refers to cdstate.o(i.update_status_info) for update_status_info
+    cdstate.o(i.continue_command) refers to cdstate.o(i.make_status_data) for make_status_data
+    cdstate.o(i.continue_command) refers to cdstate.o(i.get_track_start_fad) for get_track_start_fad
+    cdstate.o(i.continue_command) refers to cd-img.o(i.cd_read_sector) for cd_read_sector
+    cdstate.o(i.continue_command) refers to main.o(i.cdi_sector_data_ready) for cdi_sector_data_ready
+    cdstate.o(i.continue_command) refers to cdstate.o(i.do_dataread) for do_dataread
+    cdstate.o(i.continue_command) refers to cdstate.o(i.do_toc) for do_toc
+    cdstate.o(i.continue_command) refers to cdstate.o(i.update_seek_status) for update_seek_status
+    cdstate.o(i.continue_command) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.continue_command) refers to cdstate.o(.data) for comm_state
+    cdstate.o(i.do_cd_logging) refers to _printf_pad.o(.text) for _printf_pre_padding
+    cdstate.o(i.do_cd_logging) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    cdstate.o(i.do_cd_logging) refers to _printf_x.o(.ARM.Collect$$_printf_percent$$0000000C) for _printf_x
+    cdstate.o(i.do_cd_logging) refers to _printf_hex_int.o(.text) for _printf_longlong_hex
+    cdstate.o(i.do_cd_logging) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    cdstate.o(i.do_cd_logging) refers to _printf_str.o(.text) for _printf_str
+    cdstate.o(i.do_cd_logging) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    cdstate.o(i.do_cd_logging) refers to strlen.o(.text) for strlen
+    cdstate.o(i.do_cd_logging) refers to __2sprintf.o(.text) for __2sprintf
+    cdstate.o(i.do_cd_logging) refers to cdstate.o(i.get_status_string) for get_status_string
+    cdstate.o(i.do_cd_logging) refers to cdstate.o(i.get_command_string) for get_command_string
+    cdstate.o(i.do_cd_logging) refers to __2printf.o(.text) for __2printf
+    cdstate.o(i.do_cd_logging) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.do_command) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    cdstate.o(i.do_command) refers to _printf_x.o(.ARM.Collect$$_printf_percent$$0000000C) for _printf_x
+    cdstate.o(i.do_command) refers to _printf_hex_int.o(.text) for _printf_longlong_hex
+    cdstate.o(i.do_command) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    cdstate.o(i.do_command) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    cdstate.o(i.do_command) refers to _printf_dec.o(.text) for _printf_int_dec
+    cdstate.o(i.do_command) refers to _printf_str.o(.text) for _printf_str
+    cdstate.o(i.do_command) refers to cdstate.o(i.continue_command) for continue_command
+    cdstate.o(i.do_command) refers to __2printf.o(.text) for __2printf
+    cdstate.o(i.do_command) refers to cdstate.o(i.do_seek_common) for do_seek_common
+    cdstate.o(i.do_command) refers to cdstate.o(i.make_ring_status) for make_ring_status
+    cdstate.o(i.do_command) refers to cd-img.o(i.cd_get_toc_count) for cd_get_toc_count
+    cdstate.o(i.do_command) refers to cd-img.o(i.cd_get_toc) for cd_get_toc
+    cdstate.o(i.do_command) refers to cdstate.o(i.num2bcd) for num2bcd
+    cdstate.o(i.do_command) refers to lib.o(i.x_memcpy) for x_memcpy
+    cdstate.o(i.do_command) refers to cdstate.o(i.bcd2num) for bcd2num
+    cdstate.o(i.do_command) refers to cdstate.o(i.do_toc) for do_toc
+    cdstate.o(i.do_command) refers to cdstate.o(i.make_status_data) for make_status_data
+    cdstate.o(i.do_command) refers to cdstate.o(i.update_seek_status) for update_seek_status
+    cdstate.o(i.do_command) refers to cdstate.o(i.do_seek) for do_seek
+    cdstate.o(i.do_command) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.do_command) refers to cdstate.o(.data) for comm_state
+    cdstate.o(i.do_dataread) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    cdstate.o(i.do_dataread) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    cdstate.o(i.do_dataread) refers to _printf_x.o(.ARM.Collect$$_printf_percent$$0000000C) for _printf_x
+    cdstate.o(i.do_dataread) refers to _printf_dec.o(.text) for _printf_int_dec
+    cdstate.o(i.do_dataread) refers to _printf_hex_int.o(.text) for _printf_longlong_hex
+    cdstate.o(i.do_dataread) refers to _printf_pad.o(.text) for _printf_pre_padding
+    cdstate.o(i.do_dataread) refers to __2printf.o(.text) for __2printf
+    cdstate.o(i.do_dataread) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    cdstate.o(i.do_dataread) refers to cdstate.o(i.fad2msf_bcd) for fad2msf_bcd
+    cdstate.o(i.do_dataread) refers to cdstate.o(i.get_track_start_fad) for get_track_start_fad
+    cdstate.o(i.do_dataread) refers to cdstate.o(i.make_ring_data) for make_ring_data
+    cdstate.o(i.do_dataread) refers to cd-img.o(i.cd_read_sector) for cd_read_sector
+    cdstate.o(i.do_dataread) refers to main.o(i.cdi_sector_data_ready) for cdi_sector_data_ready
+    cdstate.o(i.do_dataread) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.do_seek) refers to cdstate.o(i.do_seek_common) for do_seek_common
+    cdstate.o(i.do_seek) refers to cdstate.o(i.update_seek_status) for update_seek_status
+    cdstate.o(i.do_seek_common) refers to cdstate.o(i.get_fad_from_command) for get_fad_from_command
+    cdstate.o(i.do_seek_common) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.do_toc) refers to lib.o(i.x_memcpy) for x_memcpy
+    cdstate.o(i.do_toc) refers to cdstate.o(i.set_checksum) for set_checksum
+    cdstate.o(i.do_toc) refers to cdstate.o(i.make_status_data) for make_status_data
+    cdstate.o(i.do_toc) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.do_toc) refers to cdstate.o(.data) for comm_state
+    cdstate.o(i.fad2msf_bcd) refers to cdstate.o(i.num2bcd) for num2bcd
+    cdstate.o(i.get_command_string) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    cdstate.o(i.get_command_string) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    cdstate.o(i.get_command_string) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    cdstate.o(i.get_command_string) refers to _printf_dec.o(.text) for _printf_int_dec
+    cdstate.o(i.get_command_string) refers to _printf_str.o(.text) for _printf_str
+    cdstate.o(i.get_command_string) refers to cdstate.o(i.get_fad_from_command) for get_fad_from_command
+    cdstate.o(i.get_command_string) refers to __2sprintf.o(.text) for __2sprintf
+    cdstate.o(i.get_command_string) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.get_status_string) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    cdstate.o(i.get_status_string) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    cdstate.o(i.get_status_string) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    cdstate.o(i.get_status_string) refers to _printf_dec.o(.text) for _printf_int_dec
+    cdstate.o(i.get_status_string) refers to _printf_str.o(.text) for _printf_str
+    cdstate.o(i.get_status_string) refers to cdstate.o(i.msf_bcd2fad) for msf_bcd2fad
+    cdstate.o(i.get_status_string) refers to __2sprintf.o(.text) for __2sprintf
+    cdstate.o(i.get_status_string) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.get_track_fad) refers to cdstate.o(i.get_track_start_fad) for get_track_start_fad
+    cdstate.o(i.get_track_start_fad) refers to cdstate.o(i.msf_bcd2fad) for msf_bcd2fad
+    cdstate.o(i.get_track_start_fad) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.make_ring_data) refers to cdstate.o(i.ror) for ror
+    cdstate.o(i.make_ring_status) refers to cdstate.o(i.fad2msf_bcd) for fad2msf_bcd
+    cdstate.o(i.make_ring_status) refers to cdstate.o(i.set_checksum) for set_checksum
+    cdstate.o(i.make_ring_status) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.make_status_data) refers to _printf_pad.o(.text) for _printf_pre_padding
+    cdstate.o(i.make_status_data) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    cdstate.o(i.make_status_data) refers to _printf_x.o(.ARM.Collect$$_printf_percent$$0000000C) for _printf_x
+    cdstate.o(i.make_status_data) refers to _printf_hex_int.o(.text) for _printf_longlong_hex
+    cdstate.o(i.make_status_data) refers to cdstate.o(i.set_checksum) for set_checksum
+    cdstate.o(i.make_status_data) refers to __2printf.o(.text) for __2printf
+    cdstate.o(i.msf_bcd2fad) refers to cdstate.o(i.bcd2num) for bcd2num
+    cdstate.o(i.state_set_msf_info) refers to cdstate.o(i.fad2msf_bcd) for fad2msf_bcd
+    cdstate.o(i.toc_10_get_track) refers to cdstate.o(i.get_track_start_fad) for get_track_start_fad
+    cdstate.o(i.toc_10_get_track) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.update_seek_status) refers to cdstate.o(i.update_status_info) for update_status_info
+    cdstate.o(i.update_seek_status) refers to cdstate.o(i.make_status_data) for make_status_data
+    cdstate.o(i.update_seek_status) refers to cdstate.o(.bss) for cdd_cxt
+    cdstate.o(i.update_seek_status) refers to cdstate.o(.data) for comm_state
+    cdstate.o(i.update_status_info) refers to cdstate.o(i.get_track_start_fad) for get_track_start_fad
+    cdstate.o(i.update_status_info) refers to cdstate.o(i.toc_10_get_track) for toc_10_get_track
+    cdstate.o(i.update_status_info) refers to cdstate.o(i.get_track_fad) for get_track_fad
+    cdstate.o(i.update_status_info) refers to cdstate.o(i.state_set_msf_info) for state_set_msf_info
+    cdstate.o(i.update_status_info) refers to cdstate.o(i.num2bcd) for num2bcd
+    cdstate.o(i.update_status_info) refers to cdstate.o(.bss) for cdd_cxt
+    fs.o(i.fs_close) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    fs.o(i.fs_close) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    fs.o(i.fs_close) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    fs.o(i.fs_close) refers to _printf_dec.o(.text) for _printf_int_dec
+    fs.o(i.fs_close) refers to _printf_str.o(.text) for _printf_str
+    fs.o(i.fs_close) refers to __2printf.o(.text) for __2printf
+    fs.o(i.fs_close) refers to fs.o(.data) for fstate
+    fs.o(i.fs_open) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    fs.o(i.fs_open) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    fs.o(i.fs_open) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    fs.o(i.fs_open) refers to _printf_dec.o(.text) for _printf_int_dec
+    fs.o(i.fs_open) refers to _printf_str.o(.text) for _printf_str
+    fs.o(i.fs_open) refers to __2printf.o(.text) for __2printf
+    fs.o(i.fs_open) refers to fs.o(.data) for fstate
+    fs.o(i.fs_read) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    fs.o(i.fs_read) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    fs.o(i.fs_read) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    fs.o(i.fs_read) refers to _printf_dec.o(.text) for _printf_int_dec
+    fs.o(i.fs_read) refers to _printf_str.o(.text) for _printf_str
+    fs.o(i.fs_read) refers to __2printf.o(.text) for __2printf
+    fs.o(i.fs_read) refers to fs.o(.data) for fstate
+    fs.o(i.fs_read_string) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    fs.o(i.fs_read_string) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    fs.o(i.fs_read_string) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    fs.o(i.fs_read_string) refers to _printf_dec.o(.text) for _printf_int_dec
+    fs.o(i.fs_read_string) refers to _printf_str.o(.text) for _printf_str
+    fs.o(i.fs_read_string) refers to __2printf.o(.text) for __2printf
+    fs.o(i.fs_read_string) refers to fs.o(.data) for fstate
+    fs.o(i.fs_seek) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    fs.o(i.fs_seek) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    fs.o(i.fs_seek) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    fs.o(i.fs_seek) refers to _printf_dec.o(.text) for _printf_int_dec
+    fs.o(i.fs_seek) refers to _printf_str.o(.text) for _printf_str
+    fs.o(i.fs_seek) refers to __2printf.o(.text) for __2printf
+    fs.o(i.fs_seek) refers to fs.o(.data) for fstate
+    fs.o(i.fs_size) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    fs.o(i.fs_size) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    fs.o(i.fs_size) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    fs.o(i.fs_size) refers to _printf_dec.o(.text) for _printf_int_dec
+    fs.o(i.fs_size) refers to _printf_str.o(.text) for _printf_str
+    fs.o(i.fs_size) refers to __2printf.o(.text) for __2printf
+    fs.o(i.fs_size) refers to fs.o(.data) for fstate
+    fs.o(i.fs_state) refers to fs.o(.data) for fstate
+    mds.o(i.DetectDataOffsetInSector) refers to fs.o(i.fs_close) for fs_close
+    mds.o(i.DetectDataOffsetInSector) refers to fs.o(i.fs_open) for fs_open
+    mds.o(i.DetectDataOffsetInSector) refers to fs.o(i.fs_seek) for fs_seek
+    mds.o(i.DetectDataOffsetInSector) refers to fs.o(i.fs_read) for fs_read
+    mds.o(i.DetectDataOffsetInSector) refers to memcmp.o(.text) for memcmp
+    mds.o(i.DetectDataOffsetInSector) refers to mds.o(.bss) for pMdfFile
+    mds.o(i.DetectDataOffsetInSector) refers to mds.o(.constdata) for s_RawSync
+    mds.o(i.MDSSession) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    mds.o(i.MDSSession) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    mds.o(i.MDSSession) refers to _printf_x.o(.ARM.Collect$$_printf_percent$$0000000C) for _printf_x
+    mds.o(i.MDSSession) refers to _printf_dec.o(.text) for _printf_int_dec
+    mds.o(i.MDSSession) refers to _printf_hex_int.o(.text) for _printf_longlong_hex
+    mds.o(i.MDSSession) refers to _printf_lld.o(.ARM.Collect$$_printf_percent$$0000000E) for _printf_lld
+    mds.o(i.MDSSession) refers to _printf_longlong_dec.o(.text) for _printf_longlong_dec
+    mds.o(i.MDSSession) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    mds.o(i.MDSSession) refers to _printf_str.o(.text) for _printf_str
+    mds.o(i.MDSSession) refers to fs.o(i.fs_seek) for fs_seek
+    mds.o(i.MDSSession) refers to fs.o(i.fs_read) for fs_read
+    mds.o(i.MDSSession) refers to __2printf.o(.text) for __2printf
+    mds.o(i.MDSSession) refers to mds.o(i.add_toc) for add_toc
+    mds.o(i.MDSSession) refers to fs.o(i.fs_read_string) for fs_read_string
+    mds.o(i.MDSSession) refers to mds.o(i.get_mdf_filename) for get_mdf_filename
+    mds.o(i.MDSSession) refers to fs.o(i.fs_state) for fs_state
+    mds.o(i.MDSSession) refers to fs.o(i.fs_open) for fs_open
+    mds.o(i.MDSSession) refers to mds.o(.bss) for pMdfFile
+    mds.o(i.MDSSession) refers to mds.o(.constdata) for s_MDSTrackModeTypes
+    mds.o(i.add_toc) refers to cd-img.o(i.cd_get_toc_count) for cd_get_toc_count
+    mds.o(i.add_toc) refers to cd-img.o(i.cd_add_toc) for cd_add_toc
+    mds.o(i.get_mdf_filename) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    mds.o(i.get_mdf_filename) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    mds.o(i.get_mdf_filename) refers to _printf_str.o(.text) for _printf_str
+    mds.o(i.get_mdf_filename) refers to lib.o(i.x_strcpy) for x_strcpy
+    mds.o(i.get_mdf_filename) refers to __2printf.o(.text) for __2printf
+    mds.o(i.mds_close) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    mds.o(i.mds_close) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    mds.o(i.mds_close) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    mds.o(i.mds_close) refers to _printf_dec.o(.text) for _printf_int_dec
+    mds.o(i.mds_close) refers to _printf_str.o(.text) for _printf_str
+    mds.o(i.mds_close) refers to __2printf.o(.text) for __2printf
+    mds.o(i.mds_close) refers to fs.o(i.fs_close) for fs_close
+    mds.o(i.mds_close) refers to cd-img.o(i.cd_reset) for cd_reset
+    mds.o(i.mds_close) refers to mds.o(.data) for state
+    mds.o(i.mds_close) refers to mds.o(.bss) for pMdfFile
+    mds.o(i.mds_open) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    mds.o(i.mds_open) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    mds.o(i.mds_open) refers to _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
+    mds.o(i.mds_open) refers to _printf_dec.o(.text) for _printf_int_dec
+    mds.o(i.mds_open) refers to _printf_str.o(.text) for _printf_str
+    mds.o(i.mds_open) refers to __2printf.o(.text) for __2printf
+    mds.o(i.mds_open) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    mds.o(i.mds_open) refers to fs.o(i.fs_open) for fs_open
+    mds.o(i.mds_open) refers to fs.o(i.fs_seek) for fs_seek
+    mds.o(i.mds_open) refers to fs.o(i.fs_read) for fs_read
+    mds.o(i.mds_open) refers to mds.o(i.MDSSession) for MDSSession
+    mds.o(i.mds_open) refers to cd-img.o(i.cd_sort_toc) for cd_sort_toc
+    mds.o(i.mds_open) refers to fs.o(i.fs_close) for fs_close
+    mds.o(i.mds_open) refers to cd-img.o(i.cd_add_data_track) for cd_add_data_track
+    mds.o(i.mds_open) refers to mds.o(.data) for state
+    mds.o(i.mds_open) refers to mds.o(.bss) for pMdfFile
+    ff.o(i.check_fs) refers to ff-impl.o(i.disk_read) for disk_read
+    ff.o(i.chk_mounted) refers to ff-impl.o(i.disk_status) for disk_status
+    ff.o(i.chk_mounted) refers to ff-impl.o(i.disk_initialize) for disk_initialize
+    ff.o(i.chk_mounted) refers to ff.o(i.check_fs) for check_fs
+    ff.o(i.chk_mounted) refers to ff-impl.o(i.disk_read) for disk_read
+    ff.o(i.chk_mounted) refers to ff.o(.data) for FatFs
+    ff.o(i.create_chain) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.create_chain) refers to ff.o(i.put_fat) for put_fat
+    ff.o(i.create_name) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.create_name) refers to ff.o(i.chk_chr) for chk_chr
+    ff.o(i.dir_find) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.dir_find) refers to ff.o(i.move_window) for move_window
+    ff.o(i.dir_find) refers to ff.o(i.mem_cmp) for mem_cmp
+    ff.o(i.dir_find) refers to ff.o(i.dir_next) for dir_next
+    ff.o(i.dir_next) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.dir_next) refers to ff.o(i.create_chain) for create_chain
+    ff.o(i.dir_next) refers to ff.o(i.move_window) for move_window
+    ff.o(i.dir_next) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.dir_next) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.dir_read) refers to ff.o(i.move_window) for move_window
+    ff.o(i.dir_read) refers to ff.o(i.dir_next) for dir_next
+    ff.o(i.dir_register) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.dir_register) refers to ff.o(i.move_window) for move_window
+    ff.o(i.dir_register) refers to ff.o(i.dir_next) for dir_next
+    ff.o(i.dir_register) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.dir_register) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.dir_remove) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.dir_remove) refers to ff.o(i.move_window) for move_window
+    ff.o(i.dir_sdi) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.dir_sdi) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_chmod) refers to ff.o(i.chk_mounted) for chk_mounted
+    ff.o(i.f_chmod) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_chmod) refers to ff.o(i.sync) for sync
+    ff.o(i.f_close) refers to ff.o(i.f_sync) for f_sync
+    ff.o(i.f_getfree) refers to ff.o(i.chk_mounted) for chk_mounted
+    ff.o(i.f_getfree) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.f_getfree) refers to ff.o(i.move_window) for move_window
+    ff.o(i.f_lseek) refers to ff.o(i.validate) for validate
+    ff.o(i.f_lseek) refers to ff.o(i.create_chain) for create_chain
+    ff.o(i.f_lseek) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.f_lseek) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_lseek) refers to ff-impl.o(i.disk_write) for disk_write
+    ff.o(i.f_lseek) refers to ff-impl.o(i.disk_read) for disk_read
+    ff.o(i.f_mkdir) refers to ff-impl.o(i.get_fattime) for get_fattime
+    ff.o(i.f_mkdir) refers to ff.o(i.chk_mounted) for chk_mounted
+    ff.o(i.f_mkdir) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_mkdir) refers to ff.o(i.create_chain) for create_chain
+    ff.o(i.f_mkdir) refers to ff.o(i.move_window) for move_window
+    ff.o(i.f_mkdir) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_mkdir) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.f_mkdir) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_mkdir) refers to ff.o(i.dir_register) for dir_register
+    ff.o(i.f_mkdir) refers to ff.o(i.remove_chain) for remove_chain
+    ff.o(i.f_mkdir) refers to ff.o(i.sync) for sync
+    ff.o(i.f_mount) refers to ff.o(.data) for FatFs
+    ff.o(i.f_open) refers to ff.o(i.chk_mounted) for chk_mounted
+    ff.o(i.f_open) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_open) refers to ff.o(i.dir_register) for dir_register
+    ff.o(i.f_open) refers to ff-impl.o(i.get_fattime) for get_fattime
+    ff.o(i.f_open) refers to ff.o(i.remove_chain) for remove_chain
+    ff.o(i.f_open) refers to ff.o(i.move_window) for move_window
+    ff.o(i.f_opendir) refers to ff.o(i.chk_mounted) for chk_mounted
+    ff.o(i.f_opendir) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_opendir) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.f_read) refers to ff.o(i.validate) for validate
+    ff.o(i.f_read) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.f_read) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_read) refers to ff-impl.o(i.disk_read) for disk_read
+    ff.o(i.f_read) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_read) refers to ff-impl.o(i.disk_write) for disk_write
+    ff.o(i.f_readdir) refers to ff.o(i.validate) for validate
+    ff.o(i.f_readdir) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.f_readdir) refers to ff.o(i.dir_read) for dir_read
+    ff.o(i.f_readdir) refers to ff.o(i.get_fileinfo) for get_fileinfo
+    ff.o(i.f_readdir) refers to ff.o(i.dir_next) for dir_next
+    ff.o(i.f_rename) refers to ff.o(i.chk_mounted) for chk_mounted
+    ff.o(i.f_rename) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_rename) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_rename) refers to ff.o(i.dir_register) for dir_register
+    ff.o(i.f_rename) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_rename) refers to ff.o(i.move_window) for move_window
+    ff.o(i.f_rename) refers to ff.o(i.dir_remove) for dir_remove
+    ff.o(i.f_rename) refers to ff.o(i.sync) for sync
+    ff.o(i.f_stat) refers to ff.o(i.chk_mounted) for chk_mounted
+    ff.o(i.f_stat) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_stat) refers to ff.o(i.get_fileinfo) for get_fileinfo
+    ff.o(i.f_sync) refers to ff.o(i.validate) for validate
+    ff.o(i.f_sync) refers to ff-impl.o(i.disk_write) for disk_write
+    ff.o(i.f_sync) refers to ff.o(i.move_window) for move_window
+    ff.o(i.f_sync) refers to ff-impl.o(i.get_fattime) for get_fattime
+    ff.o(i.f_sync) refers to ff.o(i.sync) for sync
+    ff.o(i.f_truncate) refers to ff.o(i.validate) for validate
+    ff.o(i.f_truncate) refers to ff.o(i.remove_chain) for remove_chain
+    ff.o(i.f_truncate) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.f_truncate) refers to ff.o(i.put_fat) for put_fat
+    ff.o(i.f_unlink) refers to ff.o(i.chk_mounted) for chk_mounted
+    ff.o(i.f_unlink) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_unlink) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_unlink) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.f_unlink) refers to ff.o(i.dir_read) for dir_read
+    ff.o(i.f_unlink) refers to ff.o(i.dir_remove) for dir_remove
+    ff.o(i.f_unlink) refers to ff.o(i.remove_chain) for remove_chain
+    ff.o(i.f_unlink) refers to ff.o(i.sync) for sync
+    ff.o(i.f_utime) refers to ff.o(i.chk_mounted) for chk_mounted
+    ff.o(i.f_utime) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_utime) refers to ff.o(i.sync) for sync
+    ff.o(i.f_write) refers to ff.o(i.validate) for validate
+    ff.o(i.f_write) refers to ff.o(i.create_chain) for create_chain
+    ff.o(i.f_write) refers to ff-impl.o(i.disk_write) for disk_write
+    ff.o(i.f_write) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_write) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_write) refers to ff-impl.o(i.disk_read) for disk_read
+    ff.o(i.follow_path) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.follow_path) refers to ff.o(i.create_name) for create_name
+    ff.o(i.follow_path) refers to ff.o(i.dir_find) for dir_find
+    ff.o(i.get_fat) refers to ff.o(i.move_window) for move_window
+    ff.o(i.move_window) refers to ff-impl.o(i.disk_write) for disk_write
+    ff.o(i.move_window) refers to ff-impl.o(i.disk_read) for disk_read
+    ff.o(i.put_fat) refers to ff.o(i.move_window) for move_window
+    ff.o(i.remove_chain) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.remove_chain) refers to ff.o(i.put_fat) for put_fat
+    ff.o(i.sync) refers to ff.o(i.move_window) for move_window
+    ff.o(i.sync) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.sync) refers to ff-impl.o(i.disk_write) for disk_write
+    ff.o(i.sync) refers to ff-impl.o(i.disk_ioctl) for disk_ioctl
+    ff.o(i.validate) refers to ff-impl.o(i.disk_status) for disk_status
+    __2printf.o(.text) refers to _printf_char_file.o(.text) for _printf_char_file
+    __2printf.o(.text) refers to stdio_streams.o(.bss) for __stdout
+    __2sprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
+    __2sprintf.o(.text) refers to _sputc.o(.text) for _sputc
+    noretval__2printf.o(.text) refers to _printf_char_file.o(.text) for _printf_char_file
+    noretval__2printf.o(.text) refers to stdio_streams.o(.bss) for __stdout
+    noretval__2sprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
+    noretval__2sprintf.o(.text) refers to _sputc.o(.text) for _sputc
+    __printf.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    _printf_str.o(.text) refers (Special) to _printf_char.o(.text) for _printf_cs_common
+    _printf_str.o(.text) refers (Weak) to _printf_pad.o(.text) for _printf_pre_padding
+    _printf_str.o(.text) refers (Weak) to _printf_pad.o(.text) for _printf_post_padding
+    _printf_dec.o(.text) refers to _printf_intcommon.o(.text) for _printf_int_common
+    _printf_longlong_dec.o(.text) refers to lludiv10.o(.text) for _ll_udiv10
+    _printf_longlong_dec.o(.text) refers to _printf_intcommon.o(.text) for _printf_int_common
+    _printf_hex_ll.o(.text) refers to _printf_intcommon.o(.text) for _printf_int_common
+    _printf_hex_ll.o(.text) refers to _printf_hex_ll.o(.constdata) for .constdata
+    _printf_hex_int.o(.text) refers to _printf_intcommon.o(.text) for _printf_int_common
+    _printf_hex_int.o(.text) refers to _printf_hex_int.o(.constdata) for .constdata
+    _printf_hex_int_ll.o(.text) refers to _printf_intcommon.o(.text) for _printf_int_common
+    _printf_hex_int_ll.o(.text) refers to _printf_hex_int_ll.o(.constdata) for .constdata
+    _printf_hex_ptr.o(.text) refers to _printf_intcommon.o(.text) for _printf_int_common
+    _printf_hex_ptr.o(.text) refers to _printf_hex_ptr.o(.constdata) for .constdata
+    _printf_hex_int_ptr.o(.text) refers to _printf_intcommon.o(.text) for _printf_int_common
+    _printf_hex_int_ptr.o(.text) refers to _printf_hex_int_ptr.o(.constdata) for .constdata
+    _printf_hex_ll_ptr.o(.text) refers to _printf_intcommon.o(.text) for _printf_int_common
+    _printf_hex_ll_ptr.o(.text) refers to _printf_hex_ll_ptr.o(.constdata) for .constdata
+    _printf_hex_int_ll_ptr.o(.text) refers to _printf_intcommon.o(.text) for _printf_int_common
+    _printf_hex_int_ll_ptr.o(.text) refers to _printf_hex_int_ll_ptr.o(.constdata) for .constdata
+    __printf_flags.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags.o(.text) refers to __printf_flags.o(.constdata) for .constdata
+    __printf_ss.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_ss.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_ss.o(.text) refers to __printf_flags_ss.o(.constdata) for .constdata
+    __printf_wp.o(.text) refers to __printf_wp.o(i._is_digit) for _is_digit
+    __printf_wp.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_wp.o(.text) refers to __printf_wp.o(i._is_digit) for _is_digit
+    __printf_flags_wp.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_wp.o(.text) refers to __printf_flags_wp.o(.constdata) for .constdata
+    __printf_ss_wp.o(.text) refers to __printf_wp.o(i._is_digit) for _is_digit
+    __printf_ss_wp.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_ss_wp.o(.text) refers to __printf_wp.o(i._is_digit) for _is_digit
+    __printf_flags_ss_wp.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_ss_wp.o(.text) refers to __printf_flags_ss_wp.o(.constdata) for .constdata
+    _printf_s.o(.ARM.Collect$$_printf_percent$$00000014) refers (Weak) to _printf_char.o(.text) for _printf_string
+    _printf_x.o(.ARM.Collect$$_printf_percent$$0000000C) refers (Weak) to _printf_hex_int.o(.text) for _printf_int_hex
+    _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) refers (Weak) to _printf_dec.o(.text) for _printf_int_dec
+    _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) refers (Special) to _printf_percent_end.o(.ARM.Collect$$_printf_percent$$00000017) for _printf_percent_end
+    _printf_lld.o(.ARM.Collect$$_printf_percent$$0000000E) refers (Special) to _printf_ll.o(.ARM.Collect$$_printf_percent$$00000007) for _printf_ll
+    _printf_lld.o(.ARM.Collect$$_printf_percent$$0000000E) refers (Weak) to _printf_longlong_dec.o(.text) for _printf_longlong_dec
+    rt_memcpy_v6.o(.text) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
+    rt_memclr.o(.text) refers to rt_memclr_w.o(.text) for _memset_w
     __main.o(!!!main) refers to __rtentry.o(.ARM.Collect$$rtentry$$00000000) for __rt_entry
     __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) for __rt_entry_li
     __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) for __rt_entry_main
@@ -771,6 +1221,21 @@ Section Cross References
     __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$00000009) for __rt_entry_postsh_1
     __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$00000002) for __rt_entry_presh_1
     __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry4.o(.ARM.Collect$$rtentry$$00000004) for __rt_entry_sh
+    aeabi_ldiv0_sigfpe.o(.text) refers to rt_div0.o(.text) for __rt_div0
+    _printf_intcommon.o(.text) refers (Weak) to _printf_pad.o(.text) for _printf_pre_padding
+    _printf_intcommon.o(.text) refers (Weak) to _printf_pad.o(.text) for _printf_pre_padding
+    _printf_intcommon.o(.text) refers (Weak) to _printf_pad.o(.text) for _printf_post_padding
+    _printf_char_common.o(.text) refers to __printf_flags_ss_wp.o(.text) for __printf
+    _printf_char.o(.text) refers (Weak) to _printf_str.o(.text) for _printf_str
+    _printf_char_file.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
+    _printf_char_file.o(.text) refers to ferror.o(.text) for ferror
+    _printf_char_file.o(.text) refers to fputc.o(i.fputc) for fputc
+    stdio_streams.o(.bss) refers (Special) to initio.o(.text) for _initio
+    stdio_streams.o(.bss) refers (Special) to initio.o(.text) for _initio
+    stdio_streams.o(.bss) refers (Special) to initio.o(.text) for _initio
+    stdio_streams.o(.data) refers (Special) to initio.o(.text) for _initio
+    stdio_streams.o(.data) refers (Special) to initio.o(.text) for _initio
+    stdio_streams.o(.data) refers (Special) to initio.o(.text) for _initio
     __rtentry2.o(.ARM.Collect$$rtentry$$00000008) refers to boardinit2.o(.text) for _platform_post_stackheap_init
     __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) refers to libinit.o(.ARM.Collect$$libinit$$00000000) for __rt_lib_init
     __rtentry2.o(.ARM.Collect$$rtentry$$0000000B) refers to boardinit3.o(.text) for _platform_post_lib_init
@@ -783,9 +1248,138 @@ Section Cross References
     __rtentry2.o(.ARM.exidx) refers to __rtentry2.o(.ARM.Collect$$rtentry$$0000000D) for .ARM.Collect$$rtentry$$0000000D
     __rtentry4.o(.ARM.Collect$$rtentry$$00000004) refers to sys_stackheap_outer.o(.text) for __user_setup_stackheap
     __rtentry4.o(.ARM.exidx) refers to __rtentry4.o(.ARM.Collect$$rtentry$$00000004) for .ARM.Collect$$rtentry$$00000004
+    rt_div0.o(.text) refers to defsig_fpe_outer.o(.text) for __rt_SIGFPE
+    fputc.o(i.fputc) refers to flsbuf.o(.text) for __flsbuf_byte
+    initio.o(.text) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000024) for __rt_lib_init_stdio_2
+    initio.o(.text) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000003) for __rt_lib_shutdown_stdio_2
+    initio.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    initio.o(.text) refers to fopen.o(.text) for freopen
+    initio.o(.text) refers to defsig_rtred_outer.o(.text) for __rt_SIGRTRED
+    initio.o(.text) refers to setvbuf.o(.text) for setvbuf
+    initio.o(.text) refers to fclose.o(.text) for _fclose_internal
+    initio.o(.text) refers to h1_free.o(.text) for free
+    initio.o(.text) refers to stdio_streams.o(.bss) for __stdin
+    initio.o(.text) refers to stdio_streams.o(.bss) for __stdout
+    initio.o(.text) refers to stdio_streams.o(.bss) for __stderr
+    initio.o(.text) refers to stdio_streams.o(.data) for __aeabi_stdin
+    initio.o(.text) refers to stdio_streams.o(.data) for __aeabi_stdout
+    initio.o(.text) refers to stdio_streams.o(.data) for __aeabi_stderr
+    initio.o(.text) refers to sys_io.o(.constdata) for __stdin_name
+    initio.o(.text) refers to sys_io.o(.constdata) for __stdout_name
+    initio.o(.text) refers to sys_io.o(.constdata) for __stderr_name
+    initio_locked.o(.text) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000024) for __rt_lib_init_stdio_2
+    initio_locked.o(.text) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000003) for __rt_lib_shutdown_stdio_2
+    initio_locked.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    initio_locked.o(.text) refers to fopen.o(.text) for freopen
+    initio_locked.o(.text) refers to defsig_rtred_outer.o(.text) for __rt_SIGRTRED
+    initio_locked.o(.text) refers to setvbuf.o(.text) for setvbuf
+    initio_locked.o(.text) refers to fclose.o(.text) for _fclose_internal
+    initio_locked.o(.text) refers to h1_free.o(.text) for free
+    initio_locked.o(.text) refers to stdio_streams.o(.bss) for __stdin
+    initio_locked.o(.text) refers to stdio_streams.o(.bss) for __stdout
+    initio_locked.o(.text) refers to stdio_streams.o(.bss) for __stderr
+    initio_locked.o(.text) refers to stdio_streams.o(.data) for __aeabi_stdin
+    initio_locked.o(.text) refers to stdio_streams.o(.data) for __aeabi_stdout
+    initio_locked.o(.text) refers to stdio_streams.o(.data) for __aeabi_stderr
+    initio_locked.o(.text) refers to streamlock.o(.data) for _stream_list_lock
+    initio_locked.o(.text) refers to sys_io.o(.constdata) for __stdin_name
+    initio_locked.o(.text) refers to sys_io.o(.constdata) for __stdout_name
+    initio_locked.o(.text) refers to sys_io.o(.constdata) for __stderr_name
+    sys_io.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_io.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    sys_io.o(.text) refers to strlen.o(.text) for strlen
+    sys_io.o(.constdata) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_io.o(.constdata) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    sys_io.o(.constdata) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_io.o(.constdata) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    sys_io.o(.constdata) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_io.o(.constdata) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
     sys_stackheap_outer.o(.text) refers to libspace.o(.text) for __user_perproc_libspace
     sys_stackheap_outer.o(.text) refers to startup_stm32f40xx.o(.text) for __user_initial_stackheap
+    free.o(.text) refers (Special) to hguard.o(.text) for __heap$guard
+    free.o(.text) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    free.o(.text) refers to heapstubs.o(.text) for __Heap_Free
+    h1_free.o(.text) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    h1_free_mt.o(.text) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    heap2.o(i._FDIterate) refers to heap2.o(.conststring) for .conststring
+    heap2.o(i.___Heap_ProvideMemory$realtime) refers to fdtree.o(i._FDTree_Delete) for _FDTree_Delete
+    heap2.o(i.___Heap_ProvideMemory$realtime) refers to fdtree.o(i._FDTree_Insert) for _FDTree_Insert
+    heap2.o(i.___Heap_Stats$realtime) refers to heap2.o(i._Heap2_StatsIterate) for _Heap2_StatsIterate
+    heap2.o(i.___Heap_Valid$realtime) refers to heap2.o(i._FDIterate) for _FDIterate
+    heap2.o(i.___Heap_Valid$realtime) refers to heap2.o(.conststring) for .conststring
+    heap2.o(i._free$realtime) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    heap2.o(i._free$realtime) refers to fdtree.o(i._FDTree_Delete) for _FDTree_Delete
+    heap2.o(i._free$realtime) refers to fdtree.o(i._FDTree_Insert) for _FDTree_Insert
+    heap2.o(i._malloc$realtime) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    heap2.o(i._malloc$realtime) refers to fdtree.o(i._FDTree_FindFirst) for _FDTree_FindFirst
+    heap2.o(i._malloc$realtime) refers to init_alloc.o(.text) for __Heap_Full
+    heap2.o(i._malloc$realtime) refers to fdtree.o(i._FDTree_RemoveNode) for _FDTree_RemoveNode
+    heap2.o(i._malloc$realtime) refers to fdtree.o(i._FDTree_Insert) for _FDTree_Insert
+    heap2.o(i._posix_memalign$realtime) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    heap2.o(i._posix_memalign$realtime) refers to fdtree.o(i._FDTree_FindFirst) for _FDTree_FindFirst
+    heap2.o(i._posix_memalign$realtime) refers to init_alloc.o(.text) for __Heap_Full
+    heap2.o(i._posix_memalign$realtime) refers to fdtree.o(i._FDTree_RemoveNode) for _FDTree_RemoveNode
+    heap2.o(i._posix_memalign$realtime) refers to fdtree.o(i._FDTree_Insert) for _FDTree_Insert
+    heap2.o(i._realloc$realtime) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    heap2.o(i._realloc$realtime) refers to fdtree.o(i._FDTree_Insert) for _FDTree_Insert
+    heap2.o(i._realloc$realtime) refers to h1_free.o(.text) for free
+    heap2.o(i._realloc$realtime) refers to h1_alloc.o(.text) for malloc
+    heap2.o(i._realloc$realtime) refers to fdtree.o(i._FDTree_Delete) for _FDTree_Delete
+    heap2.o(i._realloc$realtime) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
+    heap2mt.o(i._FDIterate) refers to heap2mt.o(.conststring) for .conststring
+    heap2mt.o(i.___Heap_Initialize$realtime$concurrent) refers to mutex_dummy.o(.text) for _mutex_initialize
+    heap2mt.o(i.___Heap_ProvideMemory$realtime$concurrent) refers to fdtree.o(i._FDTree_Delete) for _FDTree_Delete
+    heap2mt.o(i.___Heap_ProvideMemory$realtime$concurrent) refers to fdtree.o(i._FDTree_Insert) for _FDTree_Insert
+    heap2mt.o(i.___Heap_Stats$realtime$concurrent) refers to heap2mt.o(i._Heap2_StatsIterate) for _Heap2_StatsIterate
+    heap2mt.o(i.___Heap_Valid$realtime$concurrent) refers to heap2mt.o(i._FDIterate) for _FDIterate
+    heap2mt.o(i.___Heap_Valid$realtime$concurrent) refers to heap2mt.o(.conststring) for .conststring
+    heap2mt.o(i._free$realtime$concurrent) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    heap2mt.o(i._free$realtime$concurrent) refers to fdtree.o(i._FDTree_Delete) for _FDTree_Delete
+    heap2mt.o(i._free$realtime$concurrent) refers to fdtree.o(i._FDTree_Insert) for _FDTree_Insert
+    heap2mt.o(i._malloc$realtime$concurrent) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    heap2mt.o(i._malloc$realtime$concurrent) refers to fdtree.o(i._FDTree_FindFirst) for _FDTree_FindFirst
+    heap2mt.o(i._malloc$realtime$concurrent) refers to init_alloc.o(.text) for __Heap_Full
+    heap2mt.o(i._malloc$realtime$concurrent) refers to fdtree.o(i._FDTree_RemoveNode) for _FDTree_RemoveNode
+    heap2mt.o(i._malloc$realtime$concurrent) refers to fdtree.o(i._FDTree_Insert) for _FDTree_Insert
+    heap2mt.o(i._posix_memalign$realtime$concurrent) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    heap2mt.o(i._posix_memalign$realtime$concurrent) refers to fdtree.o(i._FDTree_FindFirst) for _FDTree_FindFirst
+    heap2mt.o(i._posix_memalign$realtime$concurrent) refers to init_alloc.o(.text) for __Heap_Full
+    heap2mt.o(i._posix_memalign$realtime$concurrent) refers to fdtree.o(i._FDTree_RemoveNode) for _FDTree_RemoveNode
+    heap2mt.o(i._posix_memalign$realtime$concurrent) refers to fdtree.o(i._FDTree_Insert) for _FDTree_Insert
+    heap2mt.o(i._realloc$realtime$concurrent) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    heap2mt.o(i._realloc$realtime$concurrent) refers to fdtree.o(i._FDTree_Insert) for _FDTree_Insert
+    heap2mt.o(i._realloc$realtime$concurrent) refers to h1_free.o(.text) for free
+    heap2mt.o(i._realloc$realtime$concurrent) refers to h1_alloc.o(.text) for malloc
+    heap2mt.o(i._realloc$realtime$concurrent) refers to fdtree.o(i._FDTree_Delete) for _FDTree_Delete
+    heap2mt.o(i._realloc$realtime$concurrent) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
+    flsbuf.o(.text) refers to stdio.o(.text) for _deferredlazyseek
+    flsbuf.o(.text) refers to sys_io.o(.text) for _sys_flen
+    flsbuf.o(.text) refers to h1_alloc.o(.text) for malloc
+    streamlock.o(.data) refers (Special) to initio.o(.text) for _initio
+    fopen.o(.text) refers to fclose.o(.text) for _fclose_internal
+    fopen.o(.text) refers to sys_io.o(.text) for _sys_open
+    fopen.o(.text) refers to fseek.o(.text) for _fseek
+    fopen.o(.text) refers to h1_alloc.o(.text) for malloc
+    fopen.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    fopen.o(.text) refers to stdio_streams.o(.bss) for __stdin
+    fclose.o(.text) refers to stdio.o(.text) for _fflush
+    fclose.o(.text) refers to sys_io.o(.text) for _sys_close
+    fclose.o(.text) refers to h1_free.o(.text) for free
+    fclose.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    fopen_locked.o(.text) refers to fclose.o(.text) for _fclose_internal
+    fopen_locked.o(.text) refers to sys_io.o(.text) for _sys_open
+    fopen_locked.o(.text) refers to fseek.o(.text) for _fseek
+    fopen_locked.o(.text) refers to h1_alloc.o(.text) for malloc
+    fopen_locked.o(.text) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    fopen_locked.o(.text) refers to streamlock.o(.data) for _stream_list_lock
+    fopen_locked.o(.text) refers to stdio_streams.o(.bss) for __stdin
     exit.o(.text) refers to rtexit.o(.ARM.Collect$$rtexit$$00000000) for __rt_exit
+    defsig_fpe_outer.o(.text) refers to defsig_fpe_inner.o(.text) for __rt_SIGFPE_inner
+    defsig_fpe_outer.o(.text) refers to defsig_exit.o(.text) for __sig_exit
+    defsig_fpe_formal.o(.text) refers to rt_raise.o(.text) for __rt_raise
+    defsig_rtred_outer.o(.text) refers to defsig_rtred_inner.o(.text) for __rt_SIGRTRED_inner
+    defsig_rtred_outer.o(.text) refers to defsig_exit.o(.text) for __sig_exit
+    defsig_rtred_formal.o(.text) refers to rt_raise.o(.text) for __rt_raise
     libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000002E) for __rt_lib_init_alloca_1
     libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000002C) for __rt_lib_init_argv_1
     libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000001B) for __rt_lib_init_atexit_1
@@ -807,6 +1401,19 @@ Section Cross References
     libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000001D) for __rt_lib_init_signal_1
     libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000025) for __rt_lib_init_stdio_1
     libinit.o(.ARM.Collect$$libinit$$00000000) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$0000000C) for __rt_lib_init_user_alloc_1
+    libinit2.o(.ARM.Collect$$libinit$$00000001) refers to fpinit.o(x$fpl$fpinit) for _fp_init
+    libinit2.o(.ARM.Collect$$libinit$$00000005) refers (Weak) to init_alloc.o(.text) for _init_alloc
+    libinit2.o(.ARM.Collect$$libinit$$00000010) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
+    libinit2.o(.ARM.Collect$$libinit$$00000012) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
+    libinit2.o(.ARM.Collect$$libinit$$00000014) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
+    libinit2.o(.ARM.Collect$$libinit$$00000016) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
+    libinit2.o(.ARM.Collect$$libinit$$00000018) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
+    libinit2.o(.ARM.Collect$$libinit$$00000024) refers (Weak) to initio.o(.text) for _initio
+    libinit2.o(.ARM.Collect$$libinit$$00000026) refers to argv_veneer.o(.emb_text) for __ARM_argv_veneer
+    libinit2.o(.ARM.Collect$$libinit$$00000027) refers to argv_veneer.o(.emb_text) for __ARM_argv_veneer
+    libshutdown2.o(.ARM.Collect$$libshutdown$$00000003) refers (Weak) to initio.o(.text) for _terminateio
+    libshutdown2.o(.ARM.Collect$$libshutdown$$0000000D) refers (Weak) to term_alloc.o(.text) for _terminate_alloc
+    flsbuf_fwide.o(.text) refers to flsbuf.o(.text) for __flsbuf
     libspace.o(.text) refers to libspace.o(.bss) for __libspace_start
     rtexit.o(.ARM.Collect$$rtexit$$00000000) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000004) for __rt_exit_exit
     rtexit.o(.ARM.Collect$$rtexit$$00000000) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000003) for __rt_exit_ls
@@ -815,25 +1422,93 @@ Section Cross References
     rtexit.o(.ARM.exidx) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000003) for __rt_exit_ls
     rtexit.o(.ARM.exidx) refers (Special) to rtexit2.o(.ARM.Collect$$rtexit$$00000002) for __rt_exit_prels_1
     rtexit.o(.ARM.exidx) refers to rtexit.o(.ARM.Collect$$rtexit$$00000000) for .ARM.Collect$$rtexit$$00000000
-    libinit2.o(.ARM.Collect$$libinit$$00000001) refers to fpinit.o(x$fpl$fpinit) for _fp_init
-    libinit2.o(.ARM.Collect$$libinit$$00000010) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
-    libinit2.o(.ARM.Collect$$libinit$$00000012) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
-    libinit2.o(.ARM.Collect$$libinit$$00000014) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
-    libinit2.o(.ARM.Collect$$libinit$$00000016) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
-    libinit2.o(.ARM.Collect$$libinit$$00000018) refers to libinit2.o(.ARM.Collect$$libinit$$0000000F) for .ARM.Collect$$libinit$$0000000F
-    libinit2.o(.ARM.Collect$$libinit$$00000026) refers to argv_veneer.o(.emb_text) for __ARM_argv_veneer
-    libinit2.o(.ARM.Collect$$libinit$$00000027) refers to argv_veneer.o(.emb_text) for __ARM_argv_veneer
+    rt_raise.o(.text) refers to __raise.o(.text) for __raise
+    rt_raise.o(.text) refers to sys_exit.o(.text) for _sys_exit
+    rt_heap_descriptor.o(.text) refers to rt_heap_descriptor.o(.bss) for __rt_heap_descriptor_data
+    rt_heap_descriptor_intlibspace.o(.text) refers to libspace.o(.bss) for __libspace_start
+    init_alloc.o(.text) refers (Special) to hguard.o(.text) for __heap$guard
+    init_alloc.o(.text) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000005) for __rt_lib_init_heap_2
+    init_alloc.o(.text) refers (Special) to maybetermalloc1.o(.emb_text) for _maybe_terminate_alloc
+    init_alloc.o(.text) refers to h1_extend.o(.text) for __Heap_ProvideMemory
+    init_alloc.o(.text) refers to defsig_rtmem_outer.o(.text) for __rt_SIGRTMEM
+    init_alloc.o(.text) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    init_alloc.o(.text) refers to h1_init.o(.text) for __Heap_Initialize
+    malloc.o(.text) refers (Special) to hguard.o(.text) for __heap$guard
+    malloc.o(.text) refers (Special) to init_alloc.o(.text) for _init_alloc
+    malloc.o(.text) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    malloc.o(.text) refers to heapstubs.o(.text) for __Heap_Alloc
+    h1_alloc.o(.text) refers (Special) to h1_init.o(.text) for __Heap_Initialize
+    h1_alloc.o(.text) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    h1_alloc.o(.text) refers to init_alloc.o(.text) for __Heap_Full
+    h1_alloc_mt.o(.text) refers (Special) to h1_init.o(.text) for __Heap_Initialize
+    h1_alloc_mt.o(.text) refers to init_alloc.o(.text) for __Heap_Full
+    h1_alloc_mt.o(.text) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    _printf_char_file_locked.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
+    _printf_char_file_locked.o(.text) refers to fputc.o(i._fputc$unlocked) for _fputc$unlocked
+    fseek.o(.text) refers to sys_io.o(.text) for _sys_istty
+    fseek.o(.text) refers to ftell.o(.text) for _ftell_internal
+    fseek.o(.text) refers to stdio.o(.text) for _seterr
+    stdio.o(.text) refers to sys_io.o(.text) for _sys_seek
+    fwritefast.o(.text) refers to stdio.o(.text) for _writebuf
+    fwritefast.o(.text) refers to flsbuf.o(.text) for __flsbuf_byte
+    fwritefast.o(.text) refers to rt_memcpy_v6.o(.text) for __aeabi_memcpy
+    fwritefast_locked.o(.text) refers to stdio.o(.text) for _writebuf
+    fwritefast_locked.o(.text) refers to flsbuf.o(.text) for __flsbuf_byte
+    fwritefast_locked.o(.text) refers to rt_memcpy_v6.o(.text) for __aeabi_memcpy
+    defsig_exit.o(.text) refers to sys_exit.o(.text) for _sys_exit
+    defsig_fpe_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig_rtred_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    assert_stdio.o(.text) refers to fputs.o(.text) for fputs
+    assert_stdio.o(.text) refers to fflush.o(.text) for fflush
+    assert_stdio.o(.text) refers to stdio_streams.o(.bss) for __stderr
+    argv_veneer.o(.emb_text) refers to no_argv.o(.text) for __ARM_get_argv
+    sys_exit.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_exit.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
     rtexit2.o(.ARM.Collect$$rtexit$$00000003) refers to libshutdown.o(.ARM.Collect$$libshutdown$$00000000) for __rt_lib_shutdown
     rtexit2.o(.ARM.Collect$$rtexit$$00000004) refers to sys_exit.o(.text) for _sys_exit
     rtexit2.o(.ARM.exidx) refers to rtexit2.o(.ARM.Collect$$rtexit$$00000001) for .ARM.Collect$$rtexit$$00000001
     rtexit2.o(.ARM.exidx) refers to rtexit2.o(.ARM.Collect$$rtexit$$00000003) for .ARM.Collect$$rtexit$$00000003
     rtexit2.o(.ARM.exidx) refers to rtexit2.o(.ARM.Collect$$rtexit$$00000004) for .ARM.Collect$$rtexit$$00000004
-    argv_veneer.o(.emb_text) refers to no_argv.o(.text) for __ARM_get_argv
-    sys_exit.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
-    sys_exit.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    maybetermalloc2.o(.emb_text) refers (Special) to term_alloc.o(.text) for _terminate_alloc
+    h1_extend.o(.text) refers to h1_free.o(.text) for free
+    h1_init_mt.o(.text) refers to mutex_dummy.o(.text) for _mutex_initialize
+    h1_extend_mt.o(.text) refers to h1_free_mt.o(.text) for _free_internal
+    fflush.o(.text) refers to stdio.o(.text) for _fflush
+    fflush.o(.text) refers to fseek.o(.text) for _fseek
+    fflush.o(.text) refers to stdio_streams.o(.bss) for __stdin
+    fputs.o(.text) refers to fputc.o(i.fputc) for fputc
+    ftell.o(.text) refers to rt_errno_addr_intlibspace.o(.text) for __aeabi_errno_addr
+    fflush_locked.o(.text) refers to stdio.o(.text) for _fflush
+    fflush_locked.o(.text) refers to fseek.o(.text) for _fseek
+    fflush_locked.o(.text) refers to fflush.o(.text) for _do_fflush
+    fflush_locked.o(.text) refers to streamlock.o(.data) for _stream_list_lock
+    fflush_locked.o(.text) refers to stdio_streams.o(.bss) for __stdin
+    __raise.o(.text) refers to defsig.o(CL$$defsig) for __default_signal_handler
+    defsig_general.o(.text) refers to sys_wrch.o(.text) for _ttywrch
+    defsig_rtmem_outer.o(.text) refers to defsig_rtmem_inner.o(.text) for __rt_SIGRTMEM_inner
+    defsig_rtmem_outer.o(.text) refers to defsig_exit.o(.text) for __sig_exit
+    defsig_rtmem_formal.o(.text) refers to rt_raise.o(.text) for __rt_raise
+    heapauxa.o(.text) refers to heapauxa.o(.data) for .data
+    _get_argv.o(.text) refers (Special) to hrguard.o(.text) for __heap_region$guard
+    _get_argv.o(.text) refers to h1_alloc.o(.text) for malloc
+    _get_argv.o(.text) refers to defsig_rtmem_outer.o(.text) for __rt_SIGRTMEM
+    _get_argv.o(.text) refers to sys_command.o(.text) for _sys_command_string
     _get_argv_nomalloc.o(.text) refers (Special) to hrguard.o(.text) for __heap_region$guard
     _get_argv_nomalloc.o(.text) refers to defsig_rtmem_outer.o(.text) for __rt_SIGRTMEM
     _get_argv_nomalloc.o(.text) refers to sys_command.o(.text) for _sys_command_string
+    sys_wrch.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_wrch.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    sys_command.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
+    sys_command.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
+    rt_errno_addr.o(.text) refers to rt_errno_addr.o(.bss) for __aeabi_errno_addr_data
+    rt_errno_addr_intlibspace.o(.text) refers to libspace.o(.bss) for __libspace_start
+    term_alloc.o(.text) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$0000000E) for __rt_lib_shutdown_heap_2
+    term_alloc.o(.text) refers to rt_heap_descriptor_intlibspace.o(.text) for __rt_heap_descriptor
+    term_alloc.o(.text) refers to h1_final.o(.text) for __Heap_Finalize
+    defsig_rtmem_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
+    defsig.o(CL$$defsig) refers to defsig_fpe_inner.o(.text) for __rt_SIGFPE_inner
+    defsig.o(CL$$defsig) refers to defsig_rtred_inner.o(.text) for __rt_SIGRTRED_inner
+    defsig.o(CL$$defsig) refers to defsig_rtmem_inner.o(.text) for __rt_SIGRTMEM_inner
     libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000002) for __rt_lib_shutdown_cpp_1
     libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000007) for __rt_lib_shutdown_fp_trap_1
     libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F) for __rt_lib_shutdown_heap_1
@@ -841,23 +1516,7 @@ Section Cross References
     libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A) for __rt_lib_shutdown_signal_1
     libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$00000004) for __rt_lib_shutdown_stdio_1
     libshutdown.o(.ARM.Collect$$libshutdown$$00000000) refers (Special) to libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C) for __rt_lib_shutdown_user_alloc_1
-    sys_command.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
-    sys_command.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
-    defsig_rtmem_outer.o(.text) refers to defsig_rtmem_inner.o(.text) for __rt_SIGRTMEM_inner
-    defsig_rtmem_outer.o(.text) refers to defsig_exit.o(.text) for __sig_exit
-    defsig_rtmem_formal.o(.text) refers to rt_raise.o(.text) for __rt_raise
-    rt_raise.o(.text) refers to __raise.o(.text) for __raise
-    rt_raise.o(.text) refers to sys_exit.o(.text) for _sys_exit
-    defsig_exit.o(.text) refers to sys_exit.o(.text) for _sys_exit
-    defsig_rtmem_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
-    __raise.o(.text) refers to defsig.o(CL$$defsig) for __default_signal_handler
-    defsig_general.o(.text) refers to sys_wrch.o(.text) for _ttywrch
-    sys_wrch.o(.text) refers (Special) to use_no_semi.o(.text) for __I$use$semihosting
-    sys_wrch.o(.text) refers (Special) to indicate_semi.o(.text) for __semihosting_library_function
-    defsig.o(CL$$defsig) refers to defsig_rtmem_inner.o(.text) for __rt_SIGRTMEM_inner
     defsig_abrt_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
-    defsig_fpe_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
-    defsig_rtred_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
     defsig_stak_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
     defsig_pvfn_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
     defsig_cppl_inner.o(.text) refers to defsig_general.o(.text) for __default_signal_display
@@ -873,6 +1532,17 @@ Removing Unused input sections from the image.
     Removing main.o(.revsh_text), (4 bytes).
     Removing main.o(.rrx_text), (6 bytes).
     Removing main.o(i.assert_param), (4 bytes).
+    Removing main.o(i.cdi_sector_data_ready), (2 bytes).
+    Removing main.o(i.cdi_update_drive_bit), (2 bytes).
+    Removing ff-impl.o(.rev16_text), (4 bytes).
+    Removing ff-impl.o(.revsh_text), (4 bytes).
+    Removing ff-impl.o(.rrx_text), (6 bytes).
+    Removing ff-impl.o(i.disk_initialize), (66 bytes).
+    Removing ff-impl.o(i.disk_ioctl), (8 bytes).
+    Removing ff-impl.o(i.disk_read), (8 bytes).
+    Removing ff-impl.o(i.disk_status), (6 bytes).
+    Removing ff-impl.o(i.disk_write), (8 bytes).
+    Removing ff-impl.o(i.get_fattime), (4 bytes).
     Removing system_stm32f4xx_1.o(.rev16_text), (4 bytes).
     Removing system_stm32f4xx_1.o(.revsh_text), (4 bytes).
     Removing system_stm32f4xx_1.o(.rrx_text), (6 bytes).
@@ -1709,8 +2379,130 @@ Removing Unused input sections from the image.
     Removing stm32f4xx_wwdg.o(i.WWDG_SetCounter), (40 bytes).
     Removing stm32f4xx_wwdg.o(i.WWDG_SetPrescaler), (56 bytes).
     Removing stm32f4xx_wwdg.o(i.WWDG_SetWindowValue), (56 bytes).
+    Removing cd-img.o(.rev16_text), (4 bytes).
+    Removing cd-img.o(.revsh_text), (4 bytes).
+    Removing cd-img.o(.rrx_text), (6 bytes).
+    Removing cd-img.o(i.cd_add_data_track), (264 bytes).
+    Removing cd-img.o(i.cd_add_toc), (52 bytes).
+    Removing cd-img.o(i.cd_get_sector_count), (12 bytes).
+    Removing cd-img.o(i.cd_get_toc), (148 bytes).
+    Removing cd-img.o(i.cd_get_toc_count), (12 bytes).
+    Removing cd-img.o(i.cd_get_track_count), (12 bytes).
+    Removing cd-img.o(i.cd_get_track_end_sector), (44 bytes).
+    Removing cd-img.o(i.cd_read_sector), (208 bytes).
+    Removing cd-img.o(i.cd_reset), (20 bytes).
+    Removing cd-img.o(i.cd_sort_toc), (112 bytes).
+    Removing cd-img.o(.bss), (1470 bytes).
+    Removing cd-img.o(.data), (12 bytes).
+    Removing cdstate.o(.rev16_text), (4 bytes).
+    Removing cdstate.o(.revsh_text), (4 bytes).
+    Removing cdstate.o(.rrx_text), (6 bytes).
+    Removing cdstate.o(i.bcd2num), (20 bytes).
+    Removing cdstate.o(i.ccd_close_lid), (44 bytes).
+    Removing cdstate.o(i.ccd_insert_disk), (24 bytes).
+    Removing cdstate.o(i.cd_command_exec), (284 bytes).
+    Removing cdstate.o(i.cd_drive_exec), (40 bytes).
+    Removing cdstate.o(i.cd_drive_get_serial_bit), (40 bytes).
+    Removing cdstate.o(i.cd_drive_set_serial_bit), (112 bytes).
+    Removing cdstate.o(i.cdd_open_lid), (52 bytes).
+    Removing cdstate.o(i.cdd_reset), (48 bytes).
+    Removing cdstate.o(i.continue_command), (416 bytes).
+    Removing cdstate.o(i.do_cd_logging), (200 bytes).
+    Removing cdstate.o(i.do_command), (940 bytes).
+    Removing cdstate.o(i.do_dataread), (288 bytes).
+    Removing cdstate.o(i.do_seek), (14 bytes).
+    Removing cdstate.o(i.do_seek_common), (52 bytes).
+    Removing cdstate.o(i.do_toc), (104 bytes).
+    Removing cdstate.o(i.fad2msf_bcd), (82 bytes).
+    Removing cdstate.o(i.get_command_string), (172 bytes).
+    Removing cdstate.o(i.get_fad_from_command), (18 bytes).
+    Removing cdstate.o(i.get_status_string), (296 bytes).
+    Removing cdstate.o(i.get_track_fad), (36 bytes).
+    Removing cdstate.o(i.get_track_start_fad), (72 bytes).
+    Removing cdstate.o(i.make_ring_data), (100 bytes).
+    Removing cdstate.o(i.make_ring_status), (100 bytes).
+    Removing cdstate.o(i.make_status_data), (120 bytes).
+    Removing cdstate.o(i.msf_bcd2fad), (56 bytes).
+    Removing cdstate.o(i.num2bcd), (26 bytes).
+    Removing cdstate.o(i.ror), (12 bytes).
+    Removing cdstate.o(i.set_checksum), (30 bytes).
+    Removing cdstate.o(i.state_set_msf_info), (66 bytes).
+    Removing cdstate.o(i.toc_10_get_track), (84 bytes).
+    Removing cdstate.o(i.update_seek_status), (40 bytes).
+    Removing cdstate.o(i.update_status_info), (184 bytes).
+    Removing cdstate.o(.bss), (1801 bytes).
+    Removing cdstate.o(.data), (3 bytes).
+    Removing fs.o(.rev16_text), (4 bytes).
+    Removing fs.o(.revsh_text), (4 bytes).
+    Removing fs.o(.rrx_text), (6 bytes).
+    Removing fs.o(i.fs_close), (100 bytes).
+    Removing fs.o(i.fs_open), (104 bytes).
+    Removing fs.o(i.fs_read), (104 bytes).
+    Removing fs.o(i.fs_read_string), (116 bytes).
+    Removing fs.o(i.fs_seek), (104 bytes).
+    Removing fs.o(i.fs_size), (100 bytes).
+    Removing fs.o(i.fs_state), (12 bytes).
+    Removing fs.o(.data), (1 bytes).
+    Removing lib.o(.rev16_text), (4 bytes).
+    Removing lib.o(.revsh_text), (4 bytes).
+    Removing lib.o(.rrx_text), (6 bytes).
+    Removing lib.o(i.x_memcpy), (22 bytes).
+    Removing lib.o(i.x_strcpy), (34 bytes).
+    Removing mds.o(.rev16_text), (4 bytes).
+    Removing mds.o(.revsh_text), (4 bytes).
+    Removing mds.o(.rrx_text), (6 bytes).
+    Removing mds.o(i.DetectDataOffsetInSector), (148 bytes).
+    Removing mds.o(i.MDSSession), (1064 bytes).
+    Removing mds.o(i.add_toc), (104 bytes).
+    Removing mds.o(i.get_mdf_filename), (120 bytes).
+    Removing mds.o(i.mds_close), (120 bytes).
+    Removing mds.o(i.mds_open), (508 bytes).
+    Removing mds.o(.bss), (128 bytes).
+    Removing mds.o(.constdata), (28 bytes).
+    Removing mds.o(.data), (1 bytes).
+    Removing ff.o(i.check_fs), (144 bytes).
+    Removing ff.o(i.chk_chr), (20 bytes).
+    Removing ff.o(i.chk_mounted), (916 bytes).
+    Removing ff.o(i.clust2sect), (26 bytes).
+    Removing ff.o(i.create_chain), (202 bytes).
+    Removing ff.o(i.create_name), (280 bytes).
+    Removing ff.o(i.dir_find), (92 bytes).
+    Removing ff.o(i.dir_next), (280 bytes).
+    Removing ff.o(i.dir_read), (86 bytes).
+    Removing ff.o(i.dir_register), (110 bytes).
+    Removing ff.o(i.dir_remove), (44 bytes).
+    Removing ff.o(i.dir_sdi), (156 bytes).
+    Removing ff.o(i.f_chmod), (84 bytes).
+    Removing ff.o(i.f_close), (22 bytes).
+    Removing ff.o(i.f_getfree), (276 bytes).
+    Removing ff.o(i.f_lseek), (432 bytes).
+    Removing ff.o(i.f_mkdir), (384 bytes).
+    Removing ff.o(i.f_mount), (44 bytes).
+    Removing ff.o(i.f_open), (364 bytes).
+    Removing ff.o(i.f_opendir), (110 bytes).
+    Removing ff.o(i.f_read), (462 bytes).
+    Removing ff.o(i.f_readdir), (88 bytes).
+    Removing ff.o(i.f_rename), (290 bytes).
+    Removing ff.o(i.f_stat), (58 bytes).
+    Removing ff.o(i.f_sync), (184 bytes).
+    Removing ff.o(i.f_truncate), (156 bytes).
+    Removing ff.o(i.f_unlink), (178 bytes).
+    Removing ff.o(i.f_utime), (86 bytes).
+    Removing ff.o(i.f_write), (526 bytes).
+    Removing ff.o(i.follow_path), (158 bytes).
+    Removing ff.o(i.get_fat), (228 bytes).
+    Removing ff.o(i.get_fileinfo), (152 bytes).
+    Removing ff.o(i.mem_cmp), (38 bytes).
+    Removing ff.o(i.mem_cpy), (26 bytes).
+    Removing ff.o(i.mem_set), (20 bytes).
+    Removing ff.o(i.move_window), (114 bytes).
+    Removing ff.o(i.put_fat), (310 bytes).
+    Removing ff.o(i.remove_chain), (104 bytes).
+    Removing ff.o(i.sync), (202 bytes).
+    Removing ff.o(i.validate), (42 bytes).
+    Removing ff.o(.data), (6 bytes).
 
-840 unused section(s) (total 85220 bytes) removed from the image.
+973 unused section(s) (total 104168 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1721,52 +2513,161 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section      392  startup_stm32f40xx.o(RESET)
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_ldiv0.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_heap_descriptor.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_ldiv0_sigfpe.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr_intlibspace.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_heap_descriptor_intlibspace.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_div0.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  mutex_dummy.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_io.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  _get_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/assert.c                         0x00000000   Number         0  assert_stdio.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_init_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_alloc_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_extend.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_final.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_final_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_free_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_init.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_free.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_alloc.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_extend_mt.o ABSOLUTE
+    ../clib/heap2.c                          0x00000000   Number         0  heap2.o ABSOLUTE
+    ../clib/heap2.c                          0x00000000   Number         0  heap2mt.o ABSOLUTE
+    ../clib/heap2.c                          0x00000000   Number         0  fdtree.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  free.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  heapstubs.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  malloc.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  term_alloc.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  init_alloc.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  hguard.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  maybetermalloc1.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  maybetermalloc1.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  maybetermalloc2.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  maybetermalloc2.o ABSOLUTE
+    ../clib/heapaux.c                        0x00000000   Number         0  heapauxa.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/longlong.s                       0x00000000   Number         0  lludivv7m.o ABSOLUTE
+    ../clib/longlong.s                       0x00000000   Number         0  lludiv10.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_v6.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr_w.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_w.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr.o ABSOLUTE
+    ../clib/misc.s                           0x00000000   Number         0  printf_stubs.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_longlong_dec.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ll.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ll.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ptr.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ptr.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_ll_ptr.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_hex_int_ll_ptr.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_char_file.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_intcommon.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_char_common.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _sputc.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_char.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_char_file_locked.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __2sprintf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __2printf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  noretval__2printf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  noretval__2sprintf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_pad.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_str.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_dec.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_s.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_lld.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_ll.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_d.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_x.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_outer.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  initio_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  ferror_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fputc_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fputc.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  ferror.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  setvbuf.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fwritefast.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  streamlock.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  flsbuf.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  stdio_streams.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fopen.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fclose.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  setvbuf_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fopen_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fseek.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  stdio.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fflush_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fputs_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  ftell.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fputs.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fflush.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  initio.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fwritefast_locked.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
+    ../clib/string.c                         0x00000000   Number         0  memcmp.o ABSOLUTE
+    ../clib/string.c                         0x00000000   Number         0  strlen.o ABSOLUTE
+    ../clib/wchar.c                          0x00000000   Number         0  flsbuf_fwide.o ABSOLUTE
     ../fplib/fpinit.s                        0x00000000   Number         0  fpinit.o ABSOLUTE
     ..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f40xx.s 0x00000000   Number         0  startup_stm32f40xx.o ABSOLUTE
     ..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c 0x00000000   Number         0  system_stm32f4xx_1.o ABSOLUTE
@@ -1812,6 +2713,7 @@ Image Symbol Table
     ..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.c 0x00000000   Number         0  stm32f4xx_tim.o ABSOLUTE
     ..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_usart.c 0x00000000   Number         0  stm32f4xx_usart.o ABSOLUTE
     ..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_wwdg.c 0x00000000   Number         0  stm32f4xx_wwdg.o ABSOLUTE
+    ..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Utilities\Third_Party\fat_fs\src\ff.c 0x00000000   Number         0  ff.o ABSOLUTE
     ..\\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\\Libraries\\CMSIS\\Device\\ST\\STM32F4xx\\Source\\Templates\\system_stm32f4xx.c 0x00000000   Number         0  system_stm32f4xx_1.o ABSOLUTE
     ..\\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\\Libraries\\STM32F4xx_StdPeriph_Driver\\src\\misc.c 0x00000000   Number         0  misc.o ABSOLUTE
     ..\\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\\Libraries\\STM32F4xx_StdPeriph_Driver\\src\\stm32f4xx_adc.c 0x00000000   Number         0  stm32f4xx_adc.o ABSOLUTE
@@ -1855,7 +2757,19 @@ Image Symbol Table
     ..\\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\\Libraries\\STM32F4xx_StdPeriph_Driver\\src\\stm32f4xx_tim.c 0x00000000   Number         0  stm32f4xx_tim.o ABSOLUTE
     ..\\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\\Libraries\\STM32F4xx_StdPeriph_Driver\\src\\stm32f4xx_usart.c 0x00000000   Number         0  stm32f4xx_usart.o ABSOLUTE
     ..\\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\\Libraries\\STM32F4xx_StdPeriph_Driver\\src\\stm32f4xx_wwdg.c 0x00000000   Number         0  stm32f4xx_wwdg.o ABSOLUTE
+    ..\\ssnocd\\cd-img.c                     0x00000000   Number         0  cd-img.o ABSOLUTE
+    ..\\ssnocd\\cdstate.c                    0x00000000   Number         0  cdstate.o ABSOLUTE
+    ..\\ssnocd\\fs.c                         0x00000000   Number         0  fs.o ABSOLUTE
+    ..\\ssnocd\\lib.c                        0x00000000   Number         0  lib.o ABSOLUTE
+    ..\\ssnocd\\mds.c                        0x00000000   Number         0  mds.o ABSOLUTE
+    ..\ssnocd\cd-img.c                       0x00000000   Number         0  cd-img.o ABSOLUTE
+    ..\ssnocd\cdstate.c                      0x00000000   Number         0  cdstate.o ABSOLUTE
+    ..\ssnocd\fs.c                           0x00000000   Number         0  fs.o ABSOLUTE
+    ..\ssnocd\lib.c                          0x00000000   Number         0  lib.o ABSOLUTE
+    ..\ssnocd\mds.c                          0x00000000   Number         0  mds.o ABSOLUTE
     dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    ff-impl.c                                0x00000000   Number         0  ff-impl.o ABSOLUTE
+    ff-impl.c                                0x00000000   Number         0  ff-impl.o ABSOLUTE
     main.c                                   0x00000000   Number         0  main.o ABSOLUTE
     main.c                                   0x00000000   Number         0  main.o ABSOLUTE
     !!!main                                  0x00000188   Section        8  __main.o(!!!main)
@@ -1908,9 +2822,9 @@ Image Symbol Table
     .text                                    0x00000252   Section       74  sys_stackheap_outer.o(.text)
     .text                                    0x0000029c   Section        0  exit.o(.text)
     .text                                    0x000002b0   Section        8  libspace.o(.text)
-    .text                                    0x000002b8   Section        0  sys_exit.o(.text)
-    .text                                    0x000002c4   Section        2  use_no_semi.o(.text)
-    .text                                    0x000002c6   Section        0  indicate_semi.o(.text)
+    .text                                    0x000002b8   Section        2  use_no_semi.o(.text)
+    .text                                    0x000002ba   Section        0  indicate_semi.o(.text)
+    .text                                    0x000002bc   Section        0  sys_exit.o(.text)
     i.SetSysClock                            0x000002c8   Section        0  system_stm32f4xx_1.o(i.SetSysClock)
     SetSysClock                              0x000002c9   Thumb Code   220  system_stm32f4xx_1.o(i.SetSysClock)
     i.SystemInit                             0x000003b4   Section        0  system_stm32f4xx_1.o(i.SystemInit)
@@ -1928,9 +2842,13 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPi3$EXTD16$VFPS$VFMA$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$ROPI$EBA8$UX$STANDARDLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPi3$EXTD16$VFPS$VFMA$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OTIME$ROPI$EBA8$UX$STANDARDLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
     __ARM_use_no_argv                        0x00000000   Number         0  main.o ABSOLUTE
     __Vectors                                0x00000000   Data           4  startup_stm32f40xx.o(RESET)
+    _printf_flags                            0x00000000   Number         0  printf_stubs.o ABSOLUTE
+    _printf_return_value                     0x00000000   Number         0  printf_stubs.o ABSOLUTE
+    _printf_sizespec                         0x00000000   Number         0  printf_stubs.o ABSOLUTE
+    _printf_widthprec                        0x00000000   Number         0  printf_stubs.o ABSOLUTE
     __ARM_exceptions_init                     - Undefined Weak Reference
     __alloca_initialize                       - Undefined Weak Reference
     __arm_preinit_                            - Undefined Weak Reference
@@ -1938,6 +2856,7 @@ Image Symbol Table
     __cxa_finalize                            - Undefined Weak Reference
     __rt_locale                               - Undefined Weak Reference
     __sigvec_lookup                           - Undefined Weak Reference
+    __user_heap_extent                        - Undefined Weak Reference
     _atexit_init                              - Undefined Weak Reference
     _call_atexit_fns                          - Undefined Weak Reference
     _clock_init                               - Undefined Weak Reference
@@ -1950,15 +2869,15 @@ Image Symbol Table
     _get_lc_time                              - Undefined Weak Reference
     _getenv_init                              - Undefined Weak Reference
     _handle_redirection                       - Undefined Weak Reference
-    _init_alloc                               - Undefined Weak Reference
-    _init_user_alloc                          - Undefined Weak Reference
-    _initio                                   - Undefined Weak Reference
+    _mutex_acquire                            - Undefined Weak Reference
+    _mutex_free                               - Undefined Weak Reference
+    _mutex_release                            - Undefined Weak Reference
+    _printf_mbtowc                            - Undefined Weak Reference
+    _printf_truncate_signed                   - Undefined Weak Reference
+    _printf_truncate_unsigned                 - Undefined Weak Reference
     _rand_init                                - Undefined Weak Reference
     _signal_finish                            - Undefined Weak Reference
     _signal_init                              - Undefined Weak Reference
-    _terminate_alloc                          - Undefined Weak Reference
-    _terminate_user_alloc                     - Undefined Weak Reference
-    _terminateio                              - Undefined Weak Reference
     __Vectors_End                            0x00000188   Data           0  startup_stm32f40xx.o(RESET)
     __Vectors_Size                           0x00000188   Number         0  startup_stm32f40xx.o ABSOLUTE
     __main                                   0x00000189   Thumb Code     8  __main.o(!!!main)
@@ -2102,17 +3021,17 @@ Image Symbol Table
     WWDG_IRQHandler                          0x00000227   Thumb Code     0  startup_stm32f40xx.o(.text)
     __user_initial_stackheap                 0x00000229   Thumb Code     0  startup_stm32f40xx.o(.text)
     __use_two_region_memory                  0x0000024d   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_escrow$2region                 0x0000024f   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_expand$2region                 0x00000251   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow                         0x0000024f   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand                         0x00000251   Thumb Code     2  heapauxi.o(.text)
     __user_setup_stackheap                   0x00000253   Thumb Code    74  sys_stackheap_outer.o(.text)
     exit                                     0x0000029d   Thumb Code    18  exit.o(.text)
     __user_libspace                          0x000002b1   Thumb Code     8  libspace.o(.text)
     __user_perproc_libspace                  0x000002b1   Thumb Code     0  libspace.o(.text)
     __user_perthread_libspace                0x000002b1   Thumb Code     0  libspace.o(.text)
-    _sys_exit                                0x000002b9   Thumb Code     8  sys_exit.o(.text)
-    __I$use$semihosting                      0x000002c5   Thumb Code     0  use_no_semi.o(.text)
-    __use_no_semihosting_swi                 0x000002c5   Thumb Code     2  use_no_semi.o(.text)
-    __semihosting_library_function           0x000002c7   Thumb Code     0  indicate_semi.o(.text)
+    __I$use$semihosting                      0x000002b9   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x000002b9   Thumb Code     2  use_no_semi.o(.text)
+    __semihosting_library_function           0x000002bb   Thumb Code     0  indicate_semi.o(.text)
+    _sys_exit                                0x000002bd   Thumb Code     8  sys_exit.o(.text)
     SystemInit                               0x000003b5   Thumb Code    88  system_stm32f4xx_1.o(i.SystemInit)
     main                                     0x0000041d   Thumb Code    10  main.o(i.main)
     _fp_init                                 0x00000427   Thumb Code    10  fpinit.o(x$fpl$fpinit)
@@ -2137,76 +3056,76 @@ Memory Map of the image
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000188   Data   RO           59    RESET               startup_stm32f40xx.o
-    0x00000188   0x00000008   Code   RO         5192  * !!!main             c_w.l(__main.o)
-    0x00000190   0x00000034   Code   RO         5349    !!!scatter          c_w.l(__scatter.o)
-    0x000001c4   0x0000001c   Code   RO         5351    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x000001e0   0x00000002   Code   RO         5219    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x000001e2   0x00000004   Code   RO         5225    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5228    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5231    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5233    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5235    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5238    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5240    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5242    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5244    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5246    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5248    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5250    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5252    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5254    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5256    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5258    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5262    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5264    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5266    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x000001e6   0x00000000   Code   RO         5268    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x000001e6   0x00000002   Code   RO         5269    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x000001e8   0x00000002   Code   RO         5289    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x000001ea   0x00000000   Code   RO         5302    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x000001ea   0x00000000   Code   RO         5304    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x000001ea   0x00000000   Code   RO         5307    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x000001ea   0x00000000   Code   RO         5310    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x000001ea   0x00000000   Code   RO         5312    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x000001ea   0x00000000   Code   RO         5315    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x000001ea   0x00000002   Code   RO         5316    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x000001ec   0x00000000   Code   RO         5194    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x000001ec   0x00000000   Code   RO         5196    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x000001ec   0x00000006   Code   RO         5208    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x000001f2   0x00000000   Code   RO         5198    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x000001f2   0x00000004   Code   RO         5199    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x000001f6   0x00000000   Code   RO         5201    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x000001f6   0x00000008   Code   RO         5202    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x000001fe   0x00000002   Code   RO         5223    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x00000200   0x00000000   Code   RO         5271    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x00000200   0x00000004   Code   RO         5272    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x00000204   0x00000006   Code   RO         5273    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x00000000   0x00000188   Data   RO           86    RESET               startup_stm32f40xx.o
+    0x00000188   0x00000008   Code   RO         6036  * !!!main             c_w.l(__main.o)
+    0x00000190   0x00000034   Code   RO         6398    !!!scatter          c_w.l(__scatter.o)
+    0x000001c4   0x0000001c   Code   RO         6400    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x000001e0   0x00000002   Code   RO         6191    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x000001e2   0x00000004   Code   RO         6192    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6195    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6198    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6200    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6202    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6205    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6207    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6209    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6211    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6213    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6215    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6217    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6219    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6221    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6223    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6225    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6229    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6231    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6233    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x000001e6   0x00000000   Code   RO         6235    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x000001e6   0x00000002   Code   RO         6236    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x000001e8   0x00000002   Code   RO         6379    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x000001ea   0x00000000   Code   RO         6238    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x000001ea   0x00000000   Code   RO         6240    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x000001ea   0x00000000   Code   RO         6243    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x000001ea   0x00000000   Code   RO         6246    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x000001ea   0x00000000   Code   RO         6248    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x000001ea   0x00000000   Code   RO         6251    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x000001ea   0x00000002   Code   RO         6252    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x000001ec   0x00000000   Code   RO         6038    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x000001ec   0x00000000   Code   RO         6066    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x000001ec   0x00000006   Code   RO         6078    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x000001f2   0x00000000   Code   RO         6068    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x000001f2   0x00000004   Code   RO         6069    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x000001f6   0x00000000   Code   RO         6071    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x000001f6   0x00000008   Code   RO         6072    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x000001fe   0x00000002   Code   RO         6261    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x00000200   0x00000000   Code   RO         6317    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x00000200   0x00000004   Code   RO         6318    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x00000204   0x00000006   Code   RO         6319    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x0000020a   0x00000002   PAD
-    0x0000020c   0x00000040   Code   RO           60    .text               startup_stm32f40xx.o
-    0x0000024c   0x00000006   Code   RO         5190    .text               c_w.l(heapauxi.o)
-    0x00000252   0x0000004a   Code   RO         5210    .text               c_w.l(sys_stackheap_outer.o)
-    0x0000029c   0x00000012   Code   RO         5212    .text               c_w.l(exit.o)
+    0x0000020c   0x00000040   Code   RO           87    .text               startup_stm32f40xx.o
+    0x0000024c   0x00000006   Code   RO         6034    .text               c_w.l(heapauxi.o)
+    0x00000252   0x0000004a   Code   RO         6105    .text               c_w.l(sys_stackheap_outer.o)
+    0x0000029c   0x00000012   Code   RO         6176    .text               c_w.l(exit.o)
     0x000002ae   0x00000002   PAD
-    0x000002b0   0x00000008   Code   RO         5220    .text               c_w.l(libspace.o)
-    0x000002b8   0x0000000c   Code   RO         5281    .text               c_w.l(sys_exit.o)
-    0x000002c4   0x00000002   Code   RO         5292    .text               c_w.l(use_no_semi.o)
-    0x000002c6   0x00000000   Code   RO         5294    .text               c_w.l(indicate_semi.o)
-    0x000002c6   0x00000002   PAD
-    0x000002c8   0x000000ec   Code   RO           67    i.SetSysClock       system_stm32f4xx_1.o
-    0x000003b4   0x00000068   Code   RO           69    i.SystemInit        system_stm32f4xx_1.o
-    0x0000041c   0x0000000a   Code   RO            5    i.main              main.o
-    0x00000426   0x0000000a   Code   RO         5279    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x00000430   0x00000010   Data   RO         5347    Region$$Table       anon$$obj.o
+    0x000002b0   0x00000008   Code   RO         6255    .text               c_w.l(libspace.o)
+    0x000002b8   0x00000002   Code   RO         6258    .text               c_w.l(use_no_semi.o)
+    0x000002ba   0x00000000   Code   RO         6260    .text               c_w.l(indicate_semi.o)
+    0x000002ba   0x00000002   PAD
+    0x000002bc   0x0000000c   Code   RO         6314    .text               c_w.l(sys_exit.o)
+    0x000002c8   0x000000ec   Code   RO          160    i.SetSysClock       system_stm32f4xx_1.o
+    0x000003b4   0x00000068   Code   RO          162    i.SystemInit        system_stm32f4xx_1.o
+    0x0000041c   0x0000000a   Code   RO            7    i.main              main.o
+    0x00000426   0x0000000a   Code   RO         6312    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x00000430   0x00000010   Data   RO         6396    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000660, Max: 0x00020000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00000060   Zero   RW         5221    .bss                c_w.l(libspace.o)
-    0x20000060   0x00000200   Zero   RW           58    HEAP                startup_stm32f40xx.o
-    0x20000260   0x00000400   Zero   RW           57    STACK               startup_stm32f40xx.o
+    0x20000000   0x00000060   Zero   RW         6256    .bss                c_w.l(libspace.o)
+    0x20000060   0x00000200   Zero   RW           85    HEAP                startup_stm32f40xx.o
+    0x20000260   0x00000400   Zero   RW           84    STACK               startup_stm32f40xx.o
 
 
 ==============================================================================

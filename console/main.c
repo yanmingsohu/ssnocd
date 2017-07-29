@@ -209,7 +209,7 @@ void console() {
 int main() {
   assert(1 == sizeof(UCHAR));
   assert(2 == sizeof(USHORT));
-  assert(4 == sizeof(unsigned));
+  assert(4 == sizeof(UINT));
   assert(8 == sizeof(ULONGLONG));
   assert(sizeof(MDSTrackBlock) == 80);
   assert(sizeof(MDSSessionBlock) == 24);
