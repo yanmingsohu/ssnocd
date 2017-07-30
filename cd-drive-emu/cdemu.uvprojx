@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Include;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include</IncludePath>
+              <IncludePath>..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Include;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\ssnocd;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Utilities\Third_Party\fat_fs\inc;.\</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -388,6 +388,16 @@
               <FileName>startup_stm32f40xx.s</FileName>
               <FileType>2</FileType>
               <FilePath>..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f40xx.s</FilePath>
+            </File>
+            <File>
+              <FileName>ffconf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ffconf.h</FilePath>
+            </File>
+            <File>
+              <FileName>ff-impl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ff-impl.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -878,6 +888,71 @@
               <FileName>stm32f4xx_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_wwdg.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ssnocd-lib</GroupName>
+          <Files>
+            <File>
+              <FileName>cd-img.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ssnocd\cd-img.c</FilePath>
+            </File>
+            <File>
+              <FileName>cd-img.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\ssnocd\cd-img.h</FilePath>
+            </File>
+            <File>
+              <FileName>cdstate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ssnocd\cdstate.c</FilePath>
+            </File>
+            <File>
+              <FileName>cdstate.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\ssnocd\cdstate.h</FilePath>
+            </File>
+            <File>
+              <FileName>fs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ssnocd\fs.c</FilePath>
+            </File>
+            <File>
+              <FileName>fs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\ssnocd\fs.h</FilePath>
+            </File>
+            <File>
+              <FileName>lib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ssnocd\lib.c</FilePath>
+            </File>
+            <File>
+              <FileName>lib.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\ssnocd\lib.h</FilePath>
+            </File>
+            <File>
+              <FileName>mds.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ssnocd\mds.c</FilePath>
+            </File>
+            <File>
+              <FileName>mds.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\ssnocd\mds.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>fat-fs</GroupName>
+          <Files>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Utilities\Third_Party\fat_fs\src\ff.c</FilePath>
             </File>
           </Files>
         </Group>
