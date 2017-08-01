@@ -871,11 +871,11 @@ ARM Macro Assembler    Page 14
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=.\objects\startup_stm32f40xx.d -o.\objects\startup_stm32f40xx.o
- -I.\RTE\_cdemu-main -IC:\Programs86\MDK-ARM-5\ARM\PACK\ARM\CMSIS\5.0.1\Device\
-ARM\ARMCM4\Include -IC:\Programs86\MDK-ARM-5\ARM\CMSIS\Include --predefine="__U
-VISION_VERSION SETA 523" --predefine="ARMCM4_FP SETA 1" --list=.\listings\start
-up_stm32f40xx.lst ..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\
-ST\STM32F4xx\Source\Templates\arm\startup_stm32f40xx.s
+ -I.\RTE\_cdemu-main -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\Device\ARM\ARMCM4\In
+clude -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__UVISION_VERSION SETA 523" -
+-predefine="ARMCM4_FP SETA 1" --list=.\listings\startup_stm32f40xx.lst ..\STM32
+F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templa
+tes\arm\startup_stm32f40xx.s
 
 
 

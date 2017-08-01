@@ -24,6 +24,7 @@ void fs_open(pByte filename) {
   FILE * f = fopen(filename, "rb");
   if (!f) {
     fstate = OpenFailed;
+    DEBUG("Opend failed '%s'\n", filename);
     fd = 0;
   } else {
     fstate = Opened;

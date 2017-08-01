@@ -78,6 +78,8 @@ void cdi_update_drive_bit() {
   
   Byte state[13] = {0};
   Byte bit;
+
+  /*
   for (int i=0; i<13; ++i) {
     pByte p = &state[i];
 
@@ -87,6 +89,11 @@ void cdi_update_drive_bit() {
       bit = cmd[i] & (1 << (7-b));
       cd_drive_set_serial_bit(bit > 0);
     }
+  }
+  */
+  for (int i=0; i<13; ++i) {
+    state[i] = cd_drive_get_serial_byte();
+    cd_drive_set_serial_byte(cmd[i]);
   }
 
   printf("\n- CD Drive \n- Sta : ");

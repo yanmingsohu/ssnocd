@@ -39,7 +39,7 @@ DSTATUS disk_initialize(BYTE drv) {    /* Physical drive nmuber (0..) */
 		NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
 		NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 		NVIC_Init(&NVIC_InitStructure);
-		NVIC_InitStructure.NVIC_IRQChannel = SD_SDIO_DMA_IRQn;
+//		NVIC_InitStructure.NVIC_IRQChannel = SD_SDIO_DMA_IRQn; // !! 问题未解决
 		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
 		NVIC_Init(&NVIC_InitStructure);  
 	}
@@ -66,7 +66,7 @@ DSTATUS disk_status(BYTE drv) {		/* Physical drive nmuber (0..) */
 /* cnt -- Number of sectors to read (1..255) */
 DRESULT disk_read(BYTE drv, BYTE *buf, DWORD sec, BYTE cnt) {
 	DRESULT res = RES_PARERR;
-	SD_ReadMultiBlocks();
+	// SD_ReadMultiBlocks();
 	return res;
 }
 

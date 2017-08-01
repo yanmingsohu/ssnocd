@@ -127,6 +127,10 @@ void cdd_open_lid();
 void ccd_close_lid();
 void ccd_insert_disk();
 
+/* 代替 cd_drive_XXX_serial_bit 直接操作一个字节 */
+u8 cd_drive_get_serial_byte();
+void cd_drive_set_serial_byte(u8 data);
+
 
 /* 实现该接口, 当请求一节数据后, 该节数据通过该方法注入
    缓冲区长度可能大于 2352 */

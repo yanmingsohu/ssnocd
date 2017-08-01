@@ -99,6 +99,31 @@ static INLINE u32 msf_bcd2fad(u8 min, u8 sec, u8 frame) {
 }
 
 
+u8 cd_drive_get_serial_byte() {
+  return cdd_cxt.state_data[cdd_cxt.byte_counter];
+}
+
+
+/* 
+ * 这个算法复制了 cd_drive_set_serial_bit 中的代码
+ */
+void cd_drive_set_serial_byte(u8 data) {
+  cdd_cxt.received_data[cdd_cxt.byte_counter] = data;
+  cdd_cxt.byte_counter++;
+  cdd_cxt.bit_counter = 0;
+
+  // sh1_set_output_enable_rising_edge();
+
+  if (comm_state == SendingFirstByte)
+    comm_state = WaitToOeFirstByte;
+  else if (comm_state == SendingByte)
+    comm_state = WaitToOe;
+
+  if (cdd_cxt.byte_counter == 13)
+    comm_state = WaitToRxio;
+}
+
+
 u8 cd_drive_get_serial_bit()
 {
   u8 bit = 1 << (7 - cdd_cxt.bit_counter);
