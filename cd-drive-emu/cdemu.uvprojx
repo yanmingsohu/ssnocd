@@ -137,7 +137,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Include;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\ssnocd;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Utilities\Third_Party\fat_fs\inc;.\</IncludePath>
+              <IncludePath>..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Include;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\ssnocd;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Utilities\Third_Party\fat_fs\inc;.\;.\sd-drive</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -973,6 +973,41 @@
               <FileName>ff.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Utilities\Third_Party\fat_fs\src\ff.c</FilePath>
+            </File>
+            <File>
+              <FileName>ff.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Utilities\Third_Party\fat_fs\inc\ff.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>sd-card-drive</GroupName>
+          <Files>
+            <File>
+              <FileName>stm324x7i_eval.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\sd-drive\stm324x7i_eval.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm324x7i_eval.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\sd-drive\stm324x7i_eval.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm324x7i_eval_sdio_sd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\sd-drive\stm324x7i_eval_sdio_sd.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm324x7i_eval_sdio_sd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\sd-drive\stm324x7i_eval_sdio_sd.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32_eval_legacy.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\sd-drive\stm32_eval_legacy.h</FilePath>
             </File>
           </Files>
         </Group>

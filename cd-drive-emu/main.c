@@ -25,7 +25,9 @@ void cdi_sector_data_ready(pByte buf, int buflen, char is_audio) {
 
 
 void assert_param(int a) {
-  if (a) return;
+  if (a) 
+    return;
+  
   for (;;) {
   }
 }
