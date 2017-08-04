@@ -12,8 +12,8 @@
 #define LED1_GPIO_GRP   GPIOC
 #define LED1_GPIO_PIN   GPIO_Pin_0
 
-static uint8_t   isset1;
-static uint8_t   isset2;
+static uint8_t  isset1;
+static uint8_t  isset2;
 
 
 /* 
@@ -26,7 +26,7 @@ void init_led1_splash() {
   GPIO_InitTypeDef led1_gpio;
   led1_gpio.GPIO_Pin    = LED1_GPIO_PIN;
   led1_gpio.GPIO_Mode   = GPIO_Mode_OUT;
-  led1_gpio.GPIO_OType  = GPIO_OType_PP;
+  led1_gpio.GPIO_OType  = GPIO_OType_OD;
   led1_gpio.GPIO_Speed  = GPIO_Speed_2MHz;
   led1_gpio.GPIO_PuPd   = GPIO_PuPd_NOPULL;
   GPIO_Init(LED1_GPIO_GRP, &led1_gpio);
@@ -39,7 +39,7 @@ void init_led1_splash() {
   led_time.TIM_ClockDivision  = 0;
   led_time.TIM_CounterMode    = TIM_CounterMode_Up;
   led_time.TIM_Prescaler      = (SystemCoreClock/2/10000)-1; // 10 kHz;
-  led_time.TIM_Period         = 10000/2;  //  2 Hz;
+  led_time.TIM_Period         = 10000/2; // 2 Hz;
   TIM_TimeBaseInit(LED1_USE_TIM, &led_time);
   
   // 启动自动重载; 设置中断;
@@ -71,39 +71,41 @@ void init_led2_key_ctrl() {
   GPIO_InitTypeDef key_gpio;
   key_gpio.GPIO_Pin    = GPIO_Pin_1;
   key_gpio.GPIO_Mode   = GPIO_Mode_IN;
-  key_gpio.GPIO_OType  = GPIO_OType_PP;
+  key_gpio.GPIO_OType  = GPIO_OType_OD;
   key_gpio.GPIO_Speed  = GPIO_Speed_2MHz;
-  key_gpio.GPIO_PuPd   = GPIO_PuPd_NOPULL;
+  key_gpio.GPIO_PuPd   = GPIO_PuPd_DOWN; // 设置为输入时, 需要配置引脚默认状态
   GPIO_Init(GPIOC, &key_gpio);
-  GPIO_SetBits(GPIOC, GPIO_Pin_1);
   
-  // 设置外部事件源
+  // 将 C1 关联到外部事件源, 该链接是固定的连接到 EXTI1;
+  // PIN1 总是链接到 EXTI1, PINn 链接到 EXTIn, PIN5-9 连接在一起等.
   SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource1);
   
   // EXTI 设置外部中断外设
   EXTI_InitTypeDef exdef;
   exdef.EXTI_Line     = EXTI_Line1;
   exdef.EXTI_Mode     = EXTI_Mode_Interrupt;
-  exdef.EXTI_Trigger  = EXTI_Trigger_Rising_Falling;
+  exdef.EXTI_Trigger  = EXTI_Trigger_Rising;
   exdef.EXTI_LineCmd  = ENABLE;
   EXTI_Init(&exdef);
   
   // 启动中断
-  NVIC_InitTypeDef NVIC_InitStructure;
-  NVIC_InitStructure.NVIC_IRQChannel                    = EXTI1_IRQn;
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority  = 4;
-  NVIC_InitStructure.NVIC_IRQChannelSubPriority         = 5;
-  NVIC_InitStructure.NVIC_IRQChannelCmd                 = ENABLE;
-  NVIC_Init(&NVIC_InitStructure);
+  NVIC_InitTypeDef it;
+  it.NVIC_IRQChannel                    = EXTI1_IRQn;
+  it.NVIC_IRQChannelPreemptionPriority  = 4;
+  it.NVIC_IRQChannelSubPriority         = 5;
+  it.NVIC_IRQChannelCmd                 = ENABLE;
+  NVIC_Init(&it);
+  
   
   // D3 配置为 led2 控制引脚
   GPIO_InitTypeDef led2_gpio;
   led2_gpio.GPIO_Pin    = GPIO_Pin_3;
   led2_gpio.GPIO_Mode   = GPIO_Mode_OUT;
-  led2_gpio.GPIO_OType  = GPIO_OType_PP;
+  led2_gpio.GPIO_OType  = GPIO_OType_OD;
   led2_gpio.GPIO_Speed  = GPIO_Speed_2MHz;
   led2_gpio.GPIO_PuPd   = GPIO_PuPd_NOPULL;
   GPIO_Init(GPIOD, &led2_gpio);
+  GPIO_SetBits(GPIOD, GPIO_Pin_3);
 }
 
 
@@ -129,4 +131,5 @@ void EXTI1_IRQHandler() {
     GPIO_ResetBits(GPIOD, GPIO_Pin_3);
     isset2 = 1;
   }
+  EXTI_ClearITPendingBit(EXTI_Line1);
 }

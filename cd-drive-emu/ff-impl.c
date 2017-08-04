@@ -14,19 +14,12 @@
 /*-----------------------------------------------------------------------*/
 /* Correspondence between physical drive number and physical drive.      */
 
-#define ATA		0
-#define MMC		1
-#define USB		2
-
-/** 
-  * @brief  SDIO Intialization Frequency (400KHz max)
-  */
-#define SDIO_INIT_CLK_DIV                ((uint8_t)0x76)
+#define MMC		0
 
 
 
 /*-----------------------------------------------------------------------*/
-/* Inicializes a Drive                                                    */
+/* Inicializes a Drive                                                   */
 
 DSTATUS disk_initialize(BYTE drv) {    /* Physical drive nmuber (0..) */
   if (drv != 0)
