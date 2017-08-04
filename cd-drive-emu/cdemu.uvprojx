@@ -333,7 +333,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>STM32F40_41xxx</Define>
+              <Define>STM32F40_41xxx, HSE_VALUE=8000000, PLL_M_RE_VAL=8</Define>
               <Undefine></Undefine>
               <IncludePath>..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Include;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\ssnocd;..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Utilities\Third_Party\fat_fs\inc;.\;.\sd-drive</IncludePath>
             </VariousControls>
@@ -419,16 +419,16 @@
               <FileType>5</FileType>
               <FilePath>.\led.h</FilePath>
             </File>
+            <File>
+              <FileName>system_stm32f40x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\system_stm32f40x.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>CMSIS</GroupName>
           <Files>
-            <File>
-              <FileName>system_stm32f4xx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c</FilePath>
-            </File>
             <File>
               <FileName>arm_common_tables.h</FileName>
               <FileType>5</FileType>

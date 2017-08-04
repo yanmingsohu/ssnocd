@@ -7,6 +7,7 @@
 #include <led.h>
 #include <stm32f4xx_gpio.h>
 #include <stm32f4xx_rcc.h>
+#include <stdio.h>
 
 
 /*
@@ -20,6 +21,7 @@ int main() {
   init_led2_key_ctrl();
   init_led1_splash();
   
+  printf("Hi \n");
   for (;;);
   return 0;
 }
