@@ -9,6 +9,13 @@
 #include <stm32f4xx_rcc.h>
 
 
+/*
+ * 在全局宏中加入定义:
+ * 器件型号定义:  STM32F40_41xxx, 
+ * 外部晶振频率:  HSE_VALUE=8000000
+ * 外部晶振到 PLL 的分频:   PLL_M_RE_VAL=8
+ * 原则是 HSE_VALUE / PLL_M_RE_VAL = 1 MHz
+ */
 int main() {
   init_led2_key_ctrl();
   init_led1_splash();

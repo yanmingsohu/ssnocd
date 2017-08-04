@@ -38,7 +38,7 @@ void init_led1_splash() {
   TIM_TimeBaseInitTypeDef led_time;
   led_time.TIM_ClockDivision  = 0;
   led_time.TIM_CounterMode    = TIM_CounterMode_Up;
-  led_time.TIM_Prescaler      = (SystemCoreClock/4/10000)-1; // 10 kHz; 定时不准确!
+  led_time.TIM_Prescaler      = (SystemCoreClock/2/10000)-1; // 10 kHz;
   led_time.TIM_Period         = 10000/2;  //  2 Hz;
   TIM_TimeBaseInit(LED1_USE_TIM, &led_time);
   
@@ -119,6 +119,7 @@ void TIM2_IRQHandler() {
     TIM_ClearFlag(LED1_USE_TIM, TIM_FLAG_Update);
   }
 }
+
 
 void EXTI1_IRQHandler() {
   if (isset2) {
