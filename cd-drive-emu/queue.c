@@ -3,7 +3,7 @@
 
 void write_queue(Queue *q, uint8_t data) {
   q->buffer[q->wp] = data;
-  if (++q->wp > QUEUE_BUFF_SIZE) {
+  if (++q->wp >= QUEUE_BUFF_SIZE) {
     q->wp = 0;
   }
 }
@@ -11,7 +11,7 @@ void write_queue(Queue *q, uint8_t data) {
 
 uint8_t read_queue(Queue *q) {
   uint8_t d = q->buffer[q->rp];
-  if (++q->rp > QUEUE_BUFF_SIZE) {
+  if (++q->rp >= QUEUE_BUFF_SIZE) {
     q->rp = 0;
   }
   return d;
