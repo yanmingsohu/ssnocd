@@ -7,7 +7,7 @@
 #include <led.h>
 #include <stm32f4xx_gpio.h>
 #include <stm32f4xx_rcc.h>
-#include <stdio.h>
+#include <usart.h>
 
 
 /*
@@ -20,9 +20,12 @@
 int main() {
   init_led2_key_ctrl();
   init_led1_splash();
+  init_usart();
   
-  printf("Hi \n");
-  for (;;);
+  print("Cd EMU System startup.");
+  
+  for (;;) {
+  }
   return 0;
 }
 
