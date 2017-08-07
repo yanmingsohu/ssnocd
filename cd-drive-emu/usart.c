@@ -20,6 +20,9 @@
 static Queue q;
 
 
+/*
+ * 如果没有初始化串口, 所有的写函数可以调用, 但是没有效果.
+ */
 void init_usart() {
   RCC_APB2PeriphClockCmd(US_RCC, ENABLE);
   RCC_AHB1PeriphClockCmd(US_IO_RCC, ENABLE);
@@ -59,16 +62,6 @@ void init_usart() {
 }
 
 
-/* 字符串长度不能超过 100, 写入读取超过串口速度会有乱码 */
-void print(char *str) {
-  for (int i=0; i<100; ++i) {
-    if (str[i] == 0) break;;
-    write_queue(&q, str[i]);
-  }
-  write_queue(&q, '\n');
-}
-
-
 void USART1_IRQHandler() {
   if (SET == USART_GetFlagStatus(US_NUM, USART_FLAG_TXE)) {
     if (has_data(&q)) {
@@ -76,5 +69,58 @@ void USART1_IRQHandler() {
     } else {
       USART_SendData(US_NUM, 0x00);
     }
+  }
+}
+
+
+/* 
+ * 字符串长度不能超过 100, 写入读取超过串口速度会有乱码 
+ * 字符串必须以 '\0' 结尾
+ */
+void prints(char *str) {
+  write_queue(&q, 0x02);
+  for (int i=0; i<100; ++i) {
+    write_queue(&q, str[i]);
+    if (str[i] == 0) break;
+  }
+}
+
+
+void printi(unsigned int i) {
+  write_queue(&q, 0x03);
+  write_queue(&q, i & 0xFF);
+  write_queue(&q, (i & 0xFF00) >> 8);
+  write_queue(&q, (i & 0xFF0000) >> 16);
+  write_queue(&q, (i & 0xFF000000) >> 24);
+}
+
+
+void printd(double i) {
+  union {
+    double d;
+    char b[8];
+  } buff;
+  buff.d = i;
+  
+  write_queue(&q, 0x04);
+  write_queue(&q, buff.b[0]);
+  write_queue(&q, buff.b[1]);
+  write_queue(&q, buff.b[2]);
+  write_queue(&q, buff.b[3]);
+  write_queue(&q, buff.b[4]);
+  write_queue(&q, buff.b[5]);
+  write_queue(&q, buff.b[6]);
+  write_queue(&q, buff.b[7]);
+}
+
+
+/*
+ * 打印内存, 使用 16 进制格式, 长度不要超过 128
+ */
+void printb(char *bin, unsigned char len) {
+  write_queue(&q, 0x05);
+  write_queue(&q, len);
+  for (int i=0; i<len; ++i) {
+    write_queue(&q, bin[i]);
   }
 }

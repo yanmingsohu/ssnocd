@@ -8,6 +8,7 @@
 #include <stm32f4xx_gpio.h>
 #include <stm32f4xx_rcc.h>
 #include <usart.h>
+#include <ff.h>
 
 
 /*
@@ -22,7 +23,8 @@ int main() {
   init_led1_splash();
   init_usart();
   
-  print("Cd EMU System startup.");
+  prints("\nCd EMU System startup.\n");
+  test_file_op();
   
   for (;;) {
   }

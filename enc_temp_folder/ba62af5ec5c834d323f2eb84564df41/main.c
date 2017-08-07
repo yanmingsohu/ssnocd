@@ -124,18 +124,25 @@ void print_process(int point, DWORD size, byte crc) {
 void read_char_print(HANDLE com) {
   byte buff;
   DWORD count;
+  int enter = 0;
 
   for (;;) {
     ReadFile(com, &buff, sizeof(buff), &count, 0);
     if (count < 1) 
       continue;
 
+    if (buff == '\n') {
+      ++enter;
+    }
+    
     if (buff != 0) {
       putch(buff);
     } else {
       break;
     }
   }
+
+  if (!enter) putch(' ');
 }
 
 

@@ -3,7 +3,7 @@
 
 
 void init_usart();
-void print(char *str);
+void prints(char *str);
 
 
 #endif

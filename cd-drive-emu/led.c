@@ -118,7 +118,6 @@ void TIM2_IRQHandler() {
       GPIO_ResetBits(LED1_GPIO_GRP, LED1_GPIO_PIN);
       isset1 = 1;
     }
-    print("LED.");
     TIM_ClearFlag(LED1_USE_TIM, TIM_FLAG_Update);
   }
 }
@@ -132,6 +131,6 @@ void EXTI1_IRQHandler() {
     GPIO_ResetBits(GPIOD, GPIO_Pin_3);
     isset2 = 1;
   }
-  print("Push KEY");
+  prints("Push KEY2\n");
   EXTI_ClearITPendingBit(EXTI_Line1);
 }
