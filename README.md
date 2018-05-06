@@ -5,6 +5,21 @@
 协议分析在 analysis
 
 
+# sub projects
+
+BazisLib 
+  -- https://github.com/sysprogs/BazisLib.git
+
+WinCDEmu 
+  -- https://github.com/sysprogs/WinCDEmu.git
+
+yabause 
+  -- https://github.com/Yabause/yabause.git
+
+STM32F4xx_DSP_StdPeriph_Lib_V1.8.0
+  -- http://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-standard-peripheral-libraries/stsw-stm32065.html#getsoftware-scroll
+
+
 # File list
 
 2018/05/06  08:54    <DIR>          .
